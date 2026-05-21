@@ -1,0 +1,57 @@
+targetScope = 'resourceGroup'
+
+param location string
+param tags object = {}
+param accountName string
+param projectName string
+param customSubdomain string
+param disableLocalAuth bool = true
+@allowed([
+  'Enabled'
+  'Disabled'
+])
+param publicNetworkAccess string = 'Disabled'
+
+var defaultAction = publicNetworkAccess == 'Disabled' ? 'Deny' : 'Allow'
+
+resource account 'Microsoft.CognitiveServices/accounts@2025-06-01' = {
+  name: accountName
+  location: location
+  tags: tags
+  kind: 'AIServices'
+  identity: {
+    type: 'SystemAssigned'
+  }
+  sku: {
+    name: 'S0'
+  }
+  properties: {
+    allowProjectManagement: true
+    customSubDomainName: customSubdomain
+    disableLocalAuth: disableLocalAuth
+    publicNetworkAccess: publicNetworkAccess
+    networkAcls: {
+      defaultAction: defaultAction
+      bypass: 'AzureServices'
+      ipRules: []
+      virtualNetworkRules: []
+    }
+  }
+}
+
+resource project 'Microsoft.CognitiveServices/accounts/projects@2025-04-01-preview' = {
+  name: projectName
+  parent: account
+  location: location
+  tags: tags
+  identity: {
+    type: 'SystemAssigned'
+  }
+  properties: {
+    description: 'Governance hub default project'
+  }
+}
+
+output accountResourceId string = account.id
+output accountEndpoint string = account.properties.endpoint
+output projectResourceId string = project.id

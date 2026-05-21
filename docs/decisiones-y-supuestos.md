@@ -1,28 +1,25 @@
 # Decisiones y supuestos
 
-## Decisiones ya tomadas en este repositorio
+## Decisiones tomadas
 
-1. El patrón objetivo será **hub-hubs**:
-   - hub corporativo de conectividad;
-   - hub de gobernanza de IA;
-   - spokes de Foundry por dominio.
-2. El spoke de referencia se toma de `bicep-ptn-aiml-landing-zone`.
-3. El hub de gobernanza se toma de `ai-hub-gateway-solution-accelerator`.
-4. La referencia conceptual compuesta se toma de `AI-Landing-Zones`.
-5. El código upstream queda **vendorizado** para evitar dependencia en tiempo de revisión.
+1. El repositorio tendrá **código propio** como producto principal.
+2. La estructura inicial será:
+   - `infra/hub-governance`
+   - `infra/spoke-base`
+3. Cada despliegue tendrá **módulos locales dentro de su propia carpeta**.
+4. Los repos de Microsoft quedan solo como **referencia** en `references/upstream-sources.json`.
+5. El spoke base será el punto de partida para futuros patrones de POC.
 
 ## Supuestos
 
-- el equipo de plataforma controla o aprobará el hub de conectividad;
-- el equipo de IA necesita demostrar arquitectura y código, no ejecutar una migración en caliente;
-- el primer despliegue será un entorno de validación;
-- el patrón debe poder repetirse para más de un spoke.
+- el hub corporativo de conectividad existe o será gestionado por plataforma;
+- este repo se enfoca en el hub de gobernanza y el spoke base;
+- el peering inverso `hub → spoke` se resolverá fuera de esta primera automatización;
+- luego se crearán otros patrones sin introducir una librería de módulos compartidos entre carpetas.
 
-## Decisiones que siguen abiertas
+## Decisiones abiertas
 
-- suscripción final del AI Governance Hub;
-- si APIM será interno en todos los ambientes;
-- ownership final de Private DNS Zones;
-- ownership de route tables y peerings reversos;
-- naming corporativo;
-- regiones definitivas y cuotas de modelos.
+- si APIM irá `External` o `Internal` por ambiente;
+- si el hub de gobernanza tendrá DNS propio o reutilizará DNS corporativo;
+- qué recursos serán obligatorios en el siguiente patrón de spoke;
+- naming final y segmentación por suscripción.

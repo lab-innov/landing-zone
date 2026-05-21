@@ -2,66 +2,63 @@
 
 ## 1. Validar prerrequisitos de plataforma
 
-Antes de tocar los aceleradores:
+- suscripciones y permisos;
+- CIDRs sin solapamiento;
+- ownership de Private DNS Zones;
+- ownership del firewall y de las route tables;
+- proveedores de recursos registrados.
 
-- confirmar suscripciones y permisos;
-- reservar CIDRs;
-- definir ownership de Private DNS Zones;
-- registrar resource providers;
-- confirmar si Log Analytics será compartido.
+## 2. Connectivity Hub corporativo
 
-## 2. Connectivity Hub
+Este repositorio no despliega el hub corporativo de conectividad. Se asume existente o gestionado por plataforma.
 
-Este repositorio asume que existe un hub corporativo o que será provisto por la plataforma. Como mínimo deben existir o acordarse:
+Debe existir como mínimo:
 
 - VNet hub;
-- Azure Firewall o NVA equivalente;
-- Bastion si se quiere reutilizar acceso administrativo;
-- Private DNS Zones y estrategia de linking;
-- Log Analytics compartido si se busca centralización.
+- firewall o NVA;
+- DNS privado compartido si se va a reutilizar;
+- conectividad a on-premises si aplica.
 
-## 3. AI Governance Hub
+## 3. Desplegar el AI Governance Hub
 
-Desplegar desde:
+Ruta:
 
-`upstream/ai-hub-gateway-solution-accelerator`
+`infra/hub-governance`
 
-Recomendación inicial:
+Script:
 
-- empezar con `provision`;
-- pasar a `up` cuando se quiera incluir la app de ingestión;
-- definir pronto si APIM será `Internal` o `External`.
+```bash
+./scripts/deploy-hub-governance.sh environments/hub-governance/hub-governance.env create
+```
 
-## 4. Foundry Spoke
+## 4. Desplegar el primer Spoke Base
 
-Desplegar desde:
+Ruta:
 
-`upstream/bicep-ptn-aiml-landing-zone`
+`infra/spoke-base`
 
-Recomendación inicial:
+Script:
 
-- usar `deploymentMode=ailz-integrated`;
-- habilitar `networkIsolation=true`;
-- reutilizar Bastion y Log Analytics si ya existen;
-- crear peering spoke → hub desde la plantilla;
-- completar peering hub → spoke desde el lado de plataforma.
+```bash
+./scripts/deploy-spoke-base.sh environments/spoke-base/spoke-base.env create
+```
 
-## 5. Integración entre hub y spoke
+## 5. Completar integración con el hub corporativo
 
-Confirmar:
+El spoke base puede crear el peering **spoke → hub**.
 
-- resolución DNS privada;
-- reachability entre subredes necesarias;
-- rutas hacia el firewall del hub;
-- acceso del spoke al AI Gateway;
-- acceso del hub a los endpoints privados requeridos.
+El peering **hub → spoke** sigue siendo responsabilidad del equipo de plataforma o de una automatización posterior, porque normalmente vive en otro scope operativo.
+
+También deben cerrarse:
+
+- UDR hacia el firewall del hub;
+- linking a zonas DNS privadas compartidas;
+- validación de reachability entre subredes necesarias.
 
 ## 6. Validación final
 
-Validaciones mínimas:
-
-- despliegues ARM/Bicep sin error;
-- private endpoints creados;
-- peering en estado `Connected`;
-- APIM accesible según el modo elegido;
-- recursos de Foundry accesibles solo por red privada si así se definió.
+- despliegue subscription-scope correcto;
+- recursos principales creados;
+- private endpoints creados si fueron habilitados;
+- peering spoke → hub creado si se configuró;
+- resolución DNS privada según el modelo elegido.

@@ -1,0 +1,37 @@
+{
+  "generatedAt": "2026-05-21",
+  "sources": [
+    {
+      "name": "AI-Landing-Zones",
+      "repository": "https://github.com/Azure/AI-Landing-Zones",
+      "ref": "main",
+      "commit": "7ba10daab2036f8b7c4bf03c9fc0034817443fbd",
+      "localPath": "upstream/AI-Landing-Zones",
+      "purpose": "Referencia arquitectónica compuesta Foundry + APIM."
+    },
+    {
+      "name": "bicep-ptn-aiml-landing-zone",
+      "repository": "https://github.com/Azure/bicep-ptn-aiml-landing-zone",
+      "ref": "main",
+      "commit": "fb2f85074eb849be7df4109e516b9902b1f84fa6",
+      "localPath": "upstream/bicep-ptn-aiml-landing-zone",
+      "purpose": "Spoke de Azure AI Foundry en modo standalone o integrado a hub."
+    },
+    {
+      "name": "ai-hub-gateway-solution-accelerator",
+      "repository": "https://github.com/Azure-Samples/ai-hub-gateway-solution-accelerator",
+      "ref": "citadel-v1",
+      "commit": "f2702b49f80d0ad40e227ae2ee9d8b6dd9137da4",
+      "localPath": "upstream/ai-hub-gateway-solution-accelerator",
+      "purpose": "Hub de gobernanza de IA con APIM, Foundry y observabilidad."
+    },
+    {
+      "name": "GPT-RAG",
+      "repository": "https://github.com/Azure/GPT-RAG",
+      "ref": "release/2.3.0",
+      "commit": "719d69e4bfdb9dc672a24ac89ba19a9b4eead603",
+      "localPath": "n/a",
+      "purpose": "Estado actual de referencia para comparación arquitectónica."
+    }
+  ]
+}

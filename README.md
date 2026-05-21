@@ -1,5 +1,7 @@
 # Landing Zone de IA en Azure
 
+![Arquitectura de referencia](docs/images/AI-Landing-Zones-APIM.png)
+
 Este repositorio contiene **código propio** para desplegar la base de la landing zone de IA. El producto principal ya no es una carpeta `upstream`, sino dos despliegues autocontenidos:
 
 - [infra/hub-governance](/Users/unidentified/Documents/Landing%20Zone/infra/hub-governance/README.md)

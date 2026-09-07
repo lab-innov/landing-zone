@@ -1,9 +1,24 @@
-# Foundry Agent privado para CAF, sin RAG de aplicación
+# Foundry Agent privado para CAF
 
 Plantilla propia para **un workload `foundry-agent`**. Sustituye la idea inicial de
 tres perfiles según la aclaración de alcance. Application Gateway es privado y la
 persistencia de Foundry Standard se despliega en la suscripción CAF. No modifica
 los perfiles anteriores ni despliega Azure automáticamente.
+
+## Base común para agentes con o sin RAG
+
+El patrón y la rama de trabajo son `foundry-agent`. No se mantiene una variante
+separada `foundry-rag`: ambos casos reutilizan esta base de red, cómputo y
+persistencia Standard. Esta plantilla configura la infraestructura; la versión
+actual no activa recuperación documental en la aplicación.
+
+Para incorporar RAG se agregan los índices de documentos y su ingestión,
+extracción y fragmentación, un modelo de embeddings si se usa búsqueda vectorial,
+y la herramienta del agente que consulta el índice. Ajustar los permisos del
+indexador/backend y su conectividad privada según quién realice la ingestión y
+consulta. Puede reutilizarse el servicio Search con un índice de aplicación
+separado de los índices administrados por Foundry. Un proceso de ingestión en
+segundo plano puede requerir un Job adicional.
 
 ## Recursos incluidos
 

@@ -2,10 +2,25 @@
 
 ![Arquitectura de referencia](docs/images/AI-Landing-Zones-APIM.png)
 
-Este repositorio contiene **código propio** para desplegar la base de la landing zone de IA. El producto principal ya no es una carpeta `upstream`, sino dos despliegues autocontenidos:
+Este repositorio contiene **código propio** para desplegar la base de la landing zone de IA. El producto principal ya no es una carpeta `upstream`, sino despliegues autocontenidos:
 
 - [infra/hub-governance](/Users/unidentified/Documents/Landing%20Zone/infra/hub-governance/README.md)
 - [infra/spoke-base](/Users/unidentified/Documents/Landing%20Zone/infra/spoke-base/README.md)
+
+## Patrón Foundry Agent
+
+La rama `foundry-agent` contiene la [base privada de Foundry Standard](infra/foundry-private/README.md),
+con frontend y backend en Container Apps, Application Gateway privado con WAF,
+ACR, Key Vault y persistencia dentro de CAF.
+
+Esta base es común para agentes **con o sin RAG**. No se mantiene una rama
+`foundry-rag` separada: la recuperación documental se configura sobre esta misma
+infraestructura. Search es una dependencia de Foundry Standard; los índices de
+aplicación, ingestión, embeddings y herramientas de recuperación se agregan según
+el workload. La plantilla actual no implementa esa capa RAG.
+
+El desarrollo de este patrón se realiza en un worktree de `foundry-agent`; la
+publicación de la rama no implica un despliegue en Azure.
 
 ## Objetivo
 
@@ -21,7 +36,8 @@ Dejar lista una base aprobable por Infraestructura para un patrón `hub-hubs`:
 .
 ├── infra/
 │   ├── hub-governance/
-│   └── spoke-base/
+│   ├── spoke-base/
+│   └── foundry-private/
 ├── environments/
 │   ├── hub-governance/
 │   └── spoke-base/
@@ -100,7 +116,7 @@ Ambos scripts soportan:
 
 - no despliega el connectivity hub corporativo;
 - no automatiza el peering inverso `hub → spoke`;
-- no incluye aún patrones especializados como `rag`, `agents` o `minimal`.
+- no configura todavía la ingestión ni la recuperación documental RAG.
 
 ## Qué debe revisar Infra primero
 

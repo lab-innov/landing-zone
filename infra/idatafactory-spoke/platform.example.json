@@ -1,0 +1,12 @@
+{
+  "ipamApproved": false,
+  "connectedPrefixes": [
+    "REEMPLAZAR_CIDR_HUB_Y_TODAS_LAS_REDES_CONECTADAS"
+  ],
+  "centralDnsDineReady": false,
+  "hubReturnPeeringReady": false,
+  "firewallEgressReady": false,
+  "sharedDatabricksBrowserAuthReady": false,
+  "newDatabricksBrowserAuthApproved": false,
+  "gatewayTransitReady": false
+}

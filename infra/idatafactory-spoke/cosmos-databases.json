@@ -1,0 +1,26 @@
+[
+  {
+    "accountIndex": 1,
+    "name": "Auditoria"
+  },
+  {
+    "accountIndex": 1,
+    "name": "EcoCAF"
+  },
+  {
+    "accountIndex": 1,
+    "name": "IfisCAF"
+  },
+  {
+    "accountIndex": 0,
+    "name": "notifications-db"
+  },
+  {
+    "accountIndex": 1,
+    "name": "UserDirectory"
+  },
+  {
+    "accountIndex": 1,
+    "name": "Vinculador_DMAF"
+  }
+]

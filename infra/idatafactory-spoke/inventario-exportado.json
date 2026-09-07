@@ -1,0 +1,2573 @@
+{
+  "origen": "main-4.bicep",
+  "recursos": [
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_resource",
+      "type": "Microsoft.Automation/automationAccounts",
+      "line": 36
+    },
+    {
+      "symbol": "accounts_di_POC_iDataFactory_CR_name_resource",
+      "type": "Microsoft.CognitiveServices/accounts",
+      "line": 55
+    },
+    {
+      "symbol": "accounts_oai_POC_iDataFactory_CR_name_resource",
+      "type": "Microsoft.CognitiveServices/accounts",
+      "line": 76
+    },
+    {
+      "symbol": "emailServices_acs_notifications_cr_name_resource",
+      "type": "Microsoft.Communication/emailServices",
+      "line": 94
+    },
+    {
+      "symbol": "registries_acrcafcommon_name_resource",
+      "type": "Microsoft.ContainerRegistry/registries",
+      "line": 102
+    },
+    {
+      "symbol": "accessConnectors_cadb_POC_iDataFactory_CR_name_resource",
+      "type": "Microsoft.Databricks/accessConnectors",
+      "line": 152
+    },
+    {
+      "symbol": "workspaces_adb_POC_iDataFactory_CR_name_resource",
+      "type": "Microsoft.Databricks/workspaces",
+      "line": 161
+    },
+    {
+      "symbol": "databaseAccounts_cd_notifications_cr_name_resource",
+      "type": "Microsoft.DocumentDB/databaseAccounts",
+      "line": 214
+    },
+    {
+      "symbol": "databaseAccounts_cd_poc_idatafactory_cr_name_resource",
+      "type": "Microsoft.DocumentDB/databaseAccounts",
+      "line": 286
+    },
+    {
+      "symbol": "databaseAccounts_secaps_name_resource",
+      "type": "Microsoft.DocumentDB/databaseAccounts",
+      "line": 360
+    },
+    {
+      "symbol": "searchServices_srch_poc_riskcaf_cr_name_resource",
+      "type": "Microsoft.Search/searchServices",
+      "line": 439
+    },
+    {
+      "symbol": "storageAccounts_asacommon_name_resource",
+      "type": "Microsoft.Storage/storageAccounts",
+      "line": 472
+    },
+    {
+      "symbol": "storageAccounts_asapocnotificationscr_name_resource",
+      "type": "Microsoft.Storage/storageAccounts",
+      "line": 510
+    },
+    {
+      "symbol": "storageAccounts_asauserpermissions_name_resource",
+      "type": "Microsoft.Storage/storageAccounts",
+      "line": 553
+    },
+    {
+      "symbol": "storageAccounts_rgpocidatafactorycr8d9e_name_resource",
+      "type": "Microsoft.Storage/storageAccounts",
+      "line": 591
+    },
+    {
+      "symbol": "storageAccounts_rgpocidatafactorycra72f_name_resource",
+      "type": "Microsoft.Storage/storageAccounts",
+      "line": 629
+    },
+    {
+      "symbol": "storageAccounts_rgpocidatafactorycra907_name_resource",
+      "type": "Microsoft.Storage/storageAccounts",
+      "line": 667
+    },
+    {
+      "symbol": "storageAccounts_rgpocidatafactorycrb5a2_name_resource",
+      "type": "Microsoft.Storage/storageAccounts",
+      "line": 707
+    },
+    {
+      "symbol": "storageAccounts_rgpocidatafactorycrba55_name_resource",
+      "type": "Microsoft.Storage/storageAccounts",
+      "line": 745
+    },
+    {
+      "symbol": "storageAccounts_sapocidatafactorycr_name_resource",
+      "type": "Microsoft.Storage/storageAccounts",
+      "line": 783
+    },
+    {
+      "symbol": "storageAccounts_storagerisk1_name_resource",
+      "type": "Microsoft.Storage/storageAccounts",
+      "line": 828
+    },
+    {
+      "symbol": "serverfarms_appsp_audits_cr_name_resource",
+      "type": "Microsoft.Web/serverfarms",
+      "line": 874
+    },
+    {
+      "symbol": "serverfarms_appsp_poc_common_cr_name_resource",
+      "type": "Microsoft.Web/serverfarms",
+      "line": 900
+    },
+    {
+      "symbol": "serverfarms_appsp_poc_idatafactory_cr_name_resource",
+      "type": "Microsoft.Web/serverfarms",
+      "line": 926
+    },
+    {
+      "symbol": "serverfarms_appsp_poc_notifications_cr_name_resource",
+      "type": "Microsoft.Web/serverfarms",
+      "line": 953
+    },
+    {
+      "symbol": "sites_azfunc_POC_iDataFactory_CR_name_resource",
+      "type": "Microsoft.Web/sites",
+      "line": 979
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_Azure",
+      "type": "Microsoft.Automation/automationAccounts/connectionTypes",
+      "line": 1040
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_AzureClassicCertificate",
+      "type": "Microsoft.Automation/automationAccounts/connectionTypes",
+      "line": 1060
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_AzureServicePrincipal",
+      "type": "Microsoft.Automation/automationAccounts/connectionTypes",
+      "line": 1085
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_SCH_7315ff0b_55b8_4f71_aa30_0ecfa94a809f_a5045390_352d_4fe5_b0d8_4325b48d473d_639218736000000000",
+      "type": "Microsoft.Automation/automationAccounts/jobs",
+      "line": 1115
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_SCH_7315ff0b_55b8_4f71_aa30_0ecfa94a809f_a5045390_352d_4fe5_b0d8_4325b48d473d_639219600000000000",
+      "type": "Microsoft.Automation/automationAccounts/jobs",
+      "line": 1125
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_SCH_7315ff0b_55b8_4f71_aa30_0ecfa94a809f_a5045390_352d_4fe5_b0d8_4325b48d473d_639220464000000000",
+      "type": "Microsoft.Automation/automationAccounts/jobs",
+      "line": 1135
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_SCH_7315ff0b_55b8_4f71_aa30_0ecfa94a809f_a5045390_352d_4fe5_b0d8_4325b48d473d_639221328000000000",
+      "type": "Microsoft.Automation/automationAccounts/jobs",
+      "line": 1145
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_SCH_7315ff0b_55b8_4f71_aa30_0ecfa94a809f_a5045390_352d_4fe5_b0d8_4325b48d473d_639222192000000000",
+      "type": "Microsoft.Automation/automationAccounts/jobs",
+      "line": 1155
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_SCH_7315ff0b_55b8_4f71_aa30_0ecfa94a809f_a5045390_352d_4fe5_b0d8_4325b48d473d_639223056000000000",
+      "type": "Microsoft.Automation/automationAccounts/jobs",
+      "line": 1165
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_SCH_7315ff0b_55b8_4f71_aa30_0ecfa94a809f_a5045390_352d_4fe5_b0d8_4325b48d473d_639223920000000000",
+      "type": "Microsoft.Automation/automationAccounts/jobs",
+      "line": 1175
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_SCH_7315ff0b_55b8_4f71_aa30_0ecfa94a809f_a5045390_352d_4fe5_b0d8_4325b48d473d_639224784000000000",
+      "type": "Microsoft.Automation/automationAccounts/jobs",
+      "line": 1185
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_SCH_7315ff0b_55b8_4f71_aa30_0ecfa94a809f_a5045390_352d_4fe5_b0d8_4325b48d473d_639225648000000000",
+      "type": "Microsoft.Automation/automationAccounts/jobs",
+      "line": 1195
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_SCH_7315ff0b_55b8_4f71_aa30_0ecfa94a809f_a5045390_352d_4fe5_b0d8_4325b48d473d_639226512000000000",
+      "type": "Microsoft.Automation/automationAccounts/jobs",
+      "line": 1205
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_SCH_7315ff0b_55b8_4f71_aa30_0ecfa94a809f_a5045390_352d_4fe5_b0d8_4325b48d473d_639227376000000000",
+      "type": "Microsoft.Automation/automationAccounts/jobs",
+      "line": 1215
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_SCH_7315ff0b_55b8_4f71_aa30_0ecfa94a809f_a5045390_352d_4fe5_b0d8_4325b48d473d_639228240000000000",
+      "type": "Microsoft.Automation/automationAccounts/jobs",
+      "line": 1225
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_SCH_7315ff0b_55b8_4f71_aa30_0ecfa94a809f_a5045390_352d_4fe5_b0d8_4325b48d473d_639229104000000000",
+      "type": "Microsoft.Automation/automationAccounts/jobs",
+      "line": 1235
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_SCH_7315ff0b_55b8_4f71_aa30_0ecfa94a809f_a5045390_352d_4fe5_b0d8_4325b48d473d_639229968000000000",
+      "type": "Microsoft.Automation/automationAccounts/jobs",
+      "line": 1245
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_SCH_7315ff0b_55b8_4f71_aa30_0ecfa94a809f_a5045390_352d_4fe5_b0d8_4325b48d473d_639230832000000000",
+      "type": "Microsoft.Automation/automationAccounts/jobs",
+      "line": 1255
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_SCH_7315ff0b_55b8_4f71_aa30_0ecfa94a809f_a5045390_352d_4fe5_b0d8_4325b48d473d_639231696000000000",
+      "type": "Microsoft.Automation/automationAccounts/jobs",
+      "line": 1265
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_SCH_7315ff0b_55b8_4f71_aa30_0ecfa94a809f_a5045390_352d_4fe5_b0d8_4325b48d473d_639232560000000000",
+      "type": "Microsoft.Automation/automationAccounts/jobs",
+      "line": 1275
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_SCH_7315ff0b_55b8_4f71_aa30_0ecfa94a809f_a5045390_352d_4fe5_b0d8_4325b48d473d_639233424000000000",
+      "type": "Microsoft.Automation/automationAccounts/jobs",
+      "line": 1285
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_SCH_7315ff0b_55b8_4f71_aa30_0ecfa94a809f_a5045390_352d_4fe5_b0d8_4325b48d473d_639234288000000000",
+      "type": "Microsoft.Automation/automationAccounts/jobs",
+      "line": 1295
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_SCH_7315ff0b_55b8_4f71_aa30_0ecfa94a809f_a5045390_352d_4fe5_b0d8_4325b48d473d_639235152000000000",
+      "type": "Microsoft.Automation/automationAccounts/jobs",
+      "line": 1305
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_SCH_7315ff0b_55b8_4f71_aa30_0ecfa94a809f_a5045390_352d_4fe5_b0d8_4325b48d473d_639236016000000000",
+      "type": "Microsoft.Automation/automationAccounts/jobs",
+      "line": 1315
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_SCH_7315ff0b_55b8_4f71_aa30_0ecfa94a809f_a5045390_352d_4fe5_b0d8_4325b48d473d_639236880000000000",
+      "type": "Microsoft.Automation/automationAccounts/jobs",
+      "line": 1325
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_SCH_7315ff0b_55b8_4f71_aa30_0ecfa94a809f_a5045390_352d_4fe5_b0d8_4325b48d473d_639237744000000000",
+      "type": "Microsoft.Automation/automationAccounts/jobs",
+      "line": 1335
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_SCH_7315ff0b_55b8_4f71_aa30_0ecfa94a809f_a5045390_352d_4fe5_b0d8_4325b48d473d_639238608000000000",
+      "type": "Microsoft.Automation/automationAccounts/jobs",
+      "line": 1345
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_SCH_7315ff0b_55b8_4f71_aa30_0ecfa94a809f_a5045390_352d_4fe5_b0d8_4325b48d473d_639239472000000000",
+      "type": "Microsoft.Automation/automationAccounts/jobs",
+      "line": 1355
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_SCH_7315ff0b_55b8_4f71_aa30_0ecfa94a809f_a5045390_352d_4fe5_b0d8_4325b48d473d_639240336000000000",
+      "type": "Microsoft.Automation/automationAccounts/jobs",
+      "line": 1365
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_SCH_7315ff0b_55b8_4f71_aa30_0ecfa94a809f_a5045390_352d_4fe5_b0d8_4325b48d473d_639241200000000000",
+      "type": "Microsoft.Automation/automationAccounts/jobs",
+      "line": 1375
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_SCH_7315ff0b_55b8_4f71_aa30_0ecfa94a809f_a5045390_352d_4fe5_b0d8_4325b48d473d_639242064000000000",
+      "type": "Microsoft.Automation/automationAccounts/jobs",
+      "line": 1385
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_SCH_7315ff0b_55b8_4f71_aa30_0ecfa94a809f_a5045390_352d_4fe5_b0d8_4325b48d473d_639242928000000000",
+      "type": "Microsoft.Automation/automationAccounts/jobs",
+      "line": 1395
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_SCH_7315ff0b_55b8_4f71_aa30_0ecfa94a809f_a5045390_352d_4fe5_b0d8_4325b48d473d_639243792000000000",
+      "type": "Microsoft.Automation/automationAccounts/jobs",
+      "line": 1405
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_SCH_b1affeff_2607_4de4_81aa_dd6fdb878a94_fd1dc252_f500_4fa3_81ef_1e5eb6dd3544_639218232000000000",
+      "type": "Microsoft.Automation/automationAccounts/jobs",
+      "line": 1415
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_SCH_b1affeff_2607_4de4_81aa_dd6fdb878a94_fd1dc252_f500_4fa3_81ef_1e5eb6dd3544_639219096000000000",
+      "type": "Microsoft.Automation/automationAccounts/jobs",
+      "line": 1425
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_SCH_b1affeff_2607_4de4_81aa_dd6fdb878a94_fd1dc252_f500_4fa3_81ef_1e5eb6dd3544_639219960000000000",
+      "type": "Microsoft.Automation/automationAccounts/jobs",
+      "line": 1435
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_SCH_b1affeff_2607_4de4_81aa_dd6fdb878a94_fd1dc252_f500_4fa3_81ef_1e5eb6dd3544_639220824000000000",
+      "type": "Microsoft.Automation/automationAccounts/jobs",
+      "line": 1445
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_SCH_b1affeff_2607_4de4_81aa_dd6fdb878a94_fd1dc252_f500_4fa3_81ef_1e5eb6dd3544_639221688000000000",
+      "type": "Microsoft.Automation/automationAccounts/jobs",
+      "line": 1455
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_SCH_b1affeff_2607_4de4_81aa_dd6fdb878a94_fd1dc252_f500_4fa3_81ef_1e5eb6dd3544_639222552000000000",
+      "type": "Microsoft.Automation/automationAccounts/jobs",
+      "line": 1465
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_SCH_b1affeff_2607_4de4_81aa_dd6fdb878a94_fd1dc252_f500_4fa3_81ef_1e5eb6dd3544_639223416000000000",
+      "type": "Microsoft.Automation/automationAccounts/jobs",
+      "line": 1475
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_SCH_b1affeff_2607_4de4_81aa_dd6fdb878a94_fd1dc252_f500_4fa3_81ef_1e5eb6dd3544_639224280000000000",
+      "type": "Microsoft.Automation/automationAccounts/jobs",
+      "line": 1485
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_SCH_b1affeff_2607_4de4_81aa_dd6fdb878a94_fd1dc252_f500_4fa3_81ef_1e5eb6dd3544_639225144000000000",
+      "type": "Microsoft.Automation/automationAccounts/jobs",
+      "line": 1495
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_SCH_b1affeff_2607_4de4_81aa_dd6fdb878a94_fd1dc252_f500_4fa3_81ef_1e5eb6dd3544_639226008000000000",
+      "type": "Microsoft.Automation/automationAccounts/jobs",
+      "line": 1505
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_SCH_b1affeff_2607_4de4_81aa_dd6fdb878a94_fd1dc252_f500_4fa3_81ef_1e5eb6dd3544_639226872000000000",
+      "type": "Microsoft.Automation/automationAccounts/jobs",
+      "line": 1515
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_SCH_b1affeff_2607_4de4_81aa_dd6fdb878a94_fd1dc252_f500_4fa3_81ef_1e5eb6dd3544_639227736000000000",
+      "type": "Microsoft.Automation/automationAccounts/jobs",
+      "line": 1525
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_SCH_b1affeff_2607_4de4_81aa_dd6fdb878a94_fd1dc252_f500_4fa3_81ef_1e5eb6dd3544_639228600000000000",
+      "type": "Microsoft.Automation/automationAccounts/jobs",
+      "line": 1535
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_SCH_b1affeff_2607_4de4_81aa_dd6fdb878a94_fd1dc252_f500_4fa3_81ef_1e5eb6dd3544_639229464000000000",
+      "type": "Microsoft.Automation/automationAccounts/jobs",
+      "line": 1545
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_SCH_b1affeff_2607_4de4_81aa_dd6fdb878a94_fd1dc252_f500_4fa3_81ef_1e5eb6dd3544_639230328000000000",
+      "type": "Microsoft.Automation/automationAccounts/jobs",
+      "line": 1555
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_SCH_b1affeff_2607_4de4_81aa_dd6fdb878a94_fd1dc252_f500_4fa3_81ef_1e5eb6dd3544_639231192000000000",
+      "type": "Microsoft.Automation/automationAccounts/jobs",
+      "line": 1565
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_SCH_b1affeff_2607_4de4_81aa_dd6fdb878a94_fd1dc252_f500_4fa3_81ef_1e5eb6dd3544_639232056000000000",
+      "type": "Microsoft.Automation/automationAccounts/jobs",
+      "line": 1575
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_SCH_b1affeff_2607_4de4_81aa_dd6fdb878a94_fd1dc252_f500_4fa3_81ef_1e5eb6dd3544_639232920000000000",
+      "type": "Microsoft.Automation/automationAccounts/jobs",
+      "line": 1585
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_SCH_b1affeff_2607_4de4_81aa_dd6fdb878a94_fd1dc252_f500_4fa3_81ef_1e5eb6dd3544_639233784000000000",
+      "type": "Microsoft.Automation/automationAccounts/jobs",
+      "line": 1595
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_SCH_b1affeff_2607_4de4_81aa_dd6fdb878a94_fd1dc252_f500_4fa3_81ef_1e5eb6dd3544_639234648000000000",
+      "type": "Microsoft.Automation/automationAccounts/jobs",
+      "line": 1605
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_SCH_b1affeff_2607_4de4_81aa_dd6fdb878a94_fd1dc252_f500_4fa3_81ef_1e5eb6dd3544_639235512000000000",
+      "type": "Microsoft.Automation/automationAccounts/jobs",
+      "line": 1615
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_SCH_b1affeff_2607_4de4_81aa_dd6fdb878a94_fd1dc252_f500_4fa3_81ef_1e5eb6dd3544_639236376000000000",
+      "type": "Microsoft.Automation/automationAccounts/jobs",
+      "line": 1625
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_SCH_b1affeff_2607_4de4_81aa_dd6fdb878a94_fd1dc252_f500_4fa3_81ef_1e5eb6dd3544_639237240000000000",
+      "type": "Microsoft.Automation/automationAccounts/jobs",
+      "line": 1635
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_SCH_b1affeff_2607_4de4_81aa_dd6fdb878a94_fd1dc252_f500_4fa3_81ef_1e5eb6dd3544_639238104000000000",
+      "type": "Microsoft.Automation/automationAccounts/jobs",
+      "line": 1645
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_SCH_b1affeff_2607_4de4_81aa_dd6fdb878a94_fd1dc252_f500_4fa3_81ef_1e5eb6dd3544_639238968000000000",
+      "type": "Microsoft.Automation/automationAccounts/jobs",
+      "line": 1655
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_SCH_b1affeff_2607_4de4_81aa_dd6fdb878a94_fd1dc252_f500_4fa3_81ef_1e5eb6dd3544_639239832000000000",
+      "type": "Microsoft.Automation/automationAccounts/jobs",
+      "line": 1665
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_SCH_b1affeff_2607_4de4_81aa_dd6fdb878a94_fd1dc252_f500_4fa3_81ef_1e5eb6dd3544_639240696000000000",
+      "type": "Microsoft.Automation/automationAccounts/jobs",
+      "line": 1675
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_SCH_b1affeff_2607_4de4_81aa_dd6fdb878a94_fd1dc252_f500_4fa3_81ef_1e5eb6dd3544_639241560000000000",
+      "type": "Microsoft.Automation/automationAccounts/jobs",
+      "line": 1685
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_SCH_b1affeff_2607_4de4_81aa_dd6fdb878a94_fd1dc252_f500_4fa3_81ef_1e5eb6dd3544_639242424000000000",
+      "type": "Microsoft.Automation/automationAccounts/jobs",
+      "line": 1695
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_SCH_b1affeff_2607_4de4_81aa_dd6fdb878a94_fd1dc252_f500_4fa3_81ef_1e5eb6dd3544_639243288000000000",
+      "type": "Microsoft.Automation/automationAccounts/jobs",
+      "line": 1705
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_7315ff0b_55b8_4f71_aa30_0ecfa94a809f",
+      "type": "Microsoft.Automation/automationAccounts/jobSchedules",
+      "line": 1715
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_b1affeff_2607_4de4_81aa_dd6fdb878a94",
+      "type": "Microsoft.Automation/automationAccounts/jobSchedules",
+      "line": 1728
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_AuditPolicyDsc",
+      "type": "Microsoft.Automation/automationAccounts/modules",
+      "line": 1741
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_Az",
+      "type": "Microsoft.Automation/automationAccounts/modules",
+      "line": 1749
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_Az_Accounts",
+      "type": "Microsoft.Automation/automationAccounts/modules",
+      "line": 1757
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_Az_Advisor",
+      "type": "Microsoft.Automation/automationAccounts/modules",
+      "line": 1765
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_Az_Aks",
+      "type": "Microsoft.Automation/automationAccounts/modules",
+      "line": 1773
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_Az_AnalysisServices",
+      "type": "Microsoft.Automation/automationAccounts/modules",
+      "line": 1781
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_Az_ApiManagement",
+      "type": "Microsoft.Automation/automationAccounts/modules",
+      "line": 1789
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_Az_App",
+      "type": "Microsoft.Automation/automationAccounts/modules",
+      "line": 1797
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_Az_AppConfiguration",
+      "type": "Microsoft.Automation/automationAccounts/modules",
+      "line": 1805
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_Az_ApplicationInsights",
+      "type": "Microsoft.Automation/automationAccounts/modules",
+      "line": 1813
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_Az_ArcResourceBridge",
+      "type": "Microsoft.Automation/automationAccounts/modules",
+      "line": 1821
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_Az_Attestation",
+      "type": "Microsoft.Automation/automationAccounts/modules",
+      "line": 1829
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_Az_Automanage",
+      "type": "Microsoft.Automation/automationAccounts/modules",
+      "line": 1837
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_Az_Automation",
+      "type": "Microsoft.Automation/automationAccounts/modules",
+      "line": 1845
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_Az_Batch",
+      "type": "Microsoft.Automation/automationAccounts/modules",
+      "line": 1853
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_Az_Billing",
+      "type": "Microsoft.Automation/automationAccounts/modules",
+      "line": 1861
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_Az_Cdn",
+      "type": "Microsoft.Automation/automationAccounts/modules",
+      "line": 1869
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_Az_CloudService",
+      "type": "Microsoft.Automation/automationAccounts/modules",
+      "line": 1877
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_Az_CognitiveServices",
+      "type": "Microsoft.Automation/automationAccounts/modules",
+      "line": 1885
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_Az_Compute",
+      "type": "Microsoft.Automation/automationAccounts/modules",
+      "line": 1893
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_Az_ConfidentialLedger",
+      "type": "Microsoft.Automation/automationAccounts/modules",
+      "line": 1901
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_Az_ContainerInstance",
+      "type": "Microsoft.Automation/automationAccounts/modules",
+      "line": 1909
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_Az_ContainerRegistry",
+      "type": "Microsoft.Automation/automationAccounts/modules",
+      "line": 1917
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_Az_CosmosDB",
+      "type": "Microsoft.Automation/automationAccounts/modules",
+      "line": 1925
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_Az_DataBoxEdge",
+      "type": "Microsoft.Automation/automationAccounts/modules",
+      "line": 1933
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_Az_Databricks",
+      "type": "Microsoft.Automation/automationAccounts/modules",
+      "line": 1941
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_Az_DataFactory",
+      "type": "Microsoft.Automation/automationAccounts/modules",
+      "line": 1949
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_Az_DataLakeAnalytics",
+      "type": "Microsoft.Automation/automationAccounts/modules",
+      "line": 1957
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_Az_DataLakeStore",
+      "type": "Microsoft.Automation/automationAccounts/modules",
+      "line": 1965
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_Az_DataProtection",
+      "type": "Microsoft.Automation/automationAccounts/modules",
+      "line": 1973
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_Az_DataShare",
+      "type": "Microsoft.Automation/automationAccounts/modules",
+      "line": 1981
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_Az_DeploymentManager",
+      "type": "Microsoft.Automation/automationAccounts/modules",
+      "line": 1989
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_Az_DesktopVirtualization",
+      "type": "Microsoft.Automation/automationAccounts/modules",
+      "line": 1997
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_Az_DevCenter",
+      "type": "Microsoft.Automation/automationAccounts/modules",
+      "line": 2005
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_Az_DevTestLabs",
+      "type": "Microsoft.Automation/automationAccounts/modules",
+      "line": 2013
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_Az_Dns",
+      "type": "Microsoft.Automation/automationAccounts/modules",
+      "line": 2021
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_Az_EventGrid",
+      "type": "Microsoft.Automation/automationAccounts/modules",
+      "line": 2029
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_Az_EventHub",
+      "type": "Microsoft.Automation/automationAccounts/modules",
+      "line": 2037
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_Az_FrontDoor",
+      "type": "Microsoft.Automation/automationAccounts/modules",
+      "line": 2045
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_Az_Functions",
+      "type": "Microsoft.Automation/automationAccounts/modules",
+      "line": 2053
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_Az_HDInsight",
+      "type": "Microsoft.Automation/automationAccounts/modules",
+      "line": 2061
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_Az_HealthcareApis",
+      "type": "Microsoft.Automation/automationAccounts/modules",
+      "line": 2069
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_Az_IotHub",
+      "type": "Microsoft.Automation/automationAccounts/modules",
+      "line": 2077
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_Az_KeyVault",
+      "type": "Microsoft.Automation/automationAccounts/modules",
+      "line": 2085
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_Az_Kusto",
+      "type": "Microsoft.Automation/automationAccounts/modules",
+      "line": 2093
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_Az_LoadTesting",
+      "type": "Microsoft.Automation/automationAccounts/modules",
+      "line": 2101
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_Az_LogicApp",
+      "type": "Microsoft.Automation/automationAccounts/modules",
+      "line": 2109
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_Az_MachineLearning",
+      "type": "Microsoft.Automation/automationAccounts/modules",
+      "line": 2117
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_Az_MachineLearningServices",
+      "type": "Microsoft.Automation/automationAccounts/modules",
+      "line": 2125
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_Az_Maintenance",
+      "type": "Microsoft.Automation/automationAccounts/modules",
+      "line": 2133
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_Az_ManagedServiceIdentity",
+      "type": "Microsoft.Automation/automationAccounts/modules",
+      "line": 2141
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_Az_ManagedServices",
+      "type": "Microsoft.Automation/automationAccounts/modules",
+      "line": 2149
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_Az_MarketplaceOrdering",
+      "type": "Microsoft.Automation/automationAccounts/modules",
+      "line": 2157
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_Az_Media",
+      "type": "Microsoft.Automation/automationAccounts/modules",
+      "line": 2165
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_Az_Migrate",
+      "type": "Microsoft.Automation/automationAccounts/modules",
+      "line": 2173
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_Az_Monitor",
+      "type": "Microsoft.Automation/automationAccounts/modules",
+      "line": 2181
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_Az_MySql",
+      "type": "Microsoft.Automation/automationAccounts/modules",
+      "line": 2189
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_Az_Network",
+      "type": "Microsoft.Automation/automationAccounts/modules",
+      "line": 2197
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_Az_NetworkCloud",
+      "type": "Microsoft.Automation/automationAccounts/modules",
+      "line": 2205
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_Az_NotificationHubs",
+      "type": "Microsoft.Automation/automationAccounts/modules",
+      "line": 2213
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_Az_OperationalInsights",
+      "type": "Microsoft.Automation/automationAccounts/modules",
+      "line": 2221
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_Az_PolicyInsights",
+      "type": "Microsoft.Automation/automationAccounts/modules",
+      "line": 2229
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_Az_PostgreSql",
+      "type": "Microsoft.Automation/automationAccounts/modules",
+      "line": 2237
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_Az_PowerBIEmbedded",
+      "type": "Microsoft.Automation/automationAccounts/modules",
+      "line": 2245
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_Az_PrivateDns",
+      "type": "Microsoft.Automation/automationAccounts/modules",
+      "line": 2253
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_Az_RecoveryServices",
+      "type": "Microsoft.Automation/automationAccounts/modules",
+      "line": 2261
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_Az_RedisCache",
+      "type": "Microsoft.Automation/automationAccounts/modules",
+      "line": 2269
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_Az_RedisEnterpriseCache",
+      "type": "Microsoft.Automation/automationAccounts/modules",
+      "line": 2277
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_Az_Relay",
+      "type": "Microsoft.Automation/automationAccounts/modules",
+      "line": 2285
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_Az_ResourceMover",
+      "type": "Microsoft.Automation/automationAccounts/modules",
+      "line": 2293
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_Az_Resources",
+      "type": "Microsoft.Automation/automationAccounts/modules",
+      "line": 2301
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_Az_Security",
+      "type": "Microsoft.Automation/automationAccounts/modules",
+      "line": 2309
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_Az_SecurityInsights",
+      "type": "Microsoft.Automation/automationAccounts/modules",
+      "line": 2317
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_Az_ServiceBus",
+      "type": "Microsoft.Automation/automationAccounts/modules",
+      "line": 2325
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_Az_ServiceFabric",
+      "type": "Microsoft.Automation/automationAccounts/modules",
+      "line": 2333
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_Az_SignalR",
+      "type": "Microsoft.Automation/automationAccounts/modules",
+      "line": 2341
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_Az_Sql",
+      "type": "Microsoft.Automation/automationAccounts/modules",
+      "line": 2349
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_Az_SqlVirtualMachine",
+      "type": "Microsoft.Automation/automationAccounts/modules",
+      "line": 2357
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_Az_StackHCI",
+      "type": "Microsoft.Automation/automationAccounts/modules",
+      "line": 2365
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_Az_Storage",
+      "type": "Microsoft.Automation/automationAccounts/modules",
+      "line": 2373
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_Az_StorageMover",
+      "type": "Microsoft.Automation/automationAccounts/modules",
+      "line": 2381
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_Az_StorageSync",
+      "type": "Microsoft.Automation/automationAccounts/modules",
+      "line": 2389
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_Az_StreamAnalytics",
+      "type": "Microsoft.Automation/automationAccounts/modules",
+      "line": 2397
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_Az_Support",
+      "type": "Microsoft.Automation/automationAccounts/modules",
+      "line": 2405
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_Az_Synapse",
+      "type": "Microsoft.Automation/automationAccounts/modules",
+      "line": 2413
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_Az_TrafficManager",
+      "type": "Microsoft.Automation/automationAccounts/modules",
+      "line": 2421
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_Az_Websites",
+      "type": "Microsoft.Automation/automationAccounts/modules",
+      "line": 2429
+    },
+    {
+      "symbol": "Microsoft_Automation_automationAccounts_modules_automationAccounts_AutoiDataFactory_name_Azure",
+      "type": "Microsoft.Automation/automationAccounts/modules",
+      "line": 2437
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_Azure_Storage",
+      "type": "Microsoft.Automation/automationAccounts/modules",
+      "line": 2445
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_AzureRM_Automation",
+      "type": "Microsoft.Automation/automationAccounts/modules",
+      "line": 2453
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_AzureRM_Compute",
+      "type": "Microsoft.Automation/automationAccounts/modules",
+      "line": 2461
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_AzureRM_Profile",
+      "type": "Microsoft.Automation/automationAccounts/modules",
+      "line": 2469
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_AzureRM_Resources",
+      "type": "Microsoft.Automation/automationAccounts/modules",
+      "line": 2477
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_AzureRM_Sql",
+      "type": "Microsoft.Automation/automationAccounts/modules",
+      "line": 2485
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_AzureRM_Storage",
+      "type": "Microsoft.Automation/automationAccounts/modules",
+      "line": 2493
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_ComputerManagementDsc",
+      "type": "Microsoft.Automation/automationAccounts/modules",
+      "line": 2501
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_GPRegistryPolicyParser",
+      "type": "Microsoft.Automation/automationAccounts/modules",
+      "line": 2509
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_Microsoft_PowerShell_Core",
+      "type": "Microsoft.Automation/automationAccounts/modules",
+      "line": 2517
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_Microsoft_PowerShell_Diagnostics",
+      "type": "Microsoft.Automation/automationAccounts/modules",
+      "line": 2525
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_Microsoft_PowerShell_Management",
+      "type": "Microsoft.Automation/automationAccounts/modules",
+      "line": 2533
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_Microsoft_PowerShell_Security",
+      "type": "Microsoft.Automation/automationAccounts/modules",
+      "line": 2541
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_Microsoft_PowerShell_Utility",
+      "type": "Microsoft.Automation/automationAccounts/modules",
+      "line": 2549
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_Microsoft_WSMan_Management",
+      "type": "Microsoft.Automation/automationAccounts/modules",
+      "line": 2557
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_Orchestrator_AssetManagement_Cmdlets",
+      "type": "Microsoft.Automation/automationAccounts/modules",
+      "line": 2565
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_PSDscResources",
+      "type": "Microsoft.Automation/automationAccounts/modules",
+      "line": 2573
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_SecurityPolicyDsc",
+      "type": "Microsoft.Automation/automationAccounts/modules",
+      "line": 2581
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_StateConfigCompositeResources",
+      "type": "Microsoft.Automation/automationAccounts/modules",
+      "line": 2589
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_xDSCDomainjoin",
+      "type": "Microsoft.Automation/automationAccounts/modules",
+      "line": 2597
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_xPowerShellExecutionPolicy",
+      "type": "Microsoft.Automation/automationAccounts/modules",
+      "line": 2605
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_xRemoteDesktopAdmin",
+      "type": "Microsoft.Automation/automationAccounts/modules",
+      "line": 2613
+    },
+    {
+      "symbol": "Microsoft_Automation_automationAccounts_powerShell72Modules_automationAccounts_AutoiDataFactory_name_Az",
+      "type": "Microsoft.Automation/automationAccounts/powerShell72Modules",
+      "line": 2621
+    },
+    {
+      "symbol": "Microsoft_Automation_automationAccounts_powerShell72Modules_automationAccounts_AutoiDataFactory_name_Az_Accounts",
+      "type": "Microsoft.Automation/automationAccounts/powerShell72Modules",
+      "line": 2629
+    },
+    {
+      "symbol": "Microsoft_Automation_automationAccounts_powerShell72Modules_automationAccounts_AutoiDataFactory_name_Az_Advisor",
+      "type": "Microsoft.Automation/automationAccounts/powerShell72Modules",
+      "line": 2637
+    },
+    {
+      "symbol": "Microsoft_Automation_automationAccounts_powerShell72Modules_automationAccounts_AutoiDataFactory_name_Az_Aks",
+      "type": "Microsoft.Automation/automationAccounts/powerShell72Modules",
+      "line": 2645
+    },
+    {
+      "symbol": "Microsoft_Automation_automationAccounts_powerShell72Modules_automationAccounts_AutoiDataFactory_name_Az_AnalysisServices",
+      "type": "Microsoft.Automation/automationAccounts/powerShell72Modules",
+      "line": 2653
+    },
+    {
+      "symbol": "Microsoft_Automation_automationAccounts_powerShell72Modules_automationAccounts_AutoiDataFactory_name_Az_ApiManagement",
+      "type": "Microsoft.Automation/automationAccounts/powerShell72Modules",
+      "line": 2661
+    },
+    {
+      "symbol": "Microsoft_Automation_automationAccounts_powerShell72Modules_automationAccounts_AutoiDataFactory_name_Az_App",
+      "type": "Microsoft.Automation/automationAccounts/powerShell72Modules",
+      "line": 2669
+    },
+    {
+      "symbol": "Microsoft_Automation_automationAccounts_powerShell72Modules_automationAccounts_AutoiDataFactory_name_Az_AppConfiguration",
+      "type": "Microsoft.Automation/automationAccounts/powerShell72Modules",
+      "line": 2677
+    },
+    {
+      "symbol": "Microsoft_Automation_automationAccounts_powerShell72Modules_automationAccounts_AutoiDataFactory_name_Az_ApplicationInsights",
+      "type": "Microsoft.Automation/automationAccounts/powerShell72Modules",
+      "line": 2685
+    },
+    {
+      "symbol": "Microsoft_Automation_automationAccounts_powerShell72Modules_automationAccounts_AutoiDataFactory_name_Az_ArcResourceBridge",
+      "type": "Microsoft.Automation/automationAccounts/powerShell72Modules",
+      "line": 2693
+    },
+    {
+      "symbol": "Microsoft_Automation_automationAccounts_powerShell72Modules_automationAccounts_AutoiDataFactory_name_Az_Attestation",
+      "type": "Microsoft.Automation/automationAccounts/powerShell72Modules",
+      "line": 2701
+    },
+    {
+      "symbol": "Microsoft_Automation_automationAccounts_powerShell72Modules_automationAccounts_AutoiDataFactory_name_Az_Automanage",
+      "type": "Microsoft.Automation/automationAccounts/powerShell72Modules",
+      "line": 2709
+    },
+    {
+      "symbol": "Microsoft_Automation_automationAccounts_powerShell72Modules_automationAccounts_AutoiDataFactory_name_Az_Automation",
+      "type": "Microsoft.Automation/automationAccounts/powerShell72Modules",
+      "line": 2717
+    },
+    {
+      "symbol": "Microsoft_Automation_automationAccounts_powerShell72Modules_automationAccounts_AutoiDataFactory_name_Az_Batch",
+      "type": "Microsoft.Automation/automationAccounts/powerShell72Modules",
+      "line": 2725
+    },
+    {
+      "symbol": "Microsoft_Automation_automationAccounts_powerShell72Modules_automationAccounts_AutoiDataFactory_name_Az_Billing",
+      "type": "Microsoft.Automation/automationAccounts/powerShell72Modules",
+      "line": 2733
+    },
+    {
+      "symbol": "Microsoft_Automation_automationAccounts_powerShell72Modules_automationAccounts_AutoiDataFactory_name_Az_Cdn",
+      "type": "Microsoft.Automation/automationAccounts/powerShell72Modules",
+      "line": 2741
+    },
+    {
+      "symbol": "Microsoft_Automation_automationAccounts_powerShell72Modules_automationAccounts_AutoiDataFactory_name_Az_CloudService",
+      "type": "Microsoft.Automation/automationAccounts/powerShell72Modules",
+      "line": 2749
+    },
+    {
+      "symbol": "Microsoft_Automation_automationAccounts_powerShell72Modules_automationAccounts_AutoiDataFactory_name_Az_CognitiveServices",
+      "type": "Microsoft.Automation/automationAccounts/powerShell72Modules",
+      "line": 2757
+    },
+    {
+      "symbol": "Microsoft_Automation_automationAccounts_powerShell72Modules_automationAccounts_AutoiDataFactory_name_Az_Compute",
+      "type": "Microsoft.Automation/automationAccounts/powerShell72Modules",
+      "line": 2765
+    },
+    {
+      "symbol": "Microsoft_Automation_automationAccounts_powerShell72Modules_automationAccounts_AutoiDataFactory_name_Az_ConfidentialLedger",
+      "type": "Microsoft.Automation/automationAccounts/powerShell72Modules",
+      "line": 2773
+    },
+    {
+      "symbol": "Microsoft_Automation_automationAccounts_powerShell72Modules_automationAccounts_AutoiDataFactory_name_Az_ContainerInstance",
+      "type": "Microsoft.Automation/automationAccounts/powerShell72Modules",
+      "line": 2781
+    },
+    {
+      "symbol": "Microsoft_Automation_automationAccounts_powerShell72Modules_automationAccounts_AutoiDataFactory_name_Az_ContainerRegistry",
+      "type": "Microsoft.Automation/automationAccounts/powerShell72Modules",
+      "line": 2789
+    },
+    {
+      "symbol": "Microsoft_Automation_automationAccounts_powerShell72Modules_automationAccounts_AutoiDataFactory_name_Az_CosmosDB",
+      "type": "Microsoft.Automation/automationAccounts/powerShell72Modules",
+      "line": 2797
+    },
+    {
+      "symbol": "Microsoft_Automation_automationAccounts_powerShell72Modules_automationAccounts_AutoiDataFactory_name_Az_DataBoxEdge",
+      "type": "Microsoft.Automation/automationAccounts/powerShell72Modules",
+      "line": 2805
+    },
+    {
+      "symbol": "Microsoft_Automation_automationAccounts_powerShell72Modules_automationAccounts_AutoiDataFactory_name_Az_Databricks",
+      "type": "Microsoft.Automation/automationAccounts/powerShell72Modules",
+      "line": 2813
+    },
+    {
+      "symbol": "Microsoft_Automation_automationAccounts_powerShell72Modules_automationAccounts_AutoiDataFactory_name_Az_DataFactory",
+      "type": "Microsoft.Automation/automationAccounts/powerShell72Modules",
+      "line": 2821
+    },
+    {
+      "symbol": "Microsoft_Automation_automationAccounts_powerShell72Modules_automationAccounts_AutoiDataFactory_name_Az_DataLakeAnalytics",
+      "type": "Microsoft.Automation/automationAccounts/powerShell72Modules",
+      "line": 2829
+    },
+    {
+      "symbol": "Microsoft_Automation_automationAccounts_powerShell72Modules_automationAccounts_AutoiDataFactory_name_Az_DataLakeStore",
+      "type": "Microsoft.Automation/automationAccounts/powerShell72Modules",
+      "line": 2837
+    },
+    {
+      "symbol": "Microsoft_Automation_automationAccounts_powerShell72Modules_automationAccounts_AutoiDataFactory_name_Az_DataProtection",
+      "type": "Microsoft.Automation/automationAccounts/powerShell72Modules",
+      "line": 2845
+    },
+    {
+      "symbol": "Microsoft_Automation_automationAccounts_powerShell72Modules_automationAccounts_AutoiDataFactory_name_Az_DataShare",
+      "type": "Microsoft.Automation/automationAccounts/powerShell72Modules",
+      "line": 2853
+    },
+    {
+      "symbol": "Microsoft_Automation_automationAccounts_powerShell72Modules_automationAccounts_AutoiDataFactory_name_Az_DeploymentManager",
+      "type": "Microsoft.Automation/automationAccounts/powerShell72Modules",
+      "line": 2861
+    },
+    {
+      "symbol": "Microsoft_Automation_automationAccounts_powerShell72Modules_automationAccounts_AutoiDataFactory_name_Az_DesktopVirtualization",
+      "type": "Microsoft.Automation/automationAccounts/powerShell72Modules",
+      "line": 2869
+    },
+    {
+      "symbol": "Microsoft_Automation_automationAccounts_powerShell72Modules_automationAccounts_AutoiDataFactory_name_Az_DevCenter",
+      "type": "Microsoft.Automation/automationAccounts/powerShell72Modules",
+      "line": 2877
+    },
+    {
+      "symbol": "Microsoft_Automation_automationAccounts_powerShell72Modules_automationAccounts_AutoiDataFactory_name_Az_DevTestLabs",
+      "type": "Microsoft.Automation/automationAccounts/powerShell72Modules",
+      "line": 2885
+    },
+    {
+      "symbol": "Microsoft_Automation_automationAccounts_powerShell72Modules_automationAccounts_AutoiDataFactory_name_Az_Dns",
+      "type": "Microsoft.Automation/automationAccounts/powerShell72Modules",
+      "line": 2893
+    },
+    {
+      "symbol": "Microsoft_Automation_automationAccounts_powerShell72Modules_automationAccounts_AutoiDataFactory_name_Az_EventGrid",
+      "type": "Microsoft.Automation/automationAccounts/powerShell72Modules",
+      "line": 2901
+    },
+    {
+      "symbol": "Microsoft_Automation_automationAccounts_powerShell72Modules_automationAccounts_AutoiDataFactory_name_Az_EventHub",
+      "type": "Microsoft.Automation/automationAccounts/powerShell72Modules",
+      "line": 2909
+    },
+    {
+      "symbol": "Microsoft_Automation_automationAccounts_powerShell72Modules_automationAccounts_AutoiDataFactory_name_Az_FrontDoor",
+      "type": "Microsoft.Automation/automationAccounts/powerShell72Modules",
+      "line": 2917
+    },
+    {
+      "symbol": "Microsoft_Automation_automationAccounts_powerShell72Modules_automationAccounts_AutoiDataFactory_name_Az_Functions",
+      "type": "Microsoft.Automation/automationAccounts/powerShell72Modules",
+      "line": 2925
+    },
+    {
+      "symbol": "Microsoft_Automation_automationAccounts_powerShell72Modules_automationAccounts_AutoiDataFactory_name_Az_HDInsight",
+      "type": "Microsoft.Automation/automationAccounts/powerShell72Modules",
+      "line": 2933
+    },
+    {
+      "symbol": "Microsoft_Automation_automationAccounts_powerShell72Modules_automationAccounts_AutoiDataFactory_name_Az_HealthcareApis",
+      "type": "Microsoft.Automation/automationAccounts/powerShell72Modules",
+      "line": 2941
+    },
+    {
+      "symbol": "Microsoft_Automation_automationAccounts_powerShell72Modules_automationAccounts_AutoiDataFactory_name_Az_IotHub",
+      "type": "Microsoft.Automation/automationAccounts/powerShell72Modules",
+      "line": 2949
+    },
+    {
+      "symbol": "Microsoft_Automation_automationAccounts_powerShell72Modules_automationAccounts_AutoiDataFactory_name_Az_KeyVault",
+      "type": "Microsoft.Automation/automationAccounts/powerShell72Modules",
+      "line": 2957
+    },
+    {
+      "symbol": "Microsoft_Automation_automationAccounts_powerShell72Modules_automationAccounts_AutoiDataFactory_name_Az_Kusto",
+      "type": "Microsoft.Automation/automationAccounts/powerShell72Modules",
+      "line": 2965
+    },
+    {
+      "symbol": "Microsoft_Automation_automationAccounts_powerShell72Modules_automationAccounts_AutoiDataFactory_name_Az_LoadTesting",
+      "type": "Microsoft.Automation/automationAccounts/powerShell72Modules",
+      "line": 2973
+    },
+    {
+      "symbol": "Microsoft_Automation_automationAccounts_powerShell72Modules_automationAccounts_AutoiDataFactory_name_Az_LogicApp",
+      "type": "Microsoft.Automation/automationAccounts/powerShell72Modules",
+      "line": 2981
+    },
+    {
+      "symbol": "Microsoft_Automation_automationAccounts_powerShell72Modules_automationAccounts_AutoiDataFactory_name_Az_MachineLearning",
+      "type": "Microsoft.Automation/automationAccounts/powerShell72Modules",
+      "line": 2989
+    },
+    {
+      "symbol": "Microsoft_Automation_automationAccounts_powerShell72Modules_automationAccounts_AutoiDataFactory_name_Az_MachineLearningServices",
+      "type": "Microsoft.Automation/automationAccounts/powerShell72Modules",
+      "line": 2997
+    },
+    {
+      "symbol": "Microsoft_Automation_automationAccounts_powerShell72Modules_automationAccounts_AutoiDataFactory_name_Az_Maintenance",
+      "type": "Microsoft.Automation/automationAccounts/powerShell72Modules",
+      "line": 3005
+    },
+    {
+      "symbol": "Microsoft_Automation_automationAccounts_powerShell72Modules_automationAccounts_AutoiDataFactory_name_Az_ManagedServiceIdentity",
+      "type": "Microsoft.Automation/automationAccounts/powerShell72Modules",
+      "line": 3013
+    },
+    {
+      "symbol": "Microsoft_Automation_automationAccounts_powerShell72Modules_automationAccounts_AutoiDataFactory_name_Az_ManagedServices",
+      "type": "Microsoft.Automation/automationAccounts/powerShell72Modules",
+      "line": 3021
+    },
+    {
+      "symbol": "Microsoft_Automation_automationAccounts_powerShell72Modules_automationAccounts_AutoiDataFactory_name_Az_MarketplaceOrdering",
+      "type": "Microsoft.Automation/automationAccounts/powerShell72Modules",
+      "line": 3029
+    },
+    {
+      "symbol": "Microsoft_Automation_automationAccounts_powerShell72Modules_automationAccounts_AutoiDataFactory_name_Az_Media",
+      "type": "Microsoft.Automation/automationAccounts/powerShell72Modules",
+      "line": 3037
+    },
+    {
+      "symbol": "Microsoft_Automation_automationAccounts_powerShell72Modules_automationAccounts_AutoiDataFactory_name_Az_Migrate",
+      "type": "Microsoft.Automation/automationAccounts/powerShell72Modules",
+      "line": 3045
+    },
+    {
+      "symbol": "Microsoft_Automation_automationAccounts_powerShell72Modules_automationAccounts_AutoiDataFactory_name_Az_Monitor",
+      "type": "Microsoft.Automation/automationAccounts/powerShell72Modules",
+      "line": 3053
+    },
+    {
+      "symbol": "Microsoft_Automation_automationAccounts_powerShell72Modules_automationAccounts_AutoiDataFactory_name_Az_MySql",
+      "type": "Microsoft.Automation/automationAccounts/powerShell72Modules",
+      "line": 3061
+    },
+    {
+      "symbol": "Microsoft_Automation_automationAccounts_powerShell72Modules_automationAccounts_AutoiDataFactory_name_Az_Network",
+      "type": "Microsoft.Automation/automationAccounts/powerShell72Modules",
+      "line": 3069
+    },
+    {
+      "symbol": "Microsoft_Automation_automationAccounts_powerShell72Modules_automationAccounts_AutoiDataFactory_name_Az_NetworkCloud",
+      "type": "Microsoft.Automation/automationAccounts/powerShell72Modules",
+      "line": 3077
+    },
+    {
+      "symbol": "Microsoft_Automation_automationAccounts_powerShell72Modules_automationAccounts_AutoiDataFactory_name_Az_NotificationHubs",
+      "type": "Microsoft.Automation/automationAccounts/powerShell72Modules",
+      "line": 3085
+    },
+    {
+      "symbol": "Microsoft_Automation_automationAccounts_powerShell72Modules_automationAccounts_AutoiDataFactory_name_Az_OperationalInsights",
+      "type": "Microsoft.Automation/automationAccounts/powerShell72Modules",
+      "line": 3093
+    },
+    {
+      "symbol": "Microsoft_Automation_automationAccounts_powerShell72Modules_automationAccounts_AutoiDataFactory_name_Az_PolicyInsights",
+      "type": "Microsoft.Automation/automationAccounts/powerShell72Modules",
+      "line": 3101
+    },
+    {
+      "symbol": "Microsoft_Automation_automationAccounts_powerShell72Modules_automationAccounts_AutoiDataFactory_name_Az_PostgreSql",
+      "type": "Microsoft.Automation/automationAccounts/powerShell72Modules",
+      "line": 3109
+    },
+    {
+      "symbol": "Microsoft_Automation_automationAccounts_powerShell72Modules_automationAccounts_AutoiDataFactory_name_Az_PowerBIEmbedded",
+      "type": "Microsoft.Automation/automationAccounts/powerShell72Modules",
+      "line": 3117
+    },
+    {
+      "symbol": "Microsoft_Automation_automationAccounts_powerShell72Modules_automationAccounts_AutoiDataFactory_name_Az_PrivateDns",
+      "type": "Microsoft.Automation/automationAccounts/powerShell72Modules",
+      "line": 3125
+    },
+    {
+      "symbol": "Microsoft_Automation_automationAccounts_powerShell72Modules_automationAccounts_AutoiDataFactory_name_Az_RecoveryServices",
+      "type": "Microsoft.Automation/automationAccounts/powerShell72Modules",
+      "line": 3133
+    },
+    {
+      "symbol": "Microsoft_Automation_automationAccounts_powerShell72Modules_automationAccounts_AutoiDataFactory_name_Az_RedisCache",
+      "type": "Microsoft.Automation/automationAccounts/powerShell72Modules",
+      "line": 3141
+    },
+    {
+      "symbol": "Microsoft_Automation_automationAccounts_powerShell72Modules_automationAccounts_AutoiDataFactory_name_Az_RedisEnterpriseCache",
+      "type": "Microsoft.Automation/automationAccounts/powerShell72Modules",
+      "line": 3149
+    },
+    {
+      "symbol": "Microsoft_Automation_automationAccounts_powerShell72Modules_automationAccounts_AutoiDataFactory_name_Az_Relay",
+      "type": "Microsoft.Automation/automationAccounts/powerShell72Modules",
+      "line": 3157
+    },
+    {
+      "symbol": "Microsoft_Automation_automationAccounts_powerShell72Modules_automationAccounts_AutoiDataFactory_name_Az_ResourceMover",
+      "type": "Microsoft.Automation/automationAccounts/powerShell72Modules",
+      "line": 3165
+    },
+    {
+      "symbol": "Microsoft_Automation_automationAccounts_powerShell72Modules_automationAccounts_AutoiDataFactory_name_Az_Resources",
+      "type": "Microsoft.Automation/automationAccounts/powerShell72Modules",
+      "line": 3173
+    },
+    {
+      "symbol": "Microsoft_Automation_automationAccounts_powerShell72Modules_automationAccounts_AutoiDataFactory_name_Az_Security",
+      "type": "Microsoft.Automation/automationAccounts/powerShell72Modules",
+      "line": 3181
+    },
+    {
+      "symbol": "Microsoft_Automation_automationAccounts_powerShell72Modules_automationAccounts_AutoiDataFactory_name_Az_SecurityInsights",
+      "type": "Microsoft.Automation/automationAccounts/powerShell72Modules",
+      "line": 3189
+    },
+    {
+      "symbol": "Microsoft_Automation_automationAccounts_powerShell72Modules_automationAccounts_AutoiDataFactory_name_Az_ServiceBus",
+      "type": "Microsoft.Automation/automationAccounts/powerShell72Modules",
+      "line": 3197
+    },
+    {
+      "symbol": "Microsoft_Automation_automationAccounts_powerShell72Modules_automationAccounts_AutoiDataFactory_name_Az_ServiceFabric",
+      "type": "Microsoft.Automation/automationAccounts/powerShell72Modules",
+      "line": 3205
+    },
+    {
+      "symbol": "Microsoft_Automation_automationAccounts_powerShell72Modules_automationAccounts_AutoiDataFactory_name_Az_SignalR",
+      "type": "Microsoft.Automation/automationAccounts/powerShell72Modules",
+      "line": 3213
+    },
+    {
+      "symbol": "Microsoft_Automation_automationAccounts_powerShell72Modules_automationAccounts_AutoiDataFactory_name_Az_Sql",
+      "type": "Microsoft.Automation/automationAccounts/powerShell72Modules",
+      "line": 3221
+    },
+    {
+      "symbol": "Microsoft_Automation_automationAccounts_powerShell72Modules_automationAccounts_AutoiDataFactory_name_Az_SqlVirtualMachine",
+      "type": "Microsoft.Automation/automationAccounts/powerShell72Modules",
+      "line": 3229
+    },
+    {
+      "symbol": "Microsoft_Automation_automationAccounts_powerShell72Modules_automationAccounts_AutoiDataFactory_name_Az_StackHCI",
+      "type": "Microsoft.Automation/automationAccounts/powerShell72Modules",
+      "line": 3237
+    },
+    {
+      "symbol": "Microsoft_Automation_automationAccounts_powerShell72Modules_automationAccounts_AutoiDataFactory_name_Az_Storage",
+      "type": "Microsoft.Automation/automationAccounts/powerShell72Modules",
+      "line": 3245
+    },
+    {
+      "symbol": "Microsoft_Automation_automationAccounts_powerShell72Modules_automationAccounts_AutoiDataFactory_name_Az_StorageMover",
+      "type": "Microsoft.Automation/automationAccounts/powerShell72Modules",
+      "line": 3253
+    },
+    {
+      "symbol": "Microsoft_Automation_automationAccounts_powerShell72Modules_automationAccounts_AutoiDataFactory_name_Az_StorageSync",
+      "type": "Microsoft.Automation/automationAccounts/powerShell72Modules",
+      "line": 3261
+    },
+    {
+      "symbol": "Microsoft_Automation_automationAccounts_powerShell72Modules_automationAccounts_AutoiDataFactory_name_Az_StreamAnalytics",
+      "type": "Microsoft.Automation/automationAccounts/powerShell72Modules",
+      "line": 3269
+    },
+    {
+      "symbol": "Microsoft_Automation_automationAccounts_powerShell72Modules_automationAccounts_AutoiDataFactory_name_Az_Support",
+      "type": "Microsoft.Automation/automationAccounts/powerShell72Modules",
+      "line": 3277
+    },
+    {
+      "symbol": "Microsoft_Automation_automationAccounts_powerShell72Modules_automationAccounts_AutoiDataFactory_name_Az_Synapse",
+      "type": "Microsoft.Automation/automationAccounts/powerShell72Modules",
+      "line": 3285
+    },
+    {
+      "symbol": "Microsoft_Automation_automationAccounts_powerShell72Modules_automationAccounts_AutoiDataFactory_name_Az_TrafficManager",
+      "type": "Microsoft.Automation/automationAccounts/powerShell72Modules",
+      "line": 3293
+    },
+    {
+      "symbol": "Microsoft_Automation_automationAccounts_powerShell72Modules_automationAccounts_AutoiDataFactory_name_Az_Websites",
+      "type": "Microsoft.Automation/automationAccounts/powerShell72Modules",
+      "line": 3301
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_RB_Frontend_Shutdown",
+      "type": "Microsoft.Automation/automationAccounts/runbooks",
+      "line": 3309
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_RB_Frontend_Startup",
+      "type": "Microsoft.Automation/automationAccounts/runbooks",
+      "line": 3321
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_Test_Apagado",
+      "type": "Microsoft.Automation/automationAccounts/runbooks",
+      "line": 3333
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_Test_Rol",
+      "type": "Microsoft.Automation/automationAccounts/runbooks",
+      "line": 3345
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_PowerShell_5_1",
+      "type": "Microsoft.Automation/automationAccounts/runtimeEnvironments",
+      "line": 3357
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_PowerShell_7_1",
+      "type": "Microsoft.Automation/automationAccounts/runtimeEnvironments",
+      "line": 3373
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_PowerShell_7_2",
+      "type": "Microsoft.Automation/automationAccounts/runtimeEnvironments",
+      "line": 3389
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_Python_2_7",
+      "type": "Microsoft.Automation/automationAccounts/runtimeEnvironments",
+      "line": 3406
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_Python_3_10",
+      "type": "Microsoft.Automation/automationAccounts/runtimeEnvironments",
+      "line": 3419
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_Python_3_8",
+      "type": "Microsoft.Automation/automationAccounts/runtimeEnvironments",
+      "line": 3432
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_Shutdown_schedules",
+      "type": "Microsoft.Automation/automationAccounts/schedules",
+      "line": 3445
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_Startup_schedules",
+      "type": "Microsoft.Automation/automationAccounts/schedules",
+      "line": 3457
+    },
+    {
+      "symbol": "accounts_oai_POC_iDataFactory_CR_name_Default",
+      "type": "Microsoft.CognitiveServices/accounts/defenderForAISettings",
+      "line": 3469
+    },
+    {
+      "symbol": "accounts_oai_POC_iDataFactory_CR_name_gpt_4o",
+      "type": "Microsoft.CognitiveServices/accounts/deployments",
+      "line": 3477
+    },
+    {
+      "symbol": "accounts_oai_POC_iDataFactory_CR_name_gpt_4o_2",
+      "type": "Microsoft.CognitiveServices/accounts/deployments",
+      "line": 3497
+    },
+    {
+      "symbol": "accounts_oai_POC_iDataFactory_CR_name_gpt_4o_3",
+      "type": "Microsoft.CognitiveServices/accounts/deployments",
+      "line": 3517
+    },
+    {
+      "symbol": "accounts_oai_POC_iDataFactory_CR_name_text_embedding_3_small",
+      "type": "Microsoft.CognitiveServices/accounts/deployments",
+      "line": 3537
+    },
+    {
+      "symbol": "accounts_oai_POC_iDataFactory_CR_name_Microsoft_Default",
+      "type": "Microsoft.CognitiveServices/accounts/raiPolicies",
+      "line": 3557
+    },
+    {
+      "symbol": "accounts_oai_POC_iDataFactory_CR_name_Microsoft_DefaultV2",
+      "type": "Microsoft.CognitiveServices/accounts/raiPolicies",
+      "line": 3631
+    },
+    {
+      "symbol": "CommunicationServices_acs_notification_cr_name_resource",
+      "type": "Microsoft.Communication/CommunicationServices",
+      "line": 3726
+    },
+    {
+      "symbol": "emailServices_acs_notifications_cr_name_AzureManagedDomain",
+      "type": "Microsoft.Communication/emailServices/domains",
+      "line": 3737
+    },
+    {
+      "symbol": "registries_acrcafcommon_name_repositories_admin",
+      "type": "Microsoft.ContainerRegistry/registries/scopeMaps",
+      "line": 3747
+    },
+    {
+      "symbol": "registries_acrcafcommon_name_repositories_pull",
+      "type": "Microsoft.ContainerRegistry/registries/scopeMaps",
+      "line": 3762
+    },
+    {
+      "symbol": "registries_acrcafcommon_name_repositories_pull_metadata_read",
+      "type": "Microsoft.ContainerRegistry/registries/scopeMaps",
+      "line": 3773
+    },
+    {
+      "symbol": "registries_acrcafcommon_name_repositories_push",
+      "type": "Microsoft.ContainerRegistry/registries/scopeMaps",
+      "line": 3785
+    },
+    {
+      "symbol": "registries_acrcafcommon_name_repositories_push_metadata_write",
+      "type": "Microsoft.ContainerRegistry/registries/scopeMaps",
+      "line": 3797
+    },
+    {
+      "symbol": "databaseAccounts_cd_poc_idatafactory_cr_name_00000000_0000_0000_0000_000000000003",
+      "type": "Microsoft.DocumentDB/databaseAccounts/cassandraRoleDefinitions",
+      "line": 3811
+    },
+    {
+      "symbol": "databaseAccounts_cd_poc_idatafactory_cr_name_00000000_0000_0000_0000_000000000004",
+      "type": "Microsoft.DocumentDB/databaseAccounts/cassandraRoleDefinitions",
+      "line": 3835
+    },
+    {
+      "symbol": "databaseAccounts_secaps_name_00000000_0000_0000_0000_000000000003",
+      "type": "Microsoft.DocumentDB/databaseAccounts/gremlinRoleDefinitions",
+      "line": 3862
+    },
+    {
+      "symbol": "databaseAccounts_secaps_name_00000000_0000_0000_0000_000000000004",
+      "type": "Microsoft.DocumentDB/databaseAccounts/gremlinRoleDefinitions",
+      "line": 3886
+    },
+    {
+      "symbol": "databaseAccounts_cd_notifications_cr_name_00000000_0000_0000_0000_000000000003",
+      "type": "Microsoft.DocumentDB/databaseAccounts/mongoMIRoleDefinitions",
+      "line": 3913
+    },
+    {
+      "symbol": "Microsoft_DocumentDB_databaseAccounts_mongoMIRoleDefinitions_databaseAccounts_cd_poc_idatafactory_cr_name_00000000_0000_0000_0000_000000000003",
+      "type": "Microsoft.DocumentDB/databaseAccounts/mongoMIRoleDefinitions",
+      "line": 3937
+    },
+    {
+      "symbol": "databaseAccounts_cd_notifications_cr_name_00000000_0000_0000_0000_000000000004",
+      "type": "Microsoft.DocumentDB/databaseAccounts/mongoMIRoleDefinitions",
+      "line": 3961
+    },
+    {
+      "symbol": "Microsoft_DocumentDB_databaseAccounts_mongoMIRoleDefinitions_databaseAccounts_cd_poc_idatafactory_cr_name_00000000_0000_0000_0000_000000000004",
+      "type": "Microsoft.DocumentDB/databaseAccounts/mongoMIRoleDefinitions",
+      "line": 3988
+    },
+    {
+      "symbol": "databaseAccounts_cd_poc_idatafactory_cr_name_Auditoria",
+      "type": "Microsoft.DocumentDB/databaseAccounts/sqlDatabases",
+      "line": 4015
+    },
+    {
+      "symbol": "databaseAccounts_cd_poc_idatafactory_cr_name_EcoCAF",
+      "type": "Microsoft.DocumentDB/databaseAccounts/sqlDatabases",
+      "line": 4025
+    },
+    {
+      "symbol": "databaseAccounts_cd_poc_idatafactory_cr_name_IfisCAF",
+      "type": "Microsoft.DocumentDB/databaseAccounts/sqlDatabases",
+      "line": 4035
+    },
+    {
+      "symbol": "databaseAccounts_cd_notifications_cr_name_notifications_db",
+      "type": "Microsoft.DocumentDB/databaseAccounts/sqlDatabases",
+      "line": 4045
+    },
+    {
+      "symbol": "databaseAccounts_cd_poc_idatafactory_cr_name_UserDirectory",
+      "type": "Microsoft.DocumentDB/databaseAccounts/sqlDatabases",
+      "line": 4055
+    },
+    {
+      "symbol": "databaseAccounts_cd_poc_idatafactory_cr_name_Vinculador_DMAF",
+      "type": "Microsoft.DocumentDB/databaseAccounts/sqlDatabases",
+      "line": 4065
+    },
+    {
+      "symbol": "databaseAccounts_cd_notifications_cr_name_00000000_0000_0000_0000_000000000001",
+      "type": "Microsoft.DocumentDB/databaseAccounts/sqlRoleDefinitions",
+      "line": 4075
+    },
+    {
+      "symbol": "databaseAccounts_cd_poc_idatafactory_cr_name_00000000_0000_0000_0000_000000000001",
+      "type": "Microsoft.DocumentDB/databaseAccounts/sqlRoleDefinitions",
+      "line": 4098
+    },
+    {
+      "symbol": "databaseAccounts_cd_notifications_cr_name_00000000_0000_0000_0000_000000000002",
+      "type": "Microsoft.DocumentDB/databaseAccounts/sqlRoleDefinitions",
+      "line": 4121
+    },
+    {
+      "symbol": "databaseAccounts_cd_poc_idatafactory_cr_name_00000000_0000_0000_0000_000000000002",
+      "type": "Microsoft.DocumentDB/databaseAccounts/sqlRoleDefinitions",
+      "line": 4143
+    },
+    {
+      "symbol": "Microsoft_DocumentDB_databaseAccounts_tableRoleDefinitions_databaseAccounts_cd_notifications_cr_name_00000000_0000_0000_0000_000000000001",
+      "type": "Microsoft.DocumentDB/databaseAccounts/tableRoleDefinitions",
+      "line": 4165
+    },
+    {
+      "symbol": "Microsoft_DocumentDB_databaseAccounts_tableRoleDefinitions_databaseAccounts_cd_poc_idatafactory_cr_name_00000000_0000_0000_0000_000000000001",
+      "type": "Microsoft.DocumentDB/databaseAccounts/tableRoleDefinitions",
+      "line": 4188
+    },
+    {
+      "symbol": "Microsoft_DocumentDB_databaseAccounts_tableRoleDefinitions_databaseAccounts_cd_notifications_cr_name_00000000_0000_0000_0000_000000000002",
+      "type": "Microsoft.DocumentDB/databaseAccounts/tableRoleDefinitions",
+      "line": 4211
+    },
+    {
+      "symbol": "Microsoft_DocumentDB_databaseAccounts_tableRoleDefinitions_databaseAccounts_cd_poc_idatafactory_cr_name_00000000_0000_0000_0000_000000000002",
+      "type": "Microsoft.DocumentDB/databaseAccounts/tableRoleDefinitions",
+      "line": 4234
+    },
+    {
+      "symbol": "systemTopics_sapocidatafactorycr_a9317bab_8073_44f0_8db0_2f3c9dd5f8dd_name_resource",
+      "type": "Microsoft.EventGrid/systemTopics",
+      "line": 4257
+    },
+    {
+      "symbol": "systemTopics_sapocidatafactorycr_a9317bab_8073_44f0_8db0_2f3c9dd5f8dd_name_91832cb5_dadc_0264_106b_6add02c45f87",
+      "type": "Microsoft.EventGrid/systemTopics/eventSubscriptions",
+      "line": 4266
+    },
+    {
+      "symbol": "storageAccounts_asacommon_name_default",
+      "type": "Microsoft.Storage/storageAccounts/blobServices",
+      "line": 4312
+    },
+    {
+      "symbol": "storageAccounts_asapocnotificationscr_name_default",
+      "type": "Microsoft.Storage/storageAccounts/blobServices",
+      "line": 4330
+    },
+    {
+      "symbol": "storageAccounts_asauserpermissions_name_default",
+      "type": "Microsoft.Storage/storageAccounts/blobServices",
+      "line": 4356
+    },
+    {
+      "symbol": "storageAccounts_rgpocidatafactorycr8d9e_name_default",
+      "type": "Microsoft.Storage/storageAccounts/blobServices",
+      "line": 4374
+    },
+    {
+      "symbol": "storageAccounts_rgpocidatafactorycra72f_name_default",
+      "type": "Microsoft.Storage/storageAccounts/blobServices",
+      "line": 4392
+    },
+    {
+      "symbol": "storageAccounts_rgpocidatafactorycra907_name_default",
+      "type": "Microsoft.Storage/storageAccounts/blobServices",
+      "line": 4410
+    },
+    {
+      "symbol": "storageAccounts_rgpocidatafactorycrb5a2_name_default",
+      "type": "Microsoft.Storage/storageAccounts/blobServices",
+      "line": 4428
+    },
+    {
+      "symbol": "storageAccounts_rgpocidatafactorycrba55_name_default",
+      "type": "Microsoft.Storage/storageAccounts/blobServices",
+      "line": 4446
+    },
+    {
+      "symbol": "storageAccounts_sapocidatafactorycr_name_default",
+      "type": "Microsoft.Storage/storageAccounts/blobServices",
+      "line": 4464
+    },
+    {
+      "symbol": "storageAccounts_storagerisk1_name_default",
+      "type": "Microsoft.Storage/storageAccounts/blobServices",
+      "line": 4513
+    },
+    {
+      "symbol": "Microsoft_Storage_storageAccounts_fileServices_storageAccounts_asacommon_name_default",
+      "type": "Microsoft.Storage/storageAccounts/fileServices",
+      "line": 4558
+    },
+    {
+      "symbol": "Microsoft_Storage_storageAccounts_fileServices_storageAccounts_asapocnotificationscr_name_default",
+      "type": "Microsoft.Storage/storageAccounts/fileServices",
+      "line": 4579
+    },
+    {
+      "symbol": "Microsoft_Storage_storageAccounts_fileServices_storageAccounts_asauserpermissions_name_default",
+      "type": "Microsoft.Storage/storageAccounts/fileServices",
+      "line": 4600
+    },
+    {
+      "symbol": "Microsoft_Storage_storageAccounts_fileServices_storageAccounts_rgpocidatafactorycr8d9e_name_default",
+      "type": "Microsoft.Storage/storageAccounts/fileServices",
+      "line": 4621
+    },
+    {
+      "symbol": "Microsoft_Storage_storageAccounts_fileServices_storageAccounts_rgpocidatafactorycra72f_name_default",
+      "type": "Microsoft.Storage/storageAccounts/fileServices",
+      "line": 4642
+    },
+    {
+      "symbol": "Microsoft_Storage_storageAccounts_fileServices_storageAccounts_rgpocidatafactorycra907_name_default",
+      "type": "Microsoft.Storage/storageAccounts/fileServices",
+      "line": 4663
+    },
+    {
+      "symbol": "Microsoft_Storage_storageAccounts_fileServices_storageAccounts_rgpocidatafactorycrb5a2_name_default",
+      "type": "Microsoft.Storage/storageAccounts/fileServices",
+      "line": 4684
+    },
+    {
+      "symbol": "Microsoft_Storage_storageAccounts_fileServices_storageAccounts_rgpocidatafactorycrba55_name_default",
+      "type": "Microsoft.Storage/storageAccounts/fileServices",
+      "line": 4705
+    },
+    {
+      "symbol": "Microsoft_Storage_storageAccounts_fileServices_storageAccounts_sapocidatafactorycr_name_default",
+      "type": "Microsoft.Storage/storageAccounts/fileServices",
+      "line": 4726
+    },
+    {
+      "symbol": "Microsoft_Storage_storageAccounts_fileServices_storageAccounts_storagerisk1_name_default",
+      "type": "Microsoft.Storage/storageAccounts/fileServices",
+      "line": 4747
+    },
+    {
+      "symbol": "Microsoft_Storage_storageAccounts_queueServices_storageAccounts_asacommon_name_default",
+      "type": "Microsoft.Storage/storageAccounts/queueServices",
+      "line": 4768
+    },
+    {
+      "symbol": "Microsoft_Storage_storageAccounts_queueServices_storageAccounts_asapocnotificationscr_name_default",
+      "type": "Microsoft.Storage/storageAccounts/queueServices",
+      "line": 4778
+    },
+    {
+      "symbol": "Microsoft_Storage_storageAccounts_queueServices_storageAccounts_asauserpermissions_name_default",
+      "type": "Microsoft.Storage/storageAccounts/queueServices",
+      "line": 4788
+    },
+    {
+      "symbol": "Microsoft_Storage_storageAccounts_queueServices_storageAccounts_rgpocidatafactorycr8d9e_name_default",
+      "type": "Microsoft.Storage/storageAccounts/queueServices",
+      "line": 4798
+    },
+    {
+      "symbol": "Microsoft_Storage_storageAccounts_queueServices_storageAccounts_rgpocidatafactorycra72f_name_default",
+      "type": "Microsoft.Storage/storageAccounts/queueServices",
+      "line": 4808
+    },
+    {
+      "symbol": "Microsoft_Storage_storageAccounts_queueServices_storageAccounts_rgpocidatafactorycra907_name_default",
+      "type": "Microsoft.Storage/storageAccounts/queueServices",
+      "line": 4818
+    },
+    {
+      "symbol": "Microsoft_Storage_storageAccounts_queueServices_storageAccounts_rgpocidatafactorycrb5a2_name_default",
+      "type": "Microsoft.Storage/storageAccounts/queueServices",
+      "line": 4828
+    },
+    {
+      "symbol": "Microsoft_Storage_storageAccounts_queueServices_storageAccounts_rgpocidatafactorycrba55_name_default",
+      "type": "Microsoft.Storage/storageAccounts/queueServices",
+      "line": 4838
+    },
+    {
+      "symbol": "Microsoft_Storage_storageAccounts_queueServices_storageAccounts_sapocidatafactorycr_name_default",
+      "type": "Microsoft.Storage/storageAccounts/queueServices",
+      "line": 4848
+    },
+    {
+      "symbol": "Microsoft_Storage_storageAccounts_queueServices_storageAccounts_storagerisk1_name_default",
+      "type": "Microsoft.Storage/storageAccounts/queueServices",
+      "line": 4858
+    },
+    {
+      "symbol": "Microsoft_Storage_storageAccounts_tableServices_storageAccounts_asacommon_name_default",
+      "type": "Microsoft.Storage/storageAccounts/tableServices",
+      "line": 4868
+    },
+    {
+      "symbol": "Microsoft_Storage_storageAccounts_tableServices_storageAccounts_asapocnotificationscr_name_default",
+      "type": "Microsoft.Storage/storageAccounts/tableServices",
+      "line": 4878
+    },
+    {
+      "symbol": "Microsoft_Storage_storageAccounts_tableServices_storageAccounts_asauserpermissions_name_default",
+      "type": "Microsoft.Storage/storageAccounts/tableServices",
+      "line": 4888
+    },
+    {
+      "symbol": "Microsoft_Storage_storageAccounts_tableServices_storageAccounts_rgpocidatafactorycr8d9e_name_default",
+      "type": "Microsoft.Storage/storageAccounts/tableServices",
+      "line": 4898
+    },
+    {
+      "symbol": "Microsoft_Storage_storageAccounts_tableServices_storageAccounts_rgpocidatafactorycra72f_name_default",
+      "type": "Microsoft.Storage/storageAccounts/tableServices",
+      "line": 4908
+    },
+    {
+      "symbol": "Microsoft_Storage_storageAccounts_tableServices_storageAccounts_rgpocidatafactorycra907_name_default",
+      "type": "Microsoft.Storage/storageAccounts/tableServices",
+      "line": 4918
+    },
+    {
+      "symbol": "Microsoft_Storage_storageAccounts_tableServices_storageAccounts_rgpocidatafactorycrb5a2_name_default",
+      "type": "Microsoft.Storage/storageAccounts/tableServices",
+      "line": 4928
+    },
+    {
+      "symbol": "Microsoft_Storage_storageAccounts_tableServices_storageAccounts_rgpocidatafactorycrba55_name_default",
+      "type": "Microsoft.Storage/storageAccounts/tableServices",
+      "line": 4938
+    },
+    {
+      "symbol": "Microsoft_Storage_storageAccounts_tableServices_storageAccounts_sapocidatafactorycr_name_default",
+      "type": "Microsoft.Storage/storageAccounts/tableServices",
+      "line": 4948
+    },
+    {
+      "symbol": "Microsoft_Storage_storageAccounts_tableServices_storageAccounts_storagerisk1_name_default",
+      "type": "Microsoft.Storage/storageAccounts/tableServices",
+      "line": 4958
+    },
+    {
+      "symbol": "sites_app_IdataFactory_CR_name_resource",
+      "type": "Microsoft.Web/sites",
+      "line": 4968
+    },
+    {
+      "symbol": "sites_azfunc_audits_CR_name_resource",
+      "type": "Microsoft.Web/sites",
+      "line": 5030
+    },
+    {
+      "symbol": "sites_azfunc_commons_CR_name_resource",
+      "type": "Microsoft.Web/sites",
+      "line": 5088
+    },
+    {
+      "symbol": "sites_azfunc_POC_notifications_CR_name_resource",
+      "type": "Microsoft.Web/sites",
+      "line": 5150
+    },
+    {
+      "symbol": "sites_azfunc_UserPermissions_CR_name_resource",
+      "type": "Microsoft.Web/sites",
+      "line": 5208
+    },
+    {
+      "symbol": "sites_app_IdataFactory_CR_name_ftp",
+      "type": "Microsoft.Web/sites/basicPublishingCredentialsPolicies",
+      "line": 5269
+    },
+    {
+      "symbol": "sites_azfunc_audits_CR_name_ftp",
+      "type": "Microsoft.Web/sites/basicPublishingCredentialsPolicies",
+      "line": 5281
+    },
+    {
+      "symbol": "sites_azfunc_commons_CR_name_ftp",
+      "type": "Microsoft.Web/sites/basicPublishingCredentialsPolicies",
+      "line": 5290
+    },
+    {
+      "symbol": "sites_azfunc_POC_iDataFactory_CR_name_ftp",
+      "type": "Microsoft.Web/sites/basicPublishingCredentialsPolicies",
+      "line": 5299
+    },
+    {
+      "symbol": "sites_azfunc_POC_notifications_CR_name_ftp",
+      "type": "Microsoft.Web/sites/basicPublishingCredentialsPolicies",
+      "line": 5311
+    },
+    {
+      "symbol": "sites_azfunc_UserPermissions_CR_name_ftp",
+      "type": "Microsoft.Web/sites/basicPublishingCredentialsPolicies",
+      "line": 5320
+    },
+    {
+      "symbol": "sites_app_IdataFactory_CR_name_scm",
+      "type": "Microsoft.Web/sites/basicPublishingCredentialsPolicies",
+      "line": 5329
+    },
+    {
+      "symbol": "sites_azfunc_audits_CR_name_scm",
+      "type": "Microsoft.Web/sites/basicPublishingCredentialsPolicies",
+      "line": 5341
+    },
+    {
+      "symbol": "sites_azfunc_commons_CR_name_scm",
+      "type": "Microsoft.Web/sites/basicPublishingCredentialsPolicies",
+      "line": 5350
+    },
+    {
+      "symbol": "sites_azfunc_POC_iDataFactory_CR_name_scm",
+      "type": "Microsoft.Web/sites/basicPublishingCredentialsPolicies",
+      "line": 5359
+    },
+    {
+      "symbol": "sites_azfunc_POC_notifications_CR_name_scm",
+      "type": "Microsoft.Web/sites/basicPublishingCredentialsPolicies",
+      "line": 5371
+    },
+    {
+      "symbol": "sites_azfunc_UserPermissions_CR_name_scm",
+      "type": "Microsoft.Web/sites/basicPublishingCredentialsPolicies",
+      "line": 5380
+    },
+    {
+      "symbol": "sites_app_IdataFactory_CR_name_web",
+      "type": "Microsoft.Web/sites/config",
+      "line": 5389
+    },
+    {
+      "symbol": "sites_azfunc_audits_CR_name_web",
+      "type": "Microsoft.Web/sites/config",
+      "line": 5472
+    },
+    {
+      "symbol": "sites_azfunc_commons_CR_name_web",
+      "type": "Microsoft.Web/sites/config",
+      "line": 5557
+    },
+    {
+      "symbol": "sites_azfunc_POC_iDataFactory_CR_name_web",
+      "type": "Microsoft.Web/sites/config",
+      "line": 5642
+    },
+    {
+      "symbol": "sites_azfunc_POC_notifications_CR_name_web",
+      "type": "Microsoft.Web/sites/config",
+      "line": 5729
+    },
+    {
+      "symbol": "sites_azfunc_UserPermissions_CR_name_web",
+      "type": "Microsoft.Web/sites/config",
+      "line": 5814
+    },
+    {
+      "symbol": "sites_azfunc_UserPermissions_CR_name_07293eb1_b4f9_442f_8866_f80cd2099980",
+      "type": "Microsoft.Web/sites/deployments",
+      "line": 5900
+    },
+    {
+      "symbol": "sites_azfunc_audits_CR_name_0d2264aa_25a3_4bdd_aca7_e38e16acf3e9",
+      "type": "Microsoft.Web/sites/deployments",
+      "line": 5916
+    },
+    {
+      "symbol": "sites_azfunc_audits_CR_name_10d189a3_0f12_4d93_9e69_0030281bba39",
+      "type": "Microsoft.Web/sites/deployments",
+      "line": 5932
+    },
+    {
+      "symbol": "sites_azfunc_POC_notifications_CR_name_14c0ac03_5aa2_42d0_99d6_822ff9555a02",
+      "type": "Microsoft.Web/sites/deployments",
+      "line": 5948
+    },
+    {
+      "symbol": "sites_azfunc_POC_iDataFactory_CR_name_1796aa1d_54a3_44fa_9083_632b34535f02",
+      "type": "Microsoft.Web/sites/deployments",
+      "line": 5964
+    },
+    {
+      "symbol": "sites_app_IdataFactory_CR_name_1b2c5c3f_bf18_4a01_a587_5f342d657f5b",
+      "type": "Microsoft.Web/sites/deployments",
+      "line": 5980
+    },
+    {
+      "symbol": "sites_azfunc_POC_iDataFactory_CR_name_1f99ce53_82de_4331_80ce_d1507a6d3c66",
+      "type": "Microsoft.Web/sites/deployments",
+      "line": 5996
+    },
+    {
+      "symbol": "sites_azfunc_audits_CR_name_27781758576941231",
+      "type": "Microsoft.Web/sites/deployments",
+      "line": 6012
+    },
+    {
+      "symbol": "sites_azfunc_POC_notifications_CR_name_31041764198941195",
+      "type": "Microsoft.Web/sites/deployments",
+      "line": 6027
+    },
+    {
+      "symbol": "sites_azfunc_POC_notifications_CR_name_31051764199343174",
+      "type": "Microsoft.Web/sites/deployments",
+      "line": 6042
+    },
+    {
+      "symbol": "sites_azfunc_UserPermissions_CR_name_31caa80a_921f_40e2_9b5f_1f44d89b5720",
+      "type": "Microsoft.Web/sites/deployments",
+      "line": 6057
+    },
+    {
+      "symbol": "sites_azfunc_audits_CR_name_33571770239471390",
+      "type": "Microsoft.Web/sites/deployments",
+      "line": 6073
+    },
+    {
+      "symbol": "sites_azfunc_UserPermissions_CR_name_34381770905489767",
+      "type": "Microsoft.Web/sites/deployments",
+      "line": 6088
+    },
+    {
+      "symbol": "sites_azfunc_POC_notifications_CR_name_36551773881868370",
+      "type": "Microsoft.Web/sites/deployments",
+      "line": 6103
+    },
+    {
+      "symbol": "sites_azfunc_UserPermissions_CR_name_43c7ac42_b4a0_420a_8931_f9c69f94667a",
+      "type": "Microsoft.Web/sites/deployments",
+      "line": 6118
+    },
+    {
+      "symbol": "sites_azfunc_POC_notifications_CR_name_45811783548663651",
+      "type": "Microsoft.Web/sites/deployments",
+      "line": 6134
+    },
+    {
+      "symbol": "sites_azfunc_POC_notifications_CR_name_45821783550371934",
+      "type": "Microsoft.Web/sites/deployments",
+      "line": 6149
+    },
+    {
+      "symbol": "sites_azfunc_POC_notifications_CR_name_45831783551252126",
+      "type": "Microsoft.Web/sites/deployments",
+      "line": 6164
+    },
+    {
+      "symbol": "sites_azfunc_UserPermissions_CR_name_46681784159792586",
+      "type": "Microsoft.Web/sites/deployments",
+      "line": 6179
+    },
+    {
+      "symbol": "sites_azfunc_UserPermissions_CR_name_46691784162059203",
+      "type": "Microsoft.Web/sites/deployments",
+      "line": 6194
+    },
+    {
+      "symbol": "sites_app_IdataFactory_CR_name_46701784162799243",
+      "type": "Microsoft.Web/sites/deployments",
+      "line": 6209
+    },
+    {
+      "symbol": "sites_app_IdataFactory_CR_name_46961784224369577",
+      "type": "Microsoft.Web/sites/deployments",
+      "line": 6224
+    },
+    {
+      "symbol": "sites_azfunc_UserPermissions_CR_name_47841784744153817",
+      "type": "Microsoft.Web/sites/deployments",
+      "line": 6239
+    },
+    {
+      "symbol": "sites_app_IdataFactory_CR_name_47851784744577586",
+      "type": "Microsoft.Web/sites/deployments",
+      "line": 6254
+    },
+    {
+      "symbol": "sites_app_IdataFactory_CR_name_48141784820117233",
+      "type": "Microsoft.Web/sites/deployments",
+      "line": 6269
+    },
+    {
+      "symbol": "sites_app_IdataFactory_CR_name_48881785167766946",
+      "type": "Microsoft.Web/sites/deployments",
+      "line": 6284
+    },
+    {
+      "symbol": "sites_app_IdataFactory_CR_name_49041785192592801",
+      "type": "Microsoft.Web/sites/deployments",
+      "line": 6299
+    },
+    {
+      "symbol": "sites_azfunc_UserPermissions_CR_name_52d72fd1_4cb8_4923_9990_33251b4acd42",
+      "type": "Microsoft.Web/sites/deployments",
+      "line": 6314
+    },
+    {
+      "symbol": "sites_azfunc_UserPermissions_CR_name_5466aecc_6e95_4810_b565_aa253ba7cc79",
+      "type": "Microsoft.Web/sites/deployments",
+      "line": 6330
+    },
+    {
+      "symbol": "sites_azfunc_POC_notifications_CR_name_5a89e560_a3e3_46e5_b53e_3d00395a2e11",
+      "type": "Microsoft.Web/sites/deployments",
+      "line": 6346
+    },
+    {
+      "symbol": "sites_azfunc_POC_notifications_CR_name_68628408_bae5_4d1f_81d6_4739dc9b4c8b",
+      "type": "Microsoft.Web/sites/deployments",
+      "line": 6362
+    },
+    {
+      "symbol": "sites_app_IdataFactory_CR_name_77c3b29c_44c7_44d9_8ba6_596cd85d6c4f",
+      "type": "Microsoft.Web/sites/deployments",
+      "line": 6378
+    },
+    {
+      "symbol": "sites_azfunc_POC_notifications_CR_name_7c99e250_9f6b_4414_9cc0_959961f28d16",
+      "type": "Microsoft.Web/sites/deployments",
+      "line": 6394
+    },
+    {
+      "symbol": "sites_azfunc_POC_iDataFactory_CR_name_828c25cb_d714_41cd_893e_b966519de304",
+      "type": "Microsoft.Web/sites/deployments",
+      "line": 6410
+    },
+    {
+      "symbol": "sites_app_IdataFactory_CR_name_87ffdacf_15f8_4f2c_8e1d_252ae3b41118",
+      "type": "Microsoft.Web/sites/deployments",
+      "line": 6426
+    },
+    {
+      "symbol": "sites_azfunc_UserPermissions_CR_name_a54a3fdf_7c47_4fa6_a1f1_08010829c83f",
+      "type": "Microsoft.Web/sites/deployments",
+      "line": 6442
+    },
+    {
+      "symbol": "sites_app_IdataFactory_CR_name_bb680fd0_c5b1_413a_9e75_2a27940df6af",
+      "type": "Microsoft.Web/sites/deployments",
+      "line": 6458
+    },
+    {
+      "symbol": "sites_azfunc_POC_iDataFactory_CR_name_bdec606c_75c6_495d_83fa_006173591fb8",
+      "type": "Microsoft.Web/sites/deployments",
+      "line": 6474
+    },
+    {
+      "symbol": "sites_azfunc_POC_iDataFactory_CR_name_c14fc682_74cb_449c_9c15_ec30c98be734",
+      "type": "Microsoft.Web/sites/deployments",
+      "line": 6490
+    },
+    {
+      "symbol": "sites_azfunc_POC_iDataFactory_CR_name_cc9ff1f3_809c_4bfb_9b03_c089006f5d2c",
+      "type": "Microsoft.Web/sites/deployments",
+      "line": 6506
+    },
+    {
+      "symbol": "sites_azfunc_audits_CR_name_d0606f68_289c_4a88_aa54_ea542e05f7dc",
+      "type": "Microsoft.Web/sites/deployments",
+      "line": 6522
+    },
+    {
+      "symbol": "sites_azfunc_POC_iDataFactory_CR_name_d80bc4df_d009_4ed6_8b45_ba5cb7a5930d",
+      "type": "Microsoft.Web/sites/deployments",
+      "line": 6538
+    },
+    {
+      "symbol": "sites_azfunc_POC_notifications_CR_name_e9350f2d_040e_4571_a0f2_4fbda321faa2",
+      "type": "Microsoft.Web/sites/deployments",
+      "line": 6554
+    },
+    {
+      "symbol": "sites_azfunc_audits_CR_name_eacd38ad_e380_4d68_aec7_25996c25a5ff",
+      "type": "Microsoft.Web/sites/deployments",
+      "line": 6570
+    },
+    {
+      "symbol": "sites_app_IdataFactory_CR_name_ec77e6db_e227_4de1_a346_334499b6fb1d",
+      "type": "Microsoft.Web/sites/deployments",
+      "line": 6586
+    },
+    {
+      "symbol": "sites_azfunc_UserPermissions_CR_name_f2c6b795_2e15_474d_ad8f_43b3ba34f065",
+      "type": "Microsoft.Web/sites/deployments",
+      "line": 6602
+    },
+    {
+      "symbol": "sites_azfunc_POC_iDataFactory_CR_name_f63cc4fe_30a6_4832_85ac_2ecfe1602551",
+      "type": "Microsoft.Web/sites/deployments",
+      "line": 6618
+    },
+    {
+      "symbol": "sites_azfunc_UserPermissions_CR_name_add_user",
+      "type": "Microsoft.Web/sites/functions",
+      "line": 6634
+    },
+    {
+      "symbol": "sites_azfunc_commons_CR_name_api_convert_to_pdf",
+      "type": "Microsoft.Web/sites/functions",
+      "line": 6672
+    },
+    {
+      "symbol": "sites_azfunc_UserPermissions_CR_name_auth_debug_login",
+      "type": "Microsoft.Web/sites/functions",
+      "line": 6707
+    },
+    {
+      "symbol": "sites_azfunc_UserPermissions_CR_name_auth_login",
+      "type": "Microsoft.Web/sites/functions",
+      "line": 6745
+    },
+    {
+      "symbol": "sites_azfunc_UserPermissions_CR_name_auth_me",
+      "type": "Microsoft.Web/sites/functions",
+      "line": 6783
+    },
+    {
+      "symbol": "sites_azfunc_commons_CR_name_base_convert_to_pdf",
+      "type": "Microsoft.Web/sites/functions",
+      "line": 6821
+    },
+    {
+      "symbol": "sites_azfunc_POC_notifications_CR_name_email_notification",
+      "type": "Microsoft.Web/sites/functions",
+      "line": 6856
+    },
+    {
+      "symbol": "sites_azfunc_audits_CR_name_get_audit_by_id",
+      "type": "Microsoft.Web/sites/functions",
+      "line": 6894
+    },
+    {
+      "symbol": "sites_azfunc_audits_CR_name_get_audits",
+      "type": "Microsoft.Web/sites/functions",
+      "line": 6932
+    },
+    {
+      "symbol": "sites_azfunc_UserPermissions_CR_name_get_business_units",
+      "type": "Microsoft.Web/sites/functions",
+      "line": 6970
+    },
+    {
+      "symbol": "sites_azfunc_UserPermissions_CR_name_get_permissions",
+      "type": "Microsoft.Web/sites/functions",
+      "line": 7008
+    },
+    {
+      "symbol": "sites_azfunc_UserPermissions_CR_name_get_users",
+      "type": "Microsoft.Web/sites/functions",
+      "line": 7046
+    },
+    {
+      "symbol": "sites_azfunc_POC_iDataFactory_CR_name_main",
+      "type": "Microsoft.Web/sites/functions",
+      "line": 7084
+    },
+    {
+      "symbol": "sites_azfunc_audits_CR_name_save_audit",
+      "type": "Microsoft.Web/sites/functions",
+      "line": 7119
+    },
+    {
+      "symbol": "sites_azfunc_UserPermissions_CR_name_update_permissions",
+      "type": "Microsoft.Web/sites/functions",
+      "line": 7157
+    },
+    {
+      "symbol": "sites_app_IdataFactory_CR_name_sites_app_IdataFactory_CR_name_azurewebsites_net",
+      "type": "Microsoft.Web/sites/hostNameBindings",
+      "line": 7195
+    },
+    {
+      "symbol": "sites_azfunc_audits_CR_name_sites_azfunc_audits_CR_name_azurewebsites_net",
+      "type": "Microsoft.Web/sites/hostNameBindings",
+      "line": 7205
+    },
+    {
+      "symbol": "sites_azfunc_commons_CR_name_sites_azfunc_commons_CR_name_azurewebsites_net",
+      "type": "Microsoft.Web/sites/hostNameBindings",
+      "line": 7215
+    },
+    {
+      "symbol": "sites_azfunc_POC_iDataFactory_CR_name_sites_azfunc_POC_iDataFactory_CR_name_azurewebsites_net",
+      "type": "Microsoft.Web/sites/hostNameBindings",
+      "line": 7225
+    },
+    {
+      "symbol": "sites_azfunc_POC_notifications_CR_name_sites_azfunc_POC_notifications_CR_name_azurewebsites_net",
+      "type": "Microsoft.Web/sites/hostNameBindings",
+      "line": 7235
+    },
+    {
+      "symbol": "sites_azfunc_UserPermissions_CR_name_sites_azfunc_UserPermissions_CR_name_azurewebsites_net",
+      "type": "Microsoft.Web/sites/hostNameBindings",
+      "line": 7245
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_PowerShell_5_1_AuditPolicyDsc",
+      "type": "Microsoft.Automation/automationAccounts/runtimeEnvironments/packages",
+      "line": 7255
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_PowerShell_5_1_Azure",
+      "type": "Microsoft.Automation/automationAccounts/runtimeEnvironments/packages",
+      "line": 7267
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_PowerShell_5_1_Azure_Storage",
+      "type": "Microsoft.Automation/automationAccounts/runtimeEnvironments/packages",
+      "line": 7279
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_PowerShell_5_1_AzureRM_Automation",
+      "type": "Microsoft.Automation/automationAccounts/runtimeEnvironments/packages",
+      "line": 7291
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_PowerShell_5_1_AzureRM_Compute",
+      "type": "Microsoft.Automation/automationAccounts/runtimeEnvironments/packages",
+      "line": 7303
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_PowerShell_5_1_AzureRM_Profile",
+      "type": "Microsoft.Automation/automationAccounts/runtimeEnvironments/packages",
+      "line": 7315
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_PowerShell_5_1_AzureRM_Resources",
+      "type": "Microsoft.Automation/automationAccounts/runtimeEnvironments/packages",
+      "line": 7327
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_PowerShell_5_1_AzureRM_Sql",
+      "type": "Microsoft.Automation/automationAccounts/runtimeEnvironments/packages",
+      "line": 7339
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_PowerShell_5_1_AzureRM_Storage",
+      "type": "Microsoft.Automation/automationAccounts/runtimeEnvironments/packages",
+      "line": 7351
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_PowerShell_5_1_ComputerManagementDsc",
+      "type": "Microsoft.Automation/automationAccounts/runtimeEnvironments/packages",
+      "line": 7363
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_PowerShell_5_1_GPRegistryPolicyParser",
+      "type": "Microsoft.Automation/automationAccounts/runtimeEnvironments/packages",
+      "line": 7375
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_PowerShell_5_1_Microsoft_PowerShell_Core",
+      "type": "Microsoft.Automation/automationAccounts/runtimeEnvironments/packages",
+      "line": 7387
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_PowerShell_5_1_Microsoft_PowerShell_Diagnostics",
+      "type": "Microsoft.Automation/automationAccounts/runtimeEnvironments/packages",
+      "line": 7399
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_PowerShell_5_1_Microsoft_PowerShell_Management",
+      "type": "Microsoft.Automation/automationAccounts/runtimeEnvironments/packages",
+      "line": 7411
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_PowerShell_5_1_Microsoft_PowerShell_Security",
+      "type": "Microsoft.Automation/automationAccounts/runtimeEnvironments/packages",
+      "line": 7423
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_PowerShell_5_1_Microsoft_PowerShell_Utility",
+      "type": "Microsoft.Automation/automationAccounts/runtimeEnvironments/packages",
+      "line": 7435
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_PowerShell_5_1_Microsoft_WSMan_Management",
+      "type": "Microsoft.Automation/automationAccounts/runtimeEnvironments/packages",
+      "line": 7447
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_PowerShell_5_1_Orchestrator_AssetManagement_Cmdlets",
+      "type": "Microsoft.Automation/automationAccounts/runtimeEnvironments/packages",
+      "line": 7459
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_PowerShell_7_1_Orchestrator_AssetManagement_Cmdlets",
+      "type": "Microsoft.Automation/automationAccounts/runtimeEnvironments/packages",
+      "line": 7471
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_PowerShell_5_1_PSDscResources",
+      "type": "Microsoft.Automation/automationAccounts/runtimeEnvironments/packages",
+      "line": 7483
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_PowerShell_5_1_SecurityPolicyDsc",
+      "type": "Microsoft.Automation/automationAccounts/runtimeEnvironments/packages",
+      "line": 7495
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_PowerShell_5_1_StateConfigCompositeResources",
+      "type": "Microsoft.Automation/automationAccounts/runtimeEnvironments/packages",
+      "line": 7507
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_PowerShell_5_1_xDSCDomainjoin",
+      "type": "Microsoft.Automation/automationAccounts/runtimeEnvironments/packages",
+      "line": 7519
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_PowerShell_5_1_xPowerShellExecutionPolicy",
+      "type": "Microsoft.Automation/automationAccounts/runtimeEnvironments/packages",
+      "line": 7531
+    },
+    {
+      "symbol": "automationAccounts_AutoiDataFactory_name_PowerShell_5_1_xRemoteDesktopAdmin",
+      "type": "Microsoft.Automation/automationAccounts/runtimeEnvironments/packages",
+      "line": 7543
+    },
+    {
+      "symbol": "emailServices_acs_notifications_cr_name_azuremanageddomain_donotreply",
+      "type": "microsoft.communication/emailservices/domains/senderusernames",
+      "line": 7555
+    },
+    {
+      "symbol": "storageAccounts_asacommon_name_default_azure_webjobs_hosts",
+      "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
+      "line": 7567
+    },
+    {
+      "symbol": "storageAccounts_asacommon_name_default_azure_webjobs_secrets",
+      "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
+      "line": 7583
+    },
+    {
+      "symbol": "storageAccounts_rgpocidatafactorycra907_name_default_AzureFunctionsDiagnosticEvents202501",
+      "type": "Microsoft.Storage/storageAccounts/tableServices/tables",
+      "line": 7599
+    },
+    {
+      "symbol": "storageAccounts_rgpocidatafactorycra72f_name_default_AzureFunctionsDiagnosticEvents202503",
+      "type": "Microsoft.Storage/storageAccounts/tableServices/tables",
+      "line": 7608
+    },
+    {
+      "symbol": "storageAccounts_rgpocidatafactorycrb5a2_name_default_AzureFunctionsDiagnosticEvents202503",
+      "type": "Microsoft.Storage/storageAccounts/tableServices/tables",
+      "line": 7617
+    },
+    {
+      "symbol": "storageAccounts_asauserpermissions_name_default_AzureFunctionsDiagnosticEvents202507",
+      "type": "Microsoft.Storage/storageAccounts/tableServices/tables",
+      "line": 7626
+    },
+    {
+      "symbol": "storageAccounts_rgpocidatafactorycrba55_name_default_AzureFunctionsDiagnosticEvents202507",
+      "type": "Microsoft.Storage/storageAccounts/tableServices/tables",
+      "line": 7635
+    },
+    {
+      "symbol": "storageAccounts_sapocidatafactorycr_name_default_AzureFunctionsDiagnosticEvents202507",
+      "type": "Microsoft.Storage/storageAccounts/tableServices/tables",
+      "line": 7644
+    },
+    {
+      "symbol": "storageAccounts_asacommon_name_default_AzureFunctionsDiagnosticEvents202509",
+      "type": "Microsoft.Storage/storageAccounts/tableServices/tables",
+      "line": 7653
+    },
+    {
+      "symbol": "storageAccounts_rgpocidatafactorycr8d9e_name_default_AzureFunctionsDiagnosticEvents202603",
+      "type": "Microsoft.Storage/storageAccounts/tableServices/tables",
+      "line": 7662
+    }
+  ],
+  "conteos": {
+    "Microsoft.Automation/automationAccounts": 1,
+    "Microsoft.CognitiveServices/accounts": 2,
+    "Microsoft.Communication/emailServices": 1,
+    "Microsoft.ContainerRegistry/registries": 1,
+    "Microsoft.Databricks/accessConnectors": 1,
+    "Microsoft.Databricks/workspaces": 1,
+    "Microsoft.DocumentDB/databaseAccounts": 3,
+    "Microsoft.Search/searchServices": 1,
+    "Microsoft.Storage/storageAccounts": 10,
+    "Microsoft.Web/serverfarms": 4,
+    "Microsoft.Web/sites": 6,
+    "Microsoft.Automation/automationAccounts/connectionTypes": 3,
+    "Microsoft.Automation/automationAccounts/jobs": 60,
+    "Microsoft.Automation/automationAccounts/jobSchedules": 2,
+    "Microsoft.Automation/automationAccounts/modules": 110,
+    "Microsoft.Automation/automationAccounts/powerShell72Modules": 86,
+    "Microsoft.Automation/automationAccounts/runbooks": 4,
+    "Microsoft.Automation/automationAccounts/runtimeEnvironments": 6,
+    "Microsoft.Automation/automationAccounts/schedules": 2,
+    "Microsoft.CognitiveServices/accounts/defenderForAISettings": 1,
+    "Microsoft.CognitiveServices/accounts/deployments": 4,
+    "Microsoft.CognitiveServices/accounts/raiPolicies": 2,
+    "Microsoft.Communication/CommunicationServices": 1,
+    "Microsoft.Communication/emailServices/domains": 1,
+    "Microsoft.ContainerRegistry/registries/scopeMaps": 5,
+    "Microsoft.DocumentDB/databaseAccounts/cassandraRoleDefinitions": 2,
+    "Microsoft.DocumentDB/databaseAccounts/gremlinRoleDefinitions": 2,
+    "Microsoft.DocumentDB/databaseAccounts/mongoMIRoleDefinitions": 4,
+    "Microsoft.DocumentDB/databaseAccounts/sqlDatabases": 6,
+    "Microsoft.DocumentDB/databaseAccounts/sqlRoleDefinitions": 4,
+    "Microsoft.DocumentDB/databaseAccounts/tableRoleDefinitions": 4,
+    "Microsoft.EventGrid/systemTopics": 1,
+    "Microsoft.EventGrid/systemTopics/eventSubscriptions": 1,
+    "Microsoft.Storage/storageAccounts/blobServices": 10,
+    "Microsoft.Storage/storageAccounts/fileServices": 10,
+    "Microsoft.Storage/storageAccounts/queueServices": 10,
+    "Microsoft.Storage/storageAccounts/tableServices": 10,
+    "Microsoft.Web/sites/basicPublishingCredentialsPolicies": 12,
+    "Microsoft.Web/sites/config": 6,
+    "Microsoft.Web/sites/deployments": 47,
+    "Microsoft.Web/sites/functions": 15,
+    "Microsoft.Web/sites/hostNameBindings": 6,
+    "Microsoft.Automation/automationAccounts/runtimeEnvironments/packages": 25,
+    "microsoft.communication/emailservices/domains/senderusernames": 1,
+    "Microsoft.Storage/storageAccounts/blobServices/containers": 2,
+    "Microsoft.Storage/storageAccounts/tableServices/tables": 8
+  }
+}

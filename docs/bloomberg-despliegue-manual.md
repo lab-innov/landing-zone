@@ -6,11 +6,12 @@ Script: `scripts/deploy-bloomberg-private.sh`. Preparado con consultas de Azure 
 ## Recursos verificados
 
 - Suscripción destino: `bb8def52-1f21-4498-b0ec-2c220264e518`.
-- RG de aplicaciones: `rg-Innovationlab-CR-v2gptrag`.
+- RG de aplicaciones: `RG-Innovationlab-CR-01` (seleccionado por el usuario).
 - RG de dependencias: `RG-Innovationlab-CR-01`.
 - VNet: `vnet-innovationlab-cr-01`; `snet-containers`: `10.92.40.0/23`, delegada a `Microsoft.App/environments`.
 - Entorno propuesto nuevo: `cae-bloomberg-private`, interno, en `eastus`, con workload profiles.
-- Log Analytics existente: `log-vwksewpicguhq`.
+- Log Analytics existente: `log-vwksewpicguhq`, en `rg-Innovationlab-CR-v2gptrag`.
+  `LOG_WORKSPACE_RG` es independiente de `APP_RG`.
 - Identidades existentes: `id-bloomberg-app` e `id-bloomberg-mail`.
 - ACR: `crbloomberg.azurecr.io`, Premium, acceso público deshabilitado.
 - Storage de aplicación: `stbloomberg`.

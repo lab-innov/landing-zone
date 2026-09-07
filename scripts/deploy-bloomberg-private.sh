@@ -3,7 +3,7 @@ set -euo pipefail
 
 # Recursos existentes
 SUBSCRIPTION_ID="bb8def52-1f21-4498-b0ec-2c220264e518"
-APP_RG="rg-Innovationlab-CR-v2gptrag"
+APP_RG="RG-Innovationlab-CR-01"
 ACR_RG="RG-Innovationlab-CR-01"
 ACR_NAME="crbloomberg"
 
@@ -11,6 +11,7 @@ ENVIRONMENT_NAME="cae-bloomberg-private"
 ENVIRONMENT_ID="/subscriptions/$SUBSCRIPTION_ID/resourceGroups/$APP_RG/providers/Microsoft.App/managedEnvironments/$ENVIRONMENT_NAME"
 SUBNET_ID="/subscriptions/bb8def52-1f21-4498-b0ec-2c220264e518/resourceGroups/RG-Innovationlab-CR-01/providers/Microsoft.Network/virtualNetworks/vnet-innovationlab-cr-01/subnets/snet-containers"
 LOG_WORKSPACE_NAME="log-vwksewpicguhq"
+LOG_WORKSPACE_RG="rg-Innovationlab-CR-v2gptrag"
 MODE="${1:-check}"
 case "$MODE" in check|environment|deploy) ;; *) echo "Uso: bash $0 [check|environment|deploy]"; exit 2;; esac
 APP_IDENTITY_ID="/subscriptions/bb8def52-1f21-4498-b0ec-2c220264e518/resourceGroups/RG-Innovationlab-CR-01/providers/Microsoft.ManagedIdentity/userAssignedIdentities/id-bloomberg-app"
@@ -64,8 +65,8 @@ fi
 # Detectar el entorno por inventario; no confundir errores de acceso con ausencia.
 EXISTING_ENV_ID=$(az containerapp env list -g "$APP_RG" --query "[?name=='$ENVIRONMENT_NAME'].id | [0]" -o tsv)
 if [[ -z "$EXISTING_ENV_ID" ]]; then
-  LOG_ID=$(az monitor log-analytics workspace show -g "$APP_RG" -n "$LOG_WORKSPACE_NAME" --query customerId -o tsv)
-  LOG_KEY=$(az monitor log-analytics workspace get-shared-keys -g "$APP_RG" -n "$LOG_WORKSPACE_NAME" --query primarySharedKey -o tsv)
+  LOG_ID=$(az monitor log-analytics workspace show -g "$LOG_WORKSPACE_RG" -n "$LOG_WORKSPACE_NAME" --query customerId -o tsv)
+  LOG_KEY=$(az monitor log-analytics workspace get-shared-keys -g "$LOG_WORKSPACE_RG" -n "$LOG_WORKSPACE_NAME" --query primarySharedKey -o tsv)
   az containerapp env create -g "$APP_RG" -n "$ENVIRONMENT_NAME" \
     --location eastus --enable-workload-profiles true \
     --infrastructure-subnet-resource-id "$SUBNET_ID" --internal-only true \

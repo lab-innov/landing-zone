@@ -9,9 +9,12 @@ ACR_NAME="crbloomberg"
 
 ENVIRONMENT_NAME="cae-bloomberg-private"
 ENVIRONMENT_ID="/subscriptions/$SUBSCRIPTION_ID/resourceGroups/$APP_RG/providers/Microsoft.App/managedEnvironments/$ENVIRONMENT_NAME"
-SUBNET_ID="/subscriptions/bb8def52-1f21-4498-b0ec-2c220264e518/resourceGroups/RG-Innovationlab-CR-01/providers/Microsoft.Network/virtualNetworks/vnet-innovationlab-cr-01/subnets/snet-containers"
-LOG_WORKSPACE_NAME="log-vwksewpicguhq"
-LOG_WORKSPACE_RG="rg-Innovationlab-CR-v2gptrag"
+VNET_NAME="vnet-innovationlab-cr-01"
+SUBNET_NAME="snet-bloomberg-containers"
+SUBNET_PREFIX="10.92.46.0/23"
+SUBNET_ID="/subscriptions/$SUBSCRIPTION_ID/resourceGroups/$APP_RG/providers/Microsoft.Network/virtualNetworks/$VNET_NAME/subnets/$SUBNET_NAME"
+LOG_WORKSPACE_NAME="log-bloomberg-private"
+LOG_WORKSPACE_RG="$APP_RG"
 MODE="${1:-check}"
 case "$MODE" in check|environment|deploy) ;; *) echo "Uso: bash $0 [check|environment|deploy]"; exit 2;; esac
 APP_IDENTITY_ID="/subscriptions/bb8def52-1f21-4498-b0ec-2c220264e518/resourceGroups/RG-Innovationlab-CR-01/providers/Microsoft.ManagedIdentity/userAssignedIdentities/id-bloomberg-app"
@@ -33,7 +36,13 @@ BACKEND_NAME="ai-bloomberg-news-normal-chat"
 JOB_NAME="ai-bloomberg-mail-job"
 
 # Todas las consultas y operaciones usan la suscripción destino explícitamente.
-az() { command az "$@" --subscription "$SUBSCRIPTION_ID"; }
+az() {
+  local arg
+  for arg in "$@"; do
+    if [[ "$arg" == --ids ]]; then command az "$@"; return; fi
+  done
+  command az "$@" --subscription "$SUBSCRIPTION_ID"
+}
 command -v az >/dev/null
 az group show -n "$APP_RG" --output none
 
@@ -51,9 +60,32 @@ BACKEND_IMAGE="$ACR_SERVER/bloomberg-news/normal-chat:$BACKEND_TAG"
 FRONTEND_IMAGE="$ACR_SERVER/bloomberg-news/frontend:$FRONTEND_TAG"
 STORAGE_URL="https://$STORAGE_ACCOUNT_NAME.blob.core.windows.net"
 
-# El modo predeterminado solo consulta; no crea recursos ni envía correos.
-az network vnet subnet show --ids "$SUBNET_ID" \
-  --query '{rangos:addressPrefixes,delegaciones:delegations[].serviceName,nsg:networkSecurityGroup.id,rutas:routeTable.id}' -o json
+# Consultar únicamente recursos del RG autorizado. No reutilizar la subred ocupada.
+SUBNETS_JSON=$(az network vnet subnet list -g "$APP_RG" --vnet-name "$VNET_NAME" -o json)
+VNET_PREFIXES=$(az network vnet show -g "$APP_RG" -n "$VNET_NAME" --query addressSpace.addressPrefixes -o json)
+command -v python3 >/dev/null
+SUBNET_EXISTS=$(SUBNETS_JSON="$SUBNETS_JSON" VNET_PREFIXES="$VNET_PREFIXES" python3 - "$SUBNET_NAME" "$SUBNET_PREFIX" <<'CHECK_SUBNET'
+import ipaddress, json, os, sys
+name, prefix = sys.argv[1:]
+wanted = ipaddress.ip_network(prefix)
+if not any(wanted.subnet_of(ipaddress.ip_network(p)) for p in json.loads(os.environ['VNET_PREFIXES'])):
+    sys.exit('La subred propuesta queda fuera de la VNet.')
+exists = False
+for subnet in json.loads(os.environ['SUBNETS_JSON']):
+    prefixes = subnet.get('addressPrefixes') or [subnet.get('addressPrefix')]
+    networks = [ipaddress.ip_network(p) for p in prefixes if p]
+    if subnet['name'] == name:
+        if networks != [wanted]:
+            sys.exit('La subred existente tiene otro rango; no se modifica.')
+        if not any(d.get('serviceName') == 'Microsoft.App/environments' for d in subnet.get('delegations', [])):
+            sys.exit('La subred existente no tiene la delegación requerida.')
+        exists = True
+    elif any(wanted.overlaps(n) for n in networks):
+        sys.exit('El rango propuesto se solapa con otra subred; revisar IPAM.')
+print('true' if exists else 'false')
+CHECK_SUBNET
+)
+echo "Subred prevista: $SUBNET_NAME ($SUBNET_PREFIX), RG: $APP_RG"
 if [[ "$MODE" == check ]]; then
   echo "Identidades y recursos consultados. Verificando imágenes en el ACR privado..."
   az acr repository show -n "$ACR_NAME" --image "bloomberg-news/normal-chat:$BACKEND_TAG" --output none
@@ -62,9 +94,25 @@ if [[ "$MODE" == check ]]; then
   exit 0
 fi
 
-# Detectar el entorno por inventario; no confundir errores de acceso con ausencia.
+# Crear una subred independiente dentro del bloque existente; conservar la ocupada.
+if [[ "$SUBNET_EXISTS" == false ]]; then
+  az network vnet subnet create -g "$APP_RG" --vnet-name "$VNET_NAME" \
+    -n "$SUBNET_NAME" --address-prefixes "$SUBNET_PREFIX" \
+    --delegations Microsoft.App/environments --output none
+fi
 EXISTING_ENV_ID=$(az containerapp env list -g "$APP_RG" --query "[?name=='$ENVIRONMENT_NAME'].id | [0]" -o tsv)
+SUBNET_LINKS=$(az network vnet subnet show --ids "$SUBNET_ID" --query 'length(serviceAssociationLinks || `[]`)' -o tsv)
+if [[ -z "$EXISTING_ENV_ID" && "$SUBNET_LINKS" != 0 ]]; then
+  echo "La subred está ocupada por un servicio. No se reutiliza ni se borra." >&2
+  exit 1
+fi
 if [[ -z "$EXISTING_ENV_ID" ]]; then
+  EXISTING_LOG_ID=$(az monitor log-analytics workspace list -g "$LOG_WORKSPACE_RG" --query "[?name=='$LOG_WORKSPACE_NAME'].id | [0]" -o tsv)
+  if [[ -z "$EXISTING_LOG_ID" ]]; then
+    az monitor log-analytics workspace create -g "$LOG_WORKSPACE_RG" \
+      -n "$LOG_WORKSPACE_NAME" --location eastus --sku PerGB2018 \
+      --retention-time 30 --output none
+  fi
   LOG_ID=$(az monitor log-analytics workspace show -g "$LOG_WORKSPACE_RG" -n "$LOG_WORKSPACE_NAME" --query customerId -o tsv)
   LOG_KEY=$(az monitor log-analytics workspace get-shared-keys -g "$LOG_WORKSPACE_RG" -n "$LOG_WORKSPACE_NAME" --query primarySharedKey -o tsv)
   az containerapp env create -g "$APP_RG" -n "$ENVIRONMENT_NAME" \

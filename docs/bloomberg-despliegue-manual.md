@@ -8,17 +8,19 @@ Script: `scripts/deploy-bloomberg-private.sh`. Preparado con consultas de Azure 
 - Suscripción destino: `bb8def52-1f21-4498-b0ec-2c220264e518`.
 - RG de aplicaciones: `RG-Innovationlab-CR-01` (seleccionado por el usuario).
 - RG de dependencias: `RG-Innovationlab-CR-01`.
-- VNet: `vnet-innovationlab-cr-01`; `snet-containers`: `10.92.40.0/23`, delegada a `Microsoft.App/environments`.
+- VNet: `vnet-innovationlab-cr-01`; nueva subred `snet-bloomberg-containers`: `10.92.46.0/23`, delegada a `Microsoft.App/environments`. El script verifica pertenencia y solapamientos antes de crearla.
 - Entorno propuesto nuevo: `cae-bloomberg-private`, interno, en `eastus`, con workload profiles.
-- Log Analytics existente: `log-vwksewpicguhq`, en `rg-Innovationlab-CR-v2gptrag`.
-  `LOG_WORKSPACE_RG` es independiente de `APP_RG`.
+- Log Analytics nuevo: `log-bloomberg-private`, en `RG-Innovationlab-CR-01`; se crea si no existe.
 - Identidades existentes: `id-bloomberg-app` e `id-bloomberg-mail`.
 - ACR: `crbloomberg.azurecr.io`, Premium, acceso público deshabilitado.
 - Storage de aplicación: `stbloomberg`.
 - Proyecto: `https://aif-bloomberg-cr.services.ai.azure.com/api/projects/aifp-bloomberg`.
 - Buzón de la aplicación original: `innovacion@caf-con.com`.
 
-El entorno existente `cae-vwksewpicguhq` pertenece a otra VNet y no se modifica.
+Todos los recursos Azure utilizados por el script pertenecen a `RG-Innovationlab-CR-01`.
+La subred original `snet-containers` está ocupada por otro entorno. No se reutiliza
+ese entorno ni se borra su asociación. El nuevo /23 usa parte de la reserva libre
+del /21 existente. No se amplía el espacio de direcciones.
 Las identidades nuevas requieren sus propios permisos; no heredan los de la aplicación original.
 
 ## Ejecutar
@@ -29,7 +31,7 @@ Desde la raíz del repositorio:
 # Solo consultas; falla si no puede comprobar imágenes privadas.
 bash scripts/deploy-bloomberg-private.sh check
 
-# Crear o reutilizar únicamente el entorno interno.
+# Crear o reutilizar la nueva subred, Log Analytics local y el entorno interno.
 bash scripts/deploy-bloomberg-private.sh environment
 
 # Crear el entorno si falta, dos apps y el job programado.
@@ -43,7 +45,7 @@ un envío de prueba ni copia datos desde el Storage original.
 
 ## Pendientes antes de activar Bloomberg
 
-- Infraestructura debe completar NSG, rutas y DNS: la subred consultada no tenía NSG ni tabla de rutas.
+- Infraestructura debe completar NSG, rutas y DNS de la nueva subred antes de activar cargas. El script no inventa destinos del firewall ni reglas corporativas.
 - Asociar los endpoints a DNS central. Para ACA, el modo `environment` devuelve
   el dominio y la IP privada para configurar la zona y el registro comodín.
 - Autorizar las identidades en ACR, Blob, Foundry y el buzón. El script no crea

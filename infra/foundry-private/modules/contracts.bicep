@@ -11,4 +11,7 @@ param validGateway bool
 @allowed([true])
 param validEnvironment bool
 
-output valid bool = validEnvironment && validNetwork && validRuntime && validApps && validGateway
+@allowed([true])
+param validSecurity bool
+
+output valid bool = validSecurity && validEnvironment && validNetwork && validRuntime && validApps && validGateway

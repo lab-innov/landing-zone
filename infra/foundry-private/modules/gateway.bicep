@@ -11,6 +11,8 @@ param identityId string
 param certificateSecretId string
 param healthPath string
 param workspaceId string
+param siemAuthorizationRuleId string
+param siemEventHubName string
 param actionGroupId string
 var gatewayId = resourceId('Microsoft.Network/applicationGateways', 'agw-${token}')
 resource waf 'Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies@2024-05-01' = {
@@ -103,6 +105,8 @@ resource diagnostics 'Microsoft.Insights/diagnosticSettings@2021-05-01-preview' 
   scope: gateway
   properties: {
     workspaceId: workspaceId
+    eventHubAuthorizationRuleId: empty(siemAuthorizationRuleId) ? null : siemAuthorizationRuleId
+    eventHubName: empty(siemEventHubName) ? null : siemEventHubName
     logs: [{ categoryGroup: 'allLogs', enabled: true }]
     metrics: [{ category: 'AllMetrics', enabled: true }]
   }

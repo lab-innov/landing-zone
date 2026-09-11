@@ -19,6 +19,8 @@ param deployApplications bool
 param frontendEnv array
 param backendEnv array
 param workspaceId string
+param siemAuthorizationRuleId string
+param siemEventHubName string
 param actionGroupId string
 
 resource insights 'Microsoft.Insights/components@2020-02-02' = {
@@ -126,6 +128,8 @@ resource diagnostics 'Microsoft.Insights/diagnosticSettings@2021-05-01-preview' 
   scope: environment
   properties: {
     workspaceId: workspaceId
+    eventHubAuthorizationRuleId: empty(siemAuthorizationRuleId) ? null : siemAuthorizationRuleId
+    eventHubName: empty(siemEventHubName) ? null : siemEventHubName
     logs: [{ categoryGroup: 'allLogs', enabled: true }]
   }
 }

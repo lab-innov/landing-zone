@@ -9,63 +9,26 @@ param routeTableIds object
 param useRemoteGateways bool
 param clientPrefixes array
 
-resource gatewayNsg 'Microsoft.Network/networkSecurityGroups@2024-05-01' = {
-  name: '${name}-appgw-nsg'
-  location: location
-  tags: tags
-  properties: {
-    securityRules: [
-      {
-        name: 'HTTPS-desde-CAF'
-        properties: {
-          priority: 100
-          direction: 'Inbound'
-          access: 'Allow'
-          protocol: 'Tcp'
-          sourceAddressPrefixes: clientPrefixes
-          sourcePortRange: '*'
-          destinationAddressPrefix: '*'
-          destinationPortRange: '443'
-        }
-      }
-      {
-        name: 'Sondas-Azure'
-        properties: {
-          priority: 110
-          direction: 'Inbound'
-          access: 'Allow'
-          protocol: '*'
-          sourceAddressPrefix: 'AzureLoadBalancer'
-          sourcePortRange: '*'
-          destinationAddressPrefix: '*'
-          destinationPortRange: '*'
-        }
-      }
-      {
-        name: 'Denegar-otras-entradas'
-        properties: {
-          priority: 4000
-          direction: 'Inbound'
-          access: 'Deny'
-          protocol: '*'
-          sourceAddressPrefix: '*'
-          sourcePortRange: '*'
-          destinationAddressPrefix: '*'
-          destinationPortRange: '*'
-        }
-      }
-    ]
-  }
-}
-// NSG de base; las reglas de salida aprobadas se aplican en el firewall central.
-resource workloadNsgs 'Microsoft.Network/networkSecurityGroups@2024-05-01' = [
-  for purpose in ['foundry', 'containers']: {
-    name: '${name}-${purpose}-nsg'
+param privateServiceAddresses object
+param operatorPrefixes array
+param monitorPrefixes array
+param extraEgress object
+module nsgs './nsg.bicep' = [for purpose in ['foundry', 'containers', 'appGateway', 'privateEndpoints']: {
+  name: 'nsg-${purpose}'
+  params: {
     location: location
     tags: tags
-    properties: { securityRules: [] }
+    name: purpose == 'appGateway' ? '${name}-appgw-nsg' : '${name}-${purpose}-nsg'
+    purpose: purpose
+    prefixes: prefixes
+    dnsServers: dnsServers
+    clientPrefixes: clientPrefixes
+    operatorPrefixes: operatorPrefixes
+    privateServiceAddresses: privateServiceAddresses
+    monitorPrefixes: monitorPrefixes
+    extraEgress: extraEgress[?purpose] ?? []
   }
-]
+}]
 resource vnet 'Microsoft.Network/virtualNetworks@2024-05-01' = {
   name: name
   location: location
@@ -78,7 +41,7 @@ resource vnet 'Microsoft.Network/virtualNetworks@2024-05-01' = {
         name: 'snet-foundry'
         properties: {
           addressPrefix: prefixes.foundry
-          networkSecurityGroup: { id: workloadNsgs[0].id }
+          networkSecurityGroup: { id: nsgs[0].outputs.id }
           routeTable: { id: routeTableIds.foundry }
           delegations: [{ name: 'foundry', properties: { serviceName: 'Microsoft.App/environments' } }]
         }
@@ -87,7 +50,7 @@ resource vnet 'Microsoft.Network/virtualNetworks@2024-05-01' = {
         name: 'snet-containers'
         properties: {
           addressPrefix: prefixes.containers
-          networkSecurityGroup: { id: workloadNsgs[1].id }
+          networkSecurityGroup: { id: nsgs[1].outputs.id }
           routeTable: { id: routeTableIds.containers }
           delegations: [{ name: 'containers', properties: { serviceName: 'Microsoft.App/environments' } }]
         }
@@ -97,7 +60,7 @@ resource vnet 'Microsoft.Network/virtualNetworks@2024-05-01' = {
         properties: {
           addressPrefix: prefixes.appGateway
           routeTable: { id: routeTableIds.appGateway }
-          networkSecurityGroup: { id: gatewayNsg.id }
+          networkSecurityGroup: { id: nsgs[2].outputs.id }
           delegations: [{ name: 'appgateway', properties: { serviceName: 'Microsoft.Network/applicationGateways' } }]
         }
       }
@@ -105,7 +68,8 @@ resource vnet 'Microsoft.Network/virtualNetworks@2024-05-01' = {
         name: 'snet-private-endpoints'
         properties: {
           addressPrefix: prefixes.privateEndpoints
-          privateEndpointNetworkPolicies: 'Disabled'
+          networkSecurityGroup: { id: nsgs[3].outputs.id }
+          privateEndpointNetworkPolicies: 'NetworkSecurityGroupEnabled'
         }
       }
 

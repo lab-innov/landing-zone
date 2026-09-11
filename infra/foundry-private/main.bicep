@@ -36,6 +36,31 @@ param cafClientPrefixes array
 param logAnalyticsWorkspaceId string
 @minLength(1)
 param actionGroupId string
+@description('Redes de operadores/ejecutores CAF que acceden a endpoints; no son todos los usuarios VPN.')
+param operatorPrefixes array = []
+@description('IP reales de endpoints privados, descubiertas tras la fundación: vault y cosmos.')
+type PrivateServiceAddresses = { vault: string[], cosmos: string[] }
+param privateServiceAddresses PrivateServiceAddresses = { vault: [], cosmos: [] }
+@description('IP o CIDR de endpoints AMPLS corporativos.')
+param monitorPrefixes array = []
+@description('Excepciones de salida TCP por subred; cada una exige destino, puertos y justificación.')
+type EgressRule = { destination: string, ports: string[], justification: string }
+type EgressRules = { foundry: EgressRule[]?, containers: EgressRule[]?, appGateway: EgressRule[]?, privateEndpoints: EgressRule[]? }
+param extraEgress EgressRules = { foundry: [], containers: [], appGateway: [], privateEndpoints: [] }
+@description('Evidencia del preflight de Defender vigente para esta suscripción y recursos.')
+param defenderCoverageVerified bool = false
+@description('Confirmación del SOC de recepción de eventos de esta solución en el SIEM.')
+param siemDeliveryVerified bool = false
+@description('Regla de autorización del Event Hub corporativo para diagnósticos; vacío usa el pipeline central de Log Analytics.')
+param siemAuthorizationRuleId string = ''
+param siemEventHubName string = ''
+@description('Exigir análisis de malware para cargas, heredado de CAF y verificado antes de activar.')
+param scanUploads bool = true
+
+@description('Confirmar que la aplicación espera análisis limpio antes de procesar archivos.')
+param uploadGateVerified bool = false
+@description('Nombres de secretos preexistentes de aplicación, sin acceso al certificado del gateway.')
+param backendSecretNames array = []
 @description('Confirmar DNS, endpoints, rutas y RBAC antes de activar runtime.')
 param networkReady bool = false
 @description('Confirmar autenticación/autorización Entra de las imágenes antes de activar la web.')
@@ -91,10 +116,11 @@ module contracts './modules/contracts.bicep' = {
   name: 'contratos-despliegue'
   params: {
     validNetwork: any(privateRange && parseCidr(vnetPrefix).cidr == 24 && parseCidr(vnetPrefix).network == split(vnetPrefix, '/')[0])
+    validSecurity: any((empty(siemAuthorizationRuleId) == empty(siemEventHubName)) && !contains(map(backendSecretNames, secret => toLower(secret)), toLower(certificateSecretName)) && empty(extraEgress.?privateEndpoints ?? []) && (!deployApplications || !empty(monitorPrefixes)))
     validEnvironment: any(empty(filter(concat(frontendEnv, backendEnv), entry => contains(reservedEnv, entry.name))))
-    validRuntime: any(!activateAgentRuntime || networkReady)
-    validApps: any(!deployApplications || (activateAgentRuntime && applicationAuthVerified && monitoringReady && contains(frontendImage, '.azurecr.io/') && contains(frontendImage, '@sha256:') && contains(backendImage, '.azurecr.io/') && contains(backendImage, '@sha256:') && !empty(models)))
-    validGateway: any(!deployGateway || (deployApplications && gatewayReady && !empty(gatewayHostname) && !empty(gatewayPrivateIp)))
+    validRuntime: any(!activateAgentRuntime || (!empty(privateServiceAddresses.cosmos) && networkReady && defenderCoverageVerified && siemDeliveryVerified))
+    validApps: any(!deployApplications || (activateAgentRuntime && applicationAuthVerified && monitoringReady && (!scanUploads || uploadGateVerified) && contains(frontendImage, '.azurecr.io/') && contains(frontendImage, '@sha256:') && contains(backendImage, '.azurecr.io/') && contains(backendImage, '@sha256:') && !empty(models)))
+    validGateway: any(!deployGateway || (!empty(privateServiceAddresses.vault) && deployApplications && gatewayReady && !empty(gatewayHostname) && !empty(gatewayPrivateIp)))
   }
 }
 var token = uniqueString(resourceGroup().id, workload)
@@ -125,6 +151,10 @@ module network './modules/network.bicep' = {
     routeTableIds: routeTableIds
     useRemoteGateways: useRemoteGateways
     clientPrefixes: cafClientPrefixes
+    operatorPrefixes: operatorPrefixes
+    privateServiceAddresses: privateServiceAddresses
+    monitorPrefixes: monitorPrefixes
+    extraEgress: extraEgress
   }
   dependsOn: [contracts]
 }
@@ -137,9 +167,10 @@ module services './modules/services.bicep' = {
     foundrySubnetId: network.outputs.foundrySubnetId
     backendPrincipalId: backendIdentity.properties.principalId
     frontendPrincipalId: frontendIdentity.properties.principalId
-    gatewayPrincipalId: gatewayIdentity.properties.principalId
     models: models
     workspaceId: logAnalyticsWorkspaceId
+    siemAuthorizationRuleId: siemAuthorizationRuleId
+    siemEventHubName: siemEventHubName
   }
 }
 @batchSize(1)
@@ -190,9 +221,22 @@ module apps './modules/apps.bicep' = {
     frontendEnv: frontendEnv
     backendEnv: backendEnv
     workspaceId: logAnalyticsWorkspaceId
+    siemAuthorizationRuleId: siemAuthorizationRuleId
+    siemEventHubName: siemEventHubName
     actionGroupId: actionGroupId
   }
-  dependsOn: [endpoints, agentRuntime]
+  dependsOn: [endpoints, agentRuntime, secretAccess]
+}
+module secretAccess './modules/secret-access.bicep' = {
+  name: 'permisos-secretos'
+  params: {
+    vaultName: services.outputs.vaultName
+    backendPrincipalId: backendIdentity.properties.principalId
+    gatewayPrincipalId: gatewayIdentity.properties.principalId
+    backendSecretNames: deployApplications ? backendSecretNames : []
+    certificateSecretName: certificateSecretName
+    deployGateway: deployGateway
+  }
 }
 module gateway './modules/gateway.bicep' = if (deployGateway) {
   name: 'application-gateway'
@@ -208,9 +252,13 @@ module gateway './modules/gateway.bicep' = if (deployGateway) {
     certificateSecretId: '${services.outputs.vaultUri}secrets/${certificateSecretName}'
     healthPath: frontendHealthPath
     workspaceId: logAnalyticsWorkspaceId
+    siemAuthorizationRuleId: siemAuthorizationRuleId
+    siemEventHubName: siemEventHubName
     actionGroupId: actionGroupId
   }
+  dependsOn: [secretAccess]
 }
+output securityResourceIds object = services.outputs.securityResourceIds
 output vnetId string = network.outputs.vnetId
 output registryServer string = services.outputs.registryServer
 output registryId string = services.outputs.registryId

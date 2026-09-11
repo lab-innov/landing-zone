@@ -70,6 +70,47 @@
     },
     "models": {
       "value": []
+    },
+    "operatorPrefixes": {
+      "value": []
+    },
+    "monitorPrefixes": {
+      "value": []
+    },
+    "privateServiceAddresses": {
+      "value": {
+        "vault": [],
+        "cosmos": []
+      }
+    },
+    "extraEgress": {
+      "value": {
+        "foundry": [],
+        "containers": [],
+        "appGateway": [],
+        "privateEndpoints": []
+      }
+    },
+    "backendSecretNames": {
+      "value": []
+    },
+    "defenderCoverageVerified": {
+      "value": false
+    },
+    "siemDeliveryVerified": {
+      "value": false
+    },
+    "scanUploads": {
+      "value": true
+    },
+    "uploadGateVerified": {
+      "value": false
+    },
+    "siemAuthorizationRuleId": {
+      "value": ""
+    },
+    "siemEventHubName": {
+      "value": ""
     }
   }
 }

@@ -12,10 +12,9 @@ Entregar `hubVnetId`, `dnsServers`, `cafClientPrefixes`, `routeTableIds` (claves
 y etiqueta `iniciativa`. Las tablas deben estar en la región y suscripción de la
 VNet y permitir asociación por el operador. No se modifican rutas corporativas.
 Plataforma verifica salida por firewall, dependencias Azure, DNS TCP/UDP 53,
-Entra ID y rutas de retorno de VPN. Los NSG de cargas mantienen la base Azure;
-no constituyen microsegmentación completa. El gateway limita entrada a HTTPS
-corporativo y sondas AzureLoadBalancer. El frontend limita entrada al gateway;
-el backend es interno al entorno ACA.
+Entra ID y rutas de retorno de VPN. Los cuatro NSG limitan conexiones por función
+con denegación final. Preparar IP de endpoints, AMPLS y ejecutores siguiendo
+[seguridad común y ajustes por solución](SEGURIDAD.md).
 
 Solo se crea el peering spoke → hub. Empezar con `useRemoteGateways=false`;
 plataforma completa el peering inverso y habilita tránsito del gateway del hub.
@@ -60,7 +59,9 @@ El runtime Foundry no configura automáticamente tracing de conversaciones.
    servicios, identidades, endpoints, ACA vacío y observabilidad. Se requieren
    permisos de recursos y asignación de roles. No desplegar modelos no aprobados.
 2. **Runtime:** verificar endpoints aprobados, DNS, firewall, peering, VPN y RBAC;
-   establecer `networkReady=true` y `activateAgentRuntime=true`. La inyección de
+   completar `privateServiceAddresses.cosmos`, comprobar Defender y recepción SIEM;
+   establecer `defenderCoverageVerified=true`, `siemDeliveryVerified=true`,
+   `networkReady=true` y `activateAgentRuntime=true`. La inyección de
    red crea el capability host de cuenta mediante el proveedor; Bicep crea el de
    proyecto y sus conexiones Standard. Comprobar ambos, sin crear un segundo
    host de cuenta. Configurar `models` con nombre, modelo, versión, SKU y capacidad
@@ -72,14 +73,15 @@ El runtime Foundry no configura automáticamente tracing de conversaciones.
    Puertos predeterminados: 3000/8000. El frontend debe hacer proxy a `BACKEND_URL`;
    validar inicio de sesión Entra, grupos/roles, autorización y rechazo anónimo
    en las imágenes reales. Solo entonces marcar `applicationAuthVerified=true`.
-   Completar AMPLS y marcar `monitoringReady=true`, después `deployApplications=true`.
+   Completar `monitorPrefixes`, control de archivos (`uploadGateVerified` si
+   `scanUploads=true`) y AMPLS; marcar `monitoringReady=true`, después `deployApplications=true`.
    Variables adicionales son solo para valores no secretos. No sobrescribir las
    variables de conexión generadas por la plantilla.
 4. **Gateway:** importar PFX con cadena y clave privada en el secreto de certificado
    de Key Vault, preparar hostname/IP y verificar
    `Microsoft.Network/EnableApplicationGatewayNetworkIsolation`. No se registra
    automáticamente esta característica de suscripción. Con DNS y certificado
-   listos, usar `gatewayReady=true` y `deployGateway=true`. Solo HTTPS; TLS mínimo
+   listos y con `privateServiceAddresses.vault` descubierto, usar `gatewayReady=true` y `deployGateway=true`. Solo HTTPS; TLS mínimo
    1.2, identidad de gateway y URI de certificado sin versión para renovación.
 
 Los indicadores son declaraciones del operador después de comprobar evidencias,

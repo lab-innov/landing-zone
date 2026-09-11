@@ -6,10 +6,11 @@ param token string
 param foundrySubnetId string
 param backendPrincipalId string
 param frontendPrincipalId string
-param gatewayPrincipalId string
 @description('Despliegues de modelos aprobados: name, model, version, sku, capacity.')
 param models array
 param workspaceId string
+param siemAuthorizationRuleId string
+param siemEventHubName string
 
 resource storage 'Microsoft.Storage/storageAccounts@2023-05-01' = {
   name: 'st${token}'
@@ -64,7 +65,7 @@ resource registry 'Microsoft.ContainerRegistry/registries@2023-07-01' = {
   properties: {
     adminUserEnabled: false
     publicNetworkAccess: 'Disabled'
-    networkRuleBypassOptions: 'None'
+    networkRuleBypassOptions: 'AzureServices'
   }
 }
 resource foundry 'Microsoft.CognitiveServices/accounts@2026-01-15-preview' = {
@@ -124,18 +125,6 @@ resource foundryRole 'Microsoft.Authorization/roleAssignments@2022-04-01' = {
     roleDefinitionId: subscriptionResourceId(
       'Microsoft.Authorization/roleDefinitions',
       '53ca6127-db72-4b80-b1b0-d745d6d5456d'
-    )
-  }
-}
-resource vaultRole 'Microsoft.Authorization/roleAssignments@2022-04-01' = {
-  name: guid(vault.id, backendPrincipalId, 'secrets-user')
-  scope: vault
-  properties: {
-    principalId: backendPrincipalId
-    principalType: 'ServicePrincipal'
-    roleDefinitionId: subscriptionResourceId(
-      'Microsoft.Authorization/roleDefinitions',
-      '4633458b-17de-408a-b874-0445c86b69e6'
     )
   }
 }
@@ -254,24 +243,13 @@ resource searchRoles 'Microsoft.Authorization/roleAssignments@2022-04-01' = [
   }
 ]
 
-resource gatewayCertificateRole 'Microsoft.Authorization/roleAssignments@2022-04-01' = {
-  name: guid(vault.id, gatewayPrincipalId, 'certificate-reader')
-  scope: vault
-  properties: {
-    principalId: gatewayPrincipalId
-    principalType: 'ServicePrincipal'
-    roleDefinitionId: subscriptionResourceId(
-      'Microsoft.Authorization/roleDefinitions',
-      '4633458b-17de-408a-b874-0445c86b69e6'
-    )
-  }
-}
-
 resource foundryDiagnostics 'Microsoft.Insights/diagnosticSettings@2021-05-01-preview' = {
   name: 'auditoria-caf'
   scope: foundry
   properties: {
     workspaceId: workspaceId
+    eventHubAuthorizationRuleId: empty(siemAuthorizationRuleId) ? null : siemAuthorizationRuleId
+    eventHubName: empty(siemEventHubName) ? null : siemEventHubName
     logs: [{ categoryGroup: 'allLogs', enabled: true }]
   }
 }
@@ -281,6 +259,8 @@ resource storageDiagnostics 'Microsoft.Insights/diagnosticSettings@2021-05-01-pr
   scope: blob
   properties: {
     workspaceId: workspaceId
+    eventHubAuthorizationRuleId: empty(siemAuthorizationRuleId) ? null : siemAuthorizationRuleId
+    eventHubName: empty(siemEventHubName) ? null : siemEventHubName
     logs: [{ categoryGroup: 'allLogs', enabled: true }]
   }
 }
@@ -295,6 +275,8 @@ resource agentStorageDiagnostics 'Microsoft.Insights/diagnosticSettings@2021-05-
   scope: agentBlobService
   properties: {
     workspaceId: workspaceId
+    eventHubAuthorizationRuleId: empty(siemAuthorizationRuleId) ? null : siemAuthorizationRuleId
+    eventHubName: empty(siemEventHubName) ? null : siemEventHubName
     logs: [{ categoryGroup: 'allLogs', enabled: true }]
   }
 }
@@ -304,6 +286,8 @@ resource vaultDiagnostics 'Microsoft.Insights/diagnosticSettings@2021-05-01-prev
   scope: vault
   properties: {
     workspaceId: workspaceId
+    eventHubAuthorizationRuleId: empty(siemAuthorizationRuleId) ? null : siemAuthorizationRuleId
+    eventHubName: empty(siemEventHubName) ? null : siemEventHubName
     logs: [{ categoryGroup: 'allLogs', enabled: true }]
   }
 }
@@ -313,6 +297,8 @@ resource registryDiagnostics 'Microsoft.Insights/diagnosticSettings@2021-05-01-p
   scope: registry
   properties: {
     workspaceId: workspaceId
+    eventHubAuthorizationRuleId: empty(siemAuthorizationRuleId) ? null : siemAuthorizationRuleId
+    eventHubName: empty(siemEventHubName) ? null : siemEventHubName
     logs: [{ categoryGroup: 'allLogs', enabled: true }]
   }
 }
@@ -322,6 +308,8 @@ resource cosmosDiagnostics 'Microsoft.Insights/diagnosticSettings@2021-05-01-pre
   scope: cosmos
   properties: {
     workspaceId: workspaceId
+    eventHubAuthorizationRuleId: empty(siemAuthorizationRuleId) ? null : siemAuthorizationRuleId
+    eventHubName: empty(siemEventHubName) ? null : siemEventHubName
     logs: [{ categoryGroup: 'allLogs', enabled: true }]
   }
 }
@@ -331,6 +319,31 @@ resource searchDiagnostics 'Microsoft.Insights/diagnosticSettings@2021-05-01-pre
   scope: search
   properties: {
     workspaceId: workspaceId
+    eventHubAuthorizationRuleId: empty(siemAuthorizationRuleId) ? null : siemAuthorizationRuleId
+    eventHubName: empty(siemEventHubName) ? null : siemEventHubName
     logs: [{ categoryGroup: 'allLogs', enabled: true }]
   }
+}
+
+resource storageProtection 'Microsoft.Security/defenderForStorageSettings@2025-06-01' = {
+  name: 'current'
+  scope: storage
+  properties: {
+    isEnabled: true
+    overrideSubscriptionLevelSettings: false
+  }
+}
+resource agentStorageProtection 'Microsoft.Security/defenderForStorageSettings@2025-06-01' = {
+  name: 'current'
+  scope: agentStorage
+  properties: { isEnabled: true, overrideSubscriptionLevelSettings: false }
+}
+output vaultName string = vault.name
+output securityResourceIds object = {
+  storage: storage.id
+  agentStorage: agentStorage.id
+  vault: vault.id
+  registry: registry.id
+  cosmos: cosmos.id
+  foundry: foundry.id
 }

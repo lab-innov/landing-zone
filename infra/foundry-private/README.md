@@ -12,7 +12,7 @@ zonas/grupos DNS ni Log Analytics.
 | Persistencia | Storage ZRS, Cosmos NoSQL zonal con backup continuo de 7 días, Search Standard con 3 réplicas |
 | Aplicación | Storage `uploads` separado; ACA interno zonal; dos aplicaciones de 0,5 vCPU/1 GiB, 2-3 réplicas |
 | Entrada | WAF_v2 privado zonal, 2-3 instancias, HTTPS y certificado de Key Vault |
-| Seguridad | Identidades separadas, ACR Premium privado, Key Vault RBAC y protección contra purga |
+| Seguridad | NSG por función, identidades separadas, secretos acotados, Defender Storage heredado de CAF |
 | Operación | Application Insights privado, Log Analytics y Action Group existentes; diagnósticos y alertas |
 
 El /24 queda completo: Foundry /25 está por debajo de la recomendación de
@@ -30,6 +30,7 @@ python3 infra/foundry-private/check_parameters.py /ruta/privada/parametros.json
 Copiar `main.parameters.example.json` fuera del repositorio y completar los
 valores corporativos. Los marcadores se rechazan deliberadamente. Consultar
 [preparación y despliegue](DESPLIEGUE.md) para DNS, rutas, etapas, pruebas y rollback.
+Consultar [seguridad](SEGURIDAD.md) para Defender, SIEM, NSG y ajustes por riesgo.
 
 Esta variante sustituye `prefixes`, `hubFirewallIp`, `privateDnsMode`,
 `privateDnsZoneIds` y `createContainerEnvironmentDns` por `vnetPrefix`,

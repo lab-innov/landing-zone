@@ -17,7 +17,7 @@ def foundation():
     return dict(location='eastus', workload='agent', tags={'iniciativa':'pruebas'}, vnetPrefix='10.123.4.0/24', dnsServers=['10.120.0.4'], cafClientPrefixes=['10.121.0.0/24'], hubVnetId=rid('Microsoft.Network/virtualNetworks'), logAnalyticsWorkspaceId=rid('Microsoft.OperationalInsights/workspaces'), actionGroupId=rid('Microsoft.Insights/actionGroups'), routeTableIds={k:rid('Microsoft.Network/routeTables') for k in ('foundry','containers','appGateway')})
 
 def complete():
-    return dict(foundation(), networkReady=True, activateAgentRuntime=True, deployApplications=True, applicationAuthVerified=True, monitoringReady=True, deployGateway=True, gatewayReady=True, gatewayPrivateIp='10.123.4.254', gatewayHostname='agentes.caf.com', frontendImage='caf.azurecr.io/frontend@sha256:'+'a'*64, backendImage='caf.azurecr.io/backend@sha256:'+'b'*64, models=[dict(name='autorizado', model='modelo-autorizado', version='version-autorizada', sku='Standard', capacity=10)])
+    return dict(foundation(), networkReady=True, defenderCoverageVerified=True, siemDeliveryVerified=True, uploadGateVerified=True, monitorPrefixes=['10.120.1.4/32'], privateServiceAddresses={'vault':['10.123.4.198'], 'cosmos':['10.123.4.202','10.123.4.203']}, activateAgentRuntime=True, deployApplications=True, applicationAuthVerified=True, monitoringReady=True, deployGateway=True, gatewayReady=True, gatewayPrivateIp='10.123.4.254', gatewayHostname='agentes.caf.com', frontendImage='caf.azurecr.io/frontend@sha256:'+'a'*64, backendImage='caf.azurecr.io/backend@sha256:'+'b'*64, models=[dict(name='autorizado', model='modelo-autorizado', version='version-autorizada', sku='Standard', capacity=10)])
 
 class Parameters(unittest.TestCase):
     def test_valid_stages(self):
@@ -32,7 +32,7 @@ class Parameters(unittest.TestCase):
         for prefix in ['10.123.4.0/23','10.123.4.0/25','10.123.4.1/24','8.8.8.0/24','172.30.0.0/24','172.31.0.0/24','100.64.0.0/24']:
             with self.subTest(prefix=prefix): self.assertTrue(checker.check(dict(foundation(),vnetPrefix=prefix)))
     def test_missing_readiness(self):
-        for key in ['networkReady','activateAgentRuntime','applicationAuthVerified','monitoringReady','gatewayReady','deployApplications']:
+        for key in ['defenderCoverageVerified','siemDeliveryVerified','uploadGateVerified','networkReady','activateAgentRuntime','applicationAuthVerified','monitoringReady','gatewayReady','deployApplications']:
             with self.subTest(key=key):
                 p=complete();p[key]=False;self.assertTrue(checker.check(p))
     def test_invalid_gateway(self):
@@ -44,6 +44,11 @@ class Parameters(unittest.TestCase):
     def test_models_images_routes(self):
         for key,value in [('models',[]),('frontendImage','caf.azurecr.io/web:latest'),('routeTableIds',{}),('cafClientPrefixes',['10.123.4.0/24']),('networkReady','true')]:
             self.assertTrue(checker.check(dict(complete(),**{key:value})))
+
+    def test_security_inputs(self):
+        for key, value in [('monitorPrefixes', []), ('privateServiceAddresses', {}), ('backendSecretNames', ['APPGATEWAY-TLS']), ('siemEventHubName', 'alone'), ('extraEgress', {'foundry':[{'destination':'0.0.0.0/0','ports':['*'],'justification':''}]})]:
+            with self.subTest(key=key): self.assertTrue(checker.check(dict(complete(), **{key:value})))
+        self.assertEqual(checker.check(dict(complete(), extraEgress={'containers':[{'destination':'10.122.0.5/32','ports':['443'],'justification':'API aprobada'}]})), [])
 
 class Template(unittest.TestCase):
     @classmethod

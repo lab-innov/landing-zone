@@ -55,6 +55,57 @@ def check(p):
         require(bool(resource_id(p.get('routeTableIds', {}).get(purpose), 'Microsoft.Network/routeTables')), f'routeTableIds.{purpose}: ID completo requerido.')
     for flag in ('useRemoteGateways', 'networkReady', 'monitoringReady', 'applicationAuthVerified', 'gatewayReady', 'activateAgentRuntime', 'deployApplications', 'deployGateway'):
         require(type(p.get(flag, False)) is bool, f'{flag}: debe ser booleano.')
+    for flag in ('defenderCoverageVerified', 'siemDeliveryVerified', 'uploadGateVerified', 'scanUploads'):
+        require(type(p.get(flag, flag == 'scanUploads')) is bool, f'{flag}: debe ser booleano.')
+    if p.get('activateAgentRuntime'):
+        for key in ('defenderCoverageVerified', 'siemDeliveryVerified'):
+            require(p.get(key) is True, f'Runtime requiere {key}.')
+    addresses = p.get('privateServiceAddresses', {})
+    for key in ('vault', 'cosmos'):
+        values = addresses.get(key, [])
+        require(isinstance(values, list), f'privateServiceAddresses.{key}: lista requerida.')
+        for value in values if isinstance(values, list) else []:
+            try:
+                address = ipaddress.IPv4Address(value)
+                require(bool(nets) and address in nets['privateEndpoints'] and int(address) - int(nets['privateEndpoints'].network_address) >= 4 and address != nets['privateEndpoints'].broadcast_address, f'{key}: IP fuera de endpoints o reservada.')
+            except (ValueError, TypeError):
+                errors.append(f'{key}: IP inválida.')
+    require(not p.get('activateAgentRuntime') or bool(addresses.get('cosmos')), 'Runtime requiere IP reales de Cosmos.')
+    require(not p.get('deployGateway') or bool(addresses.get('vault')), 'Gateway requiere IP real de Key Vault.')
+    for key in ('operatorPrefixes', 'monitorPrefixes'):
+        for value in p.get(key, []):
+            try:
+                candidate = ipaddress.ip_network(value, strict=True)
+                require(candidate.version == 4 and any(candidate.subnet_of(n) for n in PRIVATE), f'{key}: usar red privada.')
+            except (ValueError, TypeError):
+                errors.append(f'{key}: red inválida.')
+    if p.get('deployApplications'):
+        require(bool(p.get('monitorPrefixes')), 'Aplicaciones requieren IP de AMPLS.')
+        require(not p.get('scanUploads', True) or p.get('uploadGateVerified') is True, 'Aplicación debe verificar resultado limpio de malware.')
+    secrets = p.get('backendSecretNames', [])
+    require(len(secrets) == len(set(v.lower() for v in secrets)), 'No repetir secretos.')
+    require(p.get('certificateSecretName', 'appgateway-tls').lower() not in [v.lower() for v in secrets], 'Backend no puede leer certificado del gateway.')
+    for secret in secrets:
+        require(bool(re.fullmatch(r'[a-zA-Z0-9-]{1,127}', secret)), 'Nombre de secreto inválido.')
+    for purpose, rules in p.get('extraEgress', {}).items():
+        require(purpose in ('foundry', 'containers', 'appGateway') or (purpose == 'privateEndpoints' and not rules), 'No se permiten excepciones en endpoints ni subredes desconocidas.')
+        require(len(rules) <= 100, 'Máximo 100 excepciones por subred.')
+        for rule in rules:
+            require(bool(rule.get('justification', '').strip()) and len(rule.get('justification', '')) <= 140, 'Excepción requiere justificación de hasta 140 caracteres.')
+            try:
+                destination = ipaddress.IPv4Network(rule.get('destination', ''), strict=True)
+                require(destination.prefixlen >= 24, 'Excepción requiere destino /24 o más específico; FQDN se controla en firewall CAF.')
+            except (ValueError, TypeError):
+                errors.append('Destino de excepción debe ser IPv4/CIDR explícito.')
+            ports = rule.get('ports', [])
+            require(bool(ports), 'Excepción requiere puertos.')
+            for port in ports:
+                require(isinstance(port, str) and port.isdigit() and 1 <= int(port) <= 65535, 'Puertos de excepción: números individuales 1-65535.')
+    event_id = p.get('siemAuthorizationRuleId', '')
+    event_name = p.get('siemEventHubName', '')
+    require(bool(event_id) == bool(event_name), 'Event Hub requiere ID de regla y nombre juntos.')
+    if event_id:
+        require(bool(re.fullmatch(r'/subscriptions/[0-9a-fA-F-]{36}/resourceGroups/[^/]+/providers/Microsoft.EventHub/namespaces/[^/]+/authorizationRules/[^/]+', event_id)), 'Event Hub requiere ID de regla de autorización del namespace.')
     reserved_env = {'BACKEND_URL', 'AZURE_CLIENT_ID', 'AZURE_AI_PROJECT_ENDPOINT', 'AZURE_STORAGE_BLOB_ENDPOINT', 'AZURE_STORAGE_CONTAINER', 'AZURE_KEY_VAULT_URL', 'APPLICATIONINSIGHTS_CONNECTION_STRING'}
     for key in ('frontendEnv', 'backendEnv'):
         for entry in p.get(key, []):

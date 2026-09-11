@@ -2,27 +2,74 @@
   "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-    "location": { "value": "REEMPLAZAR_REGION_CAF" },
-    "workload": { "value": "agent" },
-    "tags": { "value": { "patron": "foundry-agent", "organizacion": "CAF" } },
-    "prefixes": { "value": {
-      "vnet": "REEMPLAZAR_CIDR_IPAM",
-      "foundry": "REEMPLAZAR_CIDR_IPAM",
-      "containers": "REEMPLAZAR_CIDR_IPAM",
-      "appGateway": "REEMPLAZAR_CIDR_IPAM",
-      "privateEndpoints": "REEMPLAZAR_CIDR_IPAM",
-      "gateway": "REEMPLAZAR_CIDR_IPAM",
-      "firewall": "REEMPLAZAR_CIDR_IPAM"
-    } },
-    "dnsServers": { "value": ["REEMPLAZAR_IP_DNS_CAF"] },
-    "hubVnetId": { "value": "REEMPLAZAR_ID_VNET_HUB_CAF" },
-    "hubFirewallIp": { "value": "REEMPLAZAR_IP_FIREWALL_CAF" },
-    "useRemoteGateways": { "value": false },
-    "cafClientPrefixes": { "value": ["REEMPLAZAR_CIDR_CLIENTES_CAF"] },
-    "privateDnsMode": { "value": "policy" },
-    "createContainerEnvironmentDns": { "value": false },
-    "activateAgentRuntime": { "value": false },
-    "deployApplications": { "value": false },
-    "deployGateway": { "value": false }
+    "location": {
+      "value": "eastus"
+    },
+    "workload": {
+      "value": "agent"
+    },
+    "tags": {
+      "value": {
+        "patron": "foundry-agent",
+        "organizacion": "CAF",
+        "iniciativa": "REEMPLAZAR_INICIATIVA"
+      }
+    },
+    "dnsServers": {
+      "value": [
+        "REEMPLAZAR_IP_DNS_CAF"
+      ]
+    },
+    "hubVnetId": {
+      "value": "REEMPLAZAR_ID_VNET_HUB_CAF"
+    },
+    "useRemoteGateways": {
+      "value": false
+    },
+    "cafClientPrefixes": {
+      "value": [
+        "REEMPLAZAR_CIDR_CLIENTES_CAF"
+      ]
+    },
+    "activateAgentRuntime": {
+      "value": false
+    },
+    "deployApplications": {
+      "value": false
+    },
+    "deployGateway": {
+      "value": false
+    },
+    "vnetPrefix": {
+      "value": "REEMPLAZAR_CIDR_IPAM_24"
+    },
+    "routeTableIds": {
+      "value": {
+        "foundry": "REEMPLAZAR_ID_TABLA_RUTAS_CAF",
+        "containers": "REEMPLAZAR_ID_TABLA_RUTAS_CAF",
+        "appGateway": "REEMPLAZAR_ID_TABLA_RUTAS_CAF"
+      }
+    },
+    "logAnalyticsWorkspaceId": {
+      "value": "REEMPLAZAR_ID_LOG_ANALYTICS_CAF"
+    },
+    "actionGroupId": {
+      "value": "REEMPLAZAR_ID_ACTION_GROUP_CAF"
+    },
+    "networkReady": {
+      "value": false
+    },
+    "applicationAuthVerified": {
+      "value": false
+    },
+    "monitoringReady": {
+      "value": false
+    },
+    "gatewayReady": {
+      "value": false
+    },
+    "models": {
+      "value": []
+    }
   }
 }

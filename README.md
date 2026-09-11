@@ -11,7 +11,8 @@ Este repositorio contiene **código propio** para desplegar la base de la landin
 
 La rama `foundry-agent` contiene la [base privada de Foundry Standard](infra/foundry-private/README.md),
 con frontend y backend en Container Apps, Application Gateway privado con WAF,
-ACR, Key Vault y persistencia dentro de CAF.
+ACR, Key Vault y persistencia dentro de CAF. La variante actual usa East US, una
+VNet /24, VPN corporativa, DNS CAF/DINE y Log Analytics central existente.
 
 Esta base es común para agentes **con o sin RAG**. No se mantiene una rama
 `foundry-rag` separada: la recuperación documental se configura sobre esta misma

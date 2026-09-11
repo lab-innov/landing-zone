@@ -4,8 +4,6 @@ param name string
 param subnetId string
 param targetId string
 param groupId string
-@description('Vacío cuando Azure Policy/DINE administra los grupos DNS.')
-param zoneIds array
 resource endpoint 'Microsoft.Network/privateEndpoints@2024-05-01' = {
   name: name
   location: location
@@ -18,12 +16,5 @@ resource endpoint 'Microsoft.Network/privateEndpoints@2024-05-01' = {
         properties: { privateLinkServiceId: targetId, groupIds: [groupId] }
       }
     ]
-  }
-}
-resource dns 'Microsoft.Network/privateEndpoints/privateDnsZoneGroups@2024-05-01' = if (!empty(zoneIds)) {
-  parent: endpoint
-  name: 'default'
-  properties: {
-    privateDnsZoneConfigs: [for (id, i) in zoneIds: { name: 'zone-${i}', properties: { privateDnsZoneId: id } }]
   }
 }

@@ -18,20 +18,20 @@ param backendPort int
 param deployApplications bool
 param frontendEnv array
 param backendEnv array
-param createEnvironmentDns bool
+param workspaceId string
+param actionGroupId string
 
-resource workspace 'Microsoft.OperationalInsights/workspaces@2023-09-01' = {
-  name: 'law-${token}'
-  location: location
-  tags: tags
-  properties: { retentionInDays: 30, sku: { name: 'PerGB2018' } }
-}
 resource insights 'Microsoft.Insights/components@2020-02-02' = {
   name: 'appi-${token}'
   location: location
   tags: tags
   kind: 'web'
-  properties: { Application_Type: 'web', WorkspaceResourceId: workspace.id }
+  properties: {
+    Application_Type: 'web'
+    WorkspaceResourceId: workspaceId
+    publicNetworkAccessForIngestion: 'Disabled'
+    publicNetworkAccessForQuery: 'Disabled'
+  }
 }
 resource environment 'Microsoft.App/managedEnvironments@2025-01-01' = {
   name: 'cae-${token}'
@@ -40,22 +40,8 @@ resource environment 'Microsoft.App/managedEnvironments@2025-01-01' = {
   properties: {
     vnetConfiguration: { infrastructureSubnetId: subnetId, internal: true }
     workloadProfiles: [{ name: 'Consumption', workloadProfileType: 'Consumption' }]
-    appLogsConfiguration: {
-      destination: 'log-analytics'
-      logAnalyticsConfiguration: {
-        customerId: workspace.properties.customerId
-        sharedKey: workspace.listKeys().primarySharedKey
-      }
-    }
-  }
-}
-module environmentDns './environment-dns.bicep' = if (createEnvironmentDns) {
-  name: 'dns-container-apps'
-  params: {
-    domain: environment.properties.defaultDomain
-    ip: environment.properties.staticIp
-    vnetId: substring(subnetId, 0, lastIndexOf(subnetId, '/subnets/'))
-    tags: tags
+    zoneRedundant: true
+    appLogsConfiguration: { destination: 'azure-monitor' }
   }
 }
 resource backend 'Microsoft.App/containerApps@2025-01-01' = if (deployApplications) {
@@ -90,7 +76,7 @@ resource backend 'Microsoft.App/containerApps@2025-01-01' = if (deployApplicatio
           )
         }
       ]
-      scale: { minReplicas: 1, maxReplicas: 3 }
+      scale: { minReplicas: 2, maxReplicas: 3 }
     }
   }
 }
@@ -126,11 +112,42 @@ resource frontend 'Microsoft.App/containerApps@2025-01-01' = if (deployApplicati
           )
         }
       ]
-      scale: { minReplicas: 1, maxReplicas: 3 }
+      scale: { minReplicas: 2, maxReplicas: 3 }
     }
   }
 }
 output frontendFqdn string = deployApplications ? frontend!.properties.configuration.ingress.fqdn : ''
 output environmentDomain string = environment.properties.defaultDomain
 output environmentIp string = environment.properties.staticIp
-output workspaceId string = workspace.id
+
+
+resource diagnostics 'Microsoft.Insights/diagnosticSettings@2021-05-01-preview' = {
+  name: 'auditoria-caf'
+  scope: environment
+  properties: {
+    workspaceId: workspaceId
+    logs: [{ categoryGroup: 'allLogs', enabled: true }]
+  }
+}
+
+resource cpuAlerts 'Microsoft.Insights/metricAlerts@2018-03-01' = [for appName in ['frontend', 'backend']: if (deployApplications) {
+  name: 'alerta-cpu-${appName}-${token}'
+  location: 'global'
+  tags: tags
+  properties: {
+    description: 'Consumo sostenido superior a 450 millicores por aplicación.'
+    severity: 2
+    enabled: true
+    scopes: [resourceId('Microsoft.App/containerApps', '${appName}-${token}')]
+    evaluationFrequency: 'PT1M'
+    windowSize: 'PT5M'
+    criteria: {
+      'odata.type': 'Microsoft.Azure.Monitor.SingleResourceMultipleMetricCriteria'
+      allOf: [{ name: 'cpu', criterionType: 'StaticThresholdCriterion', metricNamespace: 'Microsoft.App/containerApps', metricName: 'UsageNanoCores', operator: 'GreaterThan', threshold: 450000000, timeAggregation: 'Average' }]
+    }
+    actions: [{ actionGroupId: actionGroupId }]
+  }
+  dependsOn: [frontend, backend]
+}]
+
+output applicationInsightsId string = insights.id

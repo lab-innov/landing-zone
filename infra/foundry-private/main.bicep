@@ -1,34 +1,61 @@
 targetScope = 'resourceGroup'
 
 @description('Región aprobada con soporte Foundry BYO VNet y Storage ZRS.')
-param location string = resourceGroup().location
-param tags object = {}
+@allowed(['eastus'])
+param location string = 'eastus'
+type WorkloadTags = {
+  @minLength(1)
+  iniciativa: string
+  *: string
+}
+param tags WorkloadTags
 @description('Identificador estable del workload; no cambiar tras desplegar.')
 @minLength(2)
 @maxLength(12)
 param workload string
-@description('CIDR aprobados por CAF, sin valores predeterminados. Ver README.')
-param prefixes object
+@description('Bloque IPv4 /24 aprobado por IPAM; se derivan cuatro subredes.')
+param vnetPrefix string
 @minLength(1)
 param dnsServers array
 @minLength(1)
 param hubVnetId string
-@minLength(1)
-param hubFirewallIp string
+@description('IDs de tablas corporativas: foundry, containers y appGateway.')
+type CorporateRoutes = {
+  @minLength(1)
+  foundry: string
+  @minLength(1)
+  containers: string
+  @minLength(1)
+  appGateway: string
+}
+param routeTableIds CorporateRoutes
 param useRemoteGateways bool = false
 @minLength(1)
 param cafClientPrefixes array
-@allowed(['policy', 'existing'])
-@description('policy: DINE administra los grupos DNS; existing: usar IDs centrales explícitos.')
-param privateDnsMode string = 'policy'
-@description('IDs de zonas privadas existentes: foundry (tres), blob, agentBlob, vault, acr, cosmos, search; cada valor es un array.')
-param privateDnsZoneIds object = {}
-@description('Crear zona del dominio interno de ACA solo si CAF delega su gestión al spoke; de otro modo usar los outputs en DNS central.')
-param createContainerEnvironmentDns bool = false
+@minLength(1)
+param logAnalyticsWorkspaceId string
+@minLength(1)
+param actionGroupId string
+@description('Confirmar DNS, endpoints, rutas y RBAC antes de activar runtime.')
+param networkReady bool = false
+@description('Confirmar autenticación/autorización Entra de las imágenes antes de activar la web.')
+param applicationAuthVerified bool = false
+@description('Confirmar AMPLS y resolución privada de telemetría antes de activar la web.')
+param monitoringReady bool = false
+@description('Confirmar certificado, DNS web y habilitación de gateway privado.')
+param gatewayReady bool = false
 @description('Activar después de verificar endpoints privados, DNS y propagación de RBAC.')
 param activateAgentRuntime bool = false
 @description('Modelos autorizados con name, model, version, sku y capacity. Vacío no despliega modelos.')
-param models array = []
+type ModelDeployment = {
+  name: string
+  model: string
+  version: string
+  sku: string
+  @minValue(1)
+  capacity: int
+}
+param models ModelDeployment[] = []
 @description('Activar después de publicar ambas imágenes en el ACR privado.')
 param deployApplications bool = false
 param frontendImage string = ''
@@ -36,8 +63,12 @@ param backendImage string = ''
 param frontendPort int = 3000
 param backendPort int = 8000
 @description('Variables no secretas adicionales; deben corresponder al contrato real de cada imagen.')
-param frontendEnv array = []
-param backendEnv array = []
+type EnvironmentValue = {
+  name: string
+  value: string
+}
+param frontendEnv EnvironmentValue[] = []
+param backendEnv EnvironmentValue[] = []
 @description('Activar después de importar el certificado TLS en Key Vault y publicar DNS del sitio.')
 param deployGateway bool = false
 param gatewayPrivateIp string = ''
@@ -46,6 +77,26 @@ param gatewayHostname string = ''
 param certificateSecretName string = 'appgateway-tls'
 param frontendHealthPath string = '/'
 
+var reservedEnv = ['BACKEND_URL', 'AZURE_CLIENT_ID', 'AZURE_AI_PROJECT_ENDPOINT', 'AZURE_STORAGE_BLOB_ENDPOINT', 'AZURE_STORAGE_CONTAINER', 'AZURE_KEY_VAULT_URL', 'APPLICATIONINSIGHTS_CONNECTION_STRING']
+var octets = split(split(vnetPrefix, '/')[0], '.')
+var privateRange = octets[0] == '10' || (octets[0] == '192' && octets[1] == '168') || (octets[0] == '172' && int(octets[1]) >= 16 && int(octets[1]) <= 29)
+var prefixes = {
+  vnet: vnetPrefix
+  foundry: cidrSubnet(vnetPrefix, 25, 0)
+  containers: cidrSubnet(vnetPrefix, 26, 2)
+  privateEndpoints: cidrSubnet(vnetPrefix, 27, 6)
+  appGateway: cidrSubnet(vnetPrefix, 27, 7)
+}
+module contracts './modules/contracts.bicep' = {
+  name: 'contratos-despliegue'
+  params: {
+    validNetwork: any(privateRange && parseCidr(vnetPrefix).cidr == 24 && parseCidr(vnetPrefix).network == split(vnetPrefix, '/')[0])
+    validEnvironment: any(empty(filter(concat(frontendEnv, backendEnv), entry => contains(reservedEnv, entry.name))))
+    validRuntime: any(!activateAgentRuntime || networkReady)
+    validApps: any(!deployApplications || (activateAgentRuntime && applicationAuthVerified && monitoringReady && contains(frontendImage, '.azurecr.io/') && contains(frontendImage, '@sha256:') && contains(backendImage, '.azurecr.io/') && contains(backendImage, '@sha256:') && !empty(models)))
+    validGateway: any(!deployGateway || (deployApplications && gatewayReady && !empty(gatewayHostname) && !empty(gatewayPrivateIp)))
+  }
+}
 var token = uniqueString(resourceGroup().id, workload)
 resource frontendIdentity 'Microsoft.ManagedIdentity/userAssignedIdentities@2023-01-31' = {
   name: 'id-frontend-${token}'
@@ -71,10 +122,11 @@ module network './modules/network.bicep' = {
     prefixes: prefixes
     dnsServers: dnsServers
     hubVnetId: hubVnetId
-    firewallIp: hubFirewallIp
+    routeTableIds: routeTableIds
     useRemoteGateways: useRemoteGateways
     clientPrefixes: cafClientPrefixes
   }
+  dependsOn: [contracts]
 }
 module services './modules/services.bicep' = {
   name: 'servicios-foundry'
@@ -87,6 +139,7 @@ module services './modules/services.bicep' = {
     frontendPrincipalId: frontendIdentity.properties.principalId
     gatewayPrincipalId: gatewayIdentity.properties.principalId
     models: models
+    workspaceId: logAnalyticsWorkspaceId
   }
 }
 @batchSize(1)
@@ -100,7 +153,6 @@ module endpoints './modules/private-endpoint.bicep' = [
       subnetId: network.outputs.peSubnetId
       targetId: services.outputs.targets[i].id
       groupId: services.outputs.targets[i].group
-      zoneIds: privateDnsMode == 'policy' ? [] : privateDnsZoneIds[services.outputs.targets[i].name]
     }
   }
 ]
@@ -137,9 +189,10 @@ module apps './modules/apps.bicep' = {
     backendPort: backendPort
     frontendEnv: frontendEnv
     backendEnv: backendEnv
-    createEnvironmentDns: createContainerEnvironmentDns
+    workspaceId: logAnalyticsWorkspaceId
+    actionGroupId: actionGroupId
   }
-  dependsOn: [endpoints]
+  dependsOn: [endpoints, agentRuntime]
 }
 module gateway './modules/gateway.bicep' = if (deployGateway) {
   name: 'application-gateway'
@@ -154,7 +207,8 @@ module gateway './modules/gateway.bicep' = if (deployGateway) {
     identityId: gatewayIdentity.id
     certificateSecretId: '${services.outputs.vaultUri}secrets/${certificateSecretName}'
     healthPath: frontendHealthPath
-    workspaceId: apps.outputs.workspaceId
+    workspaceId: logAnalyticsWorkspaceId
+    actionGroupId: actionGroupId
   }
 }
 output vnetId string = network.outputs.vnetId
@@ -166,3 +220,8 @@ output containerEnvironmentDomain string = apps.outputs.environmentDomain
 output containerEnvironmentIp string = apps.outputs.environmentIp
 output frontendFqdn string = apps.outputs.frontendFqdn
 output applicationUrl string = deployGateway ? gateway!.outputs.url : ''
+
+output subnetPrefixes object = prefixes
+output gatewayAddress string = gatewayPrivateIp
+output requiredWebDnsName string = gatewayHostname
+output applicationInsightsId string = apps.outputs.applicationInsightsId

@@ -1,32 +1,14 @@
 param location string
 param tags object
 param name string
-@description('CIDR aprobados por IPAM: vnet, foundry, containers, appGateway, privateEndpoints, gateway y firewall.')
+@description('CIDR aprobados por IPAM: vnet, foundry, containers, appGateway y privateEndpoints.')
 param prefixes object
 param dnsServers array
 param hubVnetId string
-param firewallIp string
+param routeTableIds object
 param useRemoteGateways bool
 param clientPrefixes array
 
-resource routes 'Microsoft.Network/routeTables@2024-05-01' = {
-  name: '${name}-egress'
-  location: location
-  tags: tags
-  properties: {
-    disableBgpRoutePropagation: false
-    routes: [
-      {
-        name: 'salida-firewall-caf'
-        properties: {
-          addressPrefix: '0.0.0.0/0'
-          nextHopType: 'VirtualAppliance'
-          nextHopIpAddress: firewallIp
-        }
-      }
-    ]
-  }
-}
 resource gatewayNsg 'Microsoft.Network/networkSecurityGroups@2024-05-01' = {
   name: '${name}-appgw-nsg'
   location: location
@@ -97,7 +79,7 @@ resource vnet 'Microsoft.Network/virtualNetworks@2024-05-01' = {
         properties: {
           addressPrefix: prefixes.foundry
           networkSecurityGroup: { id: workloadNsgs[0].id }
-          routeTable: { id: routes.id }
+          routeTable: { id: routeTableIds.foundry }
           delegations: [{ name: 'foundry', properties: { serviceName: 'Microsoft.App/environments' } }]
         }
       }
@@ -106,7 +88,7 @@ resource vnet 'Microsoft.Network/virtualNetworks@2024-05-01' = {
         properties: {
           addressPrefix: prefixes.containers
           networkSecurityGroup: { id: workloadNsgs[1].id }
-          routeTable: { id: routes.id }
+          routeTable: { id: routeTableIds.containers }
           delegations: [{ name: 'containers', properties: { serviceName: 'Microsoft.App/environments' } }]
         }
       }
@@ -114,7 +96,7 @@ resource vnet 'Microsoft.Network/virtualNetworks@2024-05-01' = {
         name: 'snet-appgateway'
         properties: {
           addressPrefix: prefixes.appGateway
-          routeTable: { id: routes.id }
+          routeTable: { id: routeTableIds.appGateway }
           networkSecurityGroup: { id: gatewayNsg.id }
           delegations: [{ name: 'appgateway', properties: { serviceName: 'Microsoft.Network/applicationGateways' } }]
         }
@@ -126,9 +108,7 @@ resource vnet 'Microsoft.Network/virtualNetworks@2024-05-01' = {
           privateEndpointNetworkPolicies: 'Disabled'
         }
       }
-      // Reservas solicitadas; no crean un firewall ni un gateway VPN/ExpressRoute.
-      { name: 'GatewaySubnet', properties: { addressPrefix: prefixes.gateway } }
-      { name: 'AzureFirewallSubnet', properties: { addressPrefix: prefixes.firewall } }
+
     ]
   }
 }

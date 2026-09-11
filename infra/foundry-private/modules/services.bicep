@@ -9,6 +9,7 @@ param frontendPrincipalId string
 param gatewayPrincipalId string
 @description('Despliegues de modelos aprobados: name, model, version, sku, capacity.')
 param models array
+param workspaceId string
 
 resource storage 'Microsoft.Storage/storageAccounts@2023-05-01' = {
   name: 'st${token}'
@@ -199,7 +200,7 @@ resource cosmos 'Microsoft.DocumentDB/databaseAccounts@2024-11-15' = {
     disableLocalAuth: true
     publicNetworkAccess: 'Disabled'
     consistencyPolicy: { defaultConsistencyLevel: 'Session' }
-    locations: [{ locationName: location, failoverPriority: 0, isZoneRedundant: false }]
+    locations: [{ locationName: location, failoverPriority: 0, isZoneRedundant: true }]
     backupPolicy: { type: 'Continuous', continuousModeProperties: { tier: 'Continuous7Days' } }
   }
 }
@@ -211,7 +212,7 @@ resource search 'Microsoft.Search/searchServices@2024-03-01-preview' = {
   properties: {
     publicNetworkAccess: 'disabled'
     disableLocalAuth: true
-    replicaCount: 1
+    replicaCount: 3
     partitionCount: 1
     hostingMode: 'default'
     semanticSearch: 'disabled'
@@ -263,5 +264,73 @@ resource gatewayCertificateRole 'Microsoft.Authorization/roleAssignments@2022-04
       'Microsoft.Authorization/roleDefinitions',
       '4633458b-17de-408a-b874-0445c86b69e6'
     )
+  }
+}
+
+resource foundryDiagnostics 'Microsoft.Insights/diagnosticSettings@2021-05-01-preview' = {
+  name: 'auditoria-caf'
+  scope: foundry
+  properties: {
+    workspaceId: workspaceId
+    logs: [{ categoryGroup: 'allLogs', enabled: true }]
+  }
+}
+
+resource storageDiagnostics 'Microsoft.Insights/diagnosticSettings@2021-05-01-preview' = {
+  name: 'auditoria-caf'
+  scope: blob
+  properties: {
+    workspaceId: workspaceId
+    logs: [{ categoryGroup: 'allLogs', enabled: true }]
+  }
+}
+
+resource agentBlobService 'Microsoft.Storage/storageAccounts/blobServices@2023-05-01' existing = {
+  parent: agentStorage
+  name: 'default'
+}
+
+resource agentStorageDiagnostics 'Microsoft.Insights/diagnosticSettings@2021-05-01-preview' = {
+  name: 'auditoria-caf'
+  scope: agentBlobService
+  properties: {
+    workspaceId: workspaceId
+    logs: [{ categoryGroup: 'allLogs', enabled: true }]
+  }
+}
+
+resource vaultDiagnostics 'Microsoft.Insights/diagnosticSettings@2021-05-01-preview' = {
+  name: 'auditoria-caf'
+  scope: vault
+  properties: {
+    workspaceId: workspaceId
+    logs: [{ categoryGroup: 'allLogs', enabled: true }]
+  }
+}
+
+resource registryDiagnostics 'Microsoft.Insights/diagnosticSettings@2021-05-01-preview' = {
+  name: 'auditoria-caf'
+  scope: registry
+  properties: {
+    workspaceId: workspaceId
+    logs: [{ categoryGroup: 'allLogs', enabled: true }]
+  }
+}
+
+resource cosmosDiagnostics 'Microsoft.Insights/diagnosticSettings@2021-05-01-preview' = {
+  name: 'auditoria-caf'
+  scope: cosmos
+  properties: {
+    workspaceId: workspaceId
+    logs: [{ categoryGroup: 'allLogs', enabled: true }]
+  }
+}
+
+resource searchDiagnostics 'Microsoft.Insights/diagnosticSettings@2021-05-01-preview' = {
+  name: 'auditoria-caf'
+  scope: search
+  properties: {
+    workspaceId: workspaceId
+    logs: [{ categoryGroup: 'allLogs', enabled: true }]
   }
 }

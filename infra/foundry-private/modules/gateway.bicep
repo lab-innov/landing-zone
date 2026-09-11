@@ -11,6 +11,7 @@ param identityId string
 param certificateSecretId string
 param healthPath string
 param workspaceId string
+param actionGroupId string
 var gatewayId = resourceId('Microsoft.Network/applicationGateways', 'agw-${token}')
 resource waf 'Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies@2024-05-01' = {
   name: 'waf-${token}'
@@ -24,11 +25,12 @@ resource waf 'Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies
 resource gateway 'Microsoft.Network/applicationGateways@2024-05-01' = {
   name: 'agw-${token}'
   location: location
+  zones: ['1', '2', '3']
   tags: tags
   identity: { type: 'UserAssigned', userAssignedIdentities: { '${identityId}': {} } }
   properties: {
     sku: { name: 'WAF_v2', tier: 'WAF_v2' }
-    autoscaleConfiguration: { minCapacity: 1, maxCapacity: 3 }
+    autoscaleConfiguration: { minCapacity: 2, maxCapacity: 3 }
     enableHttp2: true
     firewallPolicy: { id: waf.id }
     sslPolicy: { policyType: 'Predefined', policyName: 'AppGwSslPolicy20220101S' }
@@ -106,3 +108,22 @@ resource diagnostics 'Microsoft.Insights/diagnosticSettings@2021-05-01-preview' 
   }
 }
 output url string = 'https://${hostname}'
+
+resource unhealthy 'Microsoft.Insights/metricAlerts@2018-03-01' = {
+  name: 'alerta-gateway-${token}'
+  location: 'global'
+  tags: tags
+  properties: {
+    description: 'Backend no saludable durante cinco minutos.'
+    severity: 1
+    enabled: true
+    scopes: [gateway.id]
+    evaluationFrequency: 'PT1M'
+    windowSize: 'PT5M'
+    criteria: {
+      'odata.type': 'Microsoft.Azure.Monitor.SingleResourceMultipleMetricCriteria'
+      allOf: [{ name: 'backend', criterionType: 'StaticThresholdCriterion', metricNamespace: 'Microsoft.Network/applicationGateways', metricName: 'UnhealthyHostCount', operator: 'GreaterThan', threshold: 0, timeAggregation: 'Average' }]
+    }
+    actions: [{ actionGroupId: actionGroupId }]
+  }
+}

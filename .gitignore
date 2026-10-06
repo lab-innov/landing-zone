@@ -2,3 +2,6 @@
 .azure/
 *.env
 infra/**/main.json
+environments/ai-gateway/*.local.bicepparam
+environments/ai-gateway/*.local.json
+__pycache__/

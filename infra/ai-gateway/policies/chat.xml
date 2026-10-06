@@ -1,0 +1,21 @@
+<policies>
+  <inbound>
+    <base />
+    <validate-azure-ad-token tenant-id="__TENANT__" header-name="Authorization" failed-validation-httpcode="401" failed-validation-error-message="Acceso no autorizado.">
+      <client-application-ids>__CLIENTS__</client-application-ids>
+      <audiences><audience>__AUDIENCE__</audience></audiences>
+      <required-claims><claim name="roles" match="any"><value>__ROLE__</value></claim></required-claims>
+    </validate-azure-ad-token>
+    <rate-limit-by-key calls="__RPM__" renewal-period="60" counter-key='@("ai-requests-" + context.Api.Id)' />
+    <llm-token-limit counter-key='@("ai-tokens-" + context.Api.Id)' tokens-per-minute="__TPM__" token-quota="__MONTHLY__" token-quota-period="Monthly" estimate-prompt-tokens="false" />
+    <set-header name="api-key" exists-action="delete" />
+    <set-header name="Ocp-Apim-Subscription-Key" exists-action="delete" />
+    <set-backend-service backend-id="__BACKEND__" />
+    <rewrite-uri template="/deployments/__DEPLOYMENT__/chat/completions" copy-unmatched-params="false" />
+    <set-query-parameter name="api-version" exists-action="override"><value>__VERSION__</value></set-query-parameter>
+    <authentication-managed-identity resource="https://cognitiveservices.azure.com" ignore-error="false" />
+  </inbound>
+  <backend><forward-request timeout="120" buffer-response="false" /></backend>
+  <outbound><base /></outbound>
+  <on-error><base /></on-error>
+</policies>

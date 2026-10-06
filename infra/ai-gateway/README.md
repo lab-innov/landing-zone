@@ -8,4 +8,4 @@ Punto de acceso privado a Azure OpenAI con autenticación corporativa y límites
 
 Base propia inspirada en el acelerador de Microsoft. No instala el acelerador completo ni modifica el hub anterior. Requiere redes, DNS, modelos e identidades aprobados por CAF.
 
-Consultar la [guía de despliegue](../../docs/guia-despliegue-ai-gateway.md).
+Consultar la guía de despliegue en [Word](../../docs/guia-despliegue-ai-gateway.docx) o [Markdown](../../docs/guia-despliegue-ai-gateway.md).

@@ -171,7 +171,7 @@ Para agregar otra iniciativa, añadir una entrada con su modelo, identidades y l
 
 La entrega se comprobó localmente con compilación y linter de Bicep, compilación de los tres ejemplos, pruebas de contratos y revisión de diferencias. Estas comprobaciones no ejecutan el motor de políticas de APIM.
 
-No se ejecutaron `validate`, `what-if`, despliegues ni pruebas funcionales en Azure. Región, presupuesto, IDs reales, conectividad y aceptación de la plataforma siguen pendientes. No se hizo push a Git.
+No se ejecutaron `validate`, `what-if`, despliegues ni pruebas funcionales en Azure. Región, presupuesto, IDs reales, conectividad y aceptación de la plataforma siguen pendientes.
 
 ## Fuentes y alcance de la adaptación
 

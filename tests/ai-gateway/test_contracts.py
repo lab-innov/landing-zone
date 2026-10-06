@@ -81,6 +81,17 @@ class GatewayContracts(unittest.TestCase):
         self.assertIsNotNone(inbound.find('validate-azure-ad-token/required-claims/claim'))
         self.assertIsNone(tree.getroot().find('.//retry'))
 
+    def test_operation_waits_for_authorization_policy(self):
+        with tempfile.TemporaryDirectory() as directory:
+            output = Path(directory) / 'initiative.json'
+            compiler = os.environ.get('BICEP_BIN', 'bicep')
+            subprocess.run([compiler, 'build', str(ROOT / 'infra/ai-gateway/modules/initiative.bicep'), '--outfile', str(output)], check=True)
+            template = json.loads(output.read_text())
+        resources = template['resources']
+        if isinstance(resources, dict): resources = resources.values()
+        operation = next(r for r in resources if r['type'] == 'Microsoft.ApiManagement/service/apis/operations')
+        self.assertTrue(any(d == 'apiPolicy' or '/policies' in d for d in operation['dependsOn']))
+
     def test_compiled_template_security(self):
         with tempfile.TemporaryDirectory() as directory:
             output = Path(directory) / 'foundation.json'

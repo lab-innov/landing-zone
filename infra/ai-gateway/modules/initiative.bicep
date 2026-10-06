@@ -51,6 +51,7 @@ resource operation 'Microsoft.ApiManagement/service/apis/operations@2024-05-01' 
     urlTemplate: '/chat/completions'
     responses: []
   }
+  dependsOn: [apiPolicy]
 }
 resource apiPolicy 'Microsoft.ApiManagement/service/apis/policies@2024-05-01' = {
   parent: api
@@ -59,6 +60,6 @@ resource apiPolicy 'Microsoft.ApiManagement/service/apis/policies@2024-05-01' = 
     format: 'rawxml'
     value: policy
   }
-  dependsOn: [backend, operation]
+  dependsOn: [backend]
 }
 output chatCompletionsUrl string = 'https://${apim.name}.azure-api.net/ai/${initiativeName}/chat/completions'

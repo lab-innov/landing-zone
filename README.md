@@ -122,3 +122,7 @@ Ambos scripts soportan:
 La trazabilidad a los repos de referencia se mantiene en:
 
 - [references/upstream-sources.json](/Users/unidentified/Documents/Landing%20Zone/references/upstream-sources.json)
+
+## Gateway de IA
+
+La base independiente de APIM está en [infra/ai-gateway](infra/ai-gateway/README.md). Consultar la [guía de despliegue](docs/guia-despliegue-ai-gateway.md) para reutilizar el APIM corporativo o preparar una instancia dedicada.
